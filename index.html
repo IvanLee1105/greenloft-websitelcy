@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELCOME TO GREEN LOFT legacy</title>
     <style>
-    center-image {
-        display: block;
-        margin: 20px auto;
-        max-width: 80%; /* 限制图片最大宽度 */
-        height: auto; /* 保持图片比例 */
-        border-radius: 10px; /* 让图片有圆角效果（可选） */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影（可选） */
-    }
-</style>
+        /* 调整图片大小 */
+        .center-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 600px; /* 限制最大宽度 */
+            max-height: 400px; /* 限制最大高度 */
+            width: auto; /* 让宽度自适应 */
+            height: auto; /* 让高度自适应 */
+            border-radius: 10px; /* 圆角 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+        }
 
-    <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-02-25%20121222.png?raw=true" alt="公司图片" class="center-image">
-    <style>
         body {
-
             font-family: 'Segoe UI', Arial, sans-serif;
-            background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
             url('https://github.com/IvanLee1105/my.photo/blob/main/tsg.jpg?raw=true') no-repeat center center;
+            background-size: cover;
             color: #333;
             padding: 20px;
             text-align: center;
         }
+
         .contact-card {
             background: white;
             border-radius: 10px;
@@ -37,6 +37,7 @@
             text-align: left;
             max-width: 300px;
         }
+
         .custom-button {
             background-color: #2A5C82;
             color: white;
@@ -48,35 +49,28 @@
             margin: 10px;
             transition: 0.3s;
         }
-        .contact-card h2 {
-            color: #2A5C82;
-            font-size: 1.5em;
-            margin-bottom: 10px;
+
+        .custom-button:hover {
+            background-color: #1e4b66;
         }
-        .contact-card p {
-            margin: 5px 0;
-        }
-        .contact-card a {
-            color: #2A5C82;
-            text-decoration: none;
-        }
-        .contact-card a:hover {
-            text-decoration: underline;
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-top: 20%;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
         }
     </style>
 </head>
 <body>
 
+    <!-- 图片 -->
+    <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-02-25%20121222.png?raw=true" 
+         alt="公司图片" class="center-image">
+
     <h1>联系我们</h1>
-    <style>
-    h1{
-            color:white;
-            text-align:center;
-            margin-top:20%;
-            font-size:3rem;
-            text-shadow:2px 2px 5px rgba(0, 0, 0, 0.6);
-            }
-</style>
+
     <!-- 联系人信息 -->
     <div class="contact-card">
         <h2>STANLEY WONG</h2>
