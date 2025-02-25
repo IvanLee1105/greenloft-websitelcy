@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELCOME TO GREEN LOFT legacy</title>
     <style>
+    center-image {
+        display: block;
+        margin: 20px auto;
+        max-width: 80%; /* 限制图片最大宽度 */
+        height: auto; /* 保持图片比例 */
+        border-radius: 10px; /* 让图片有圆角效果（可选） */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影（可选） */
+    }
+</style>
+
+    <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-02-25%20121222.png?raw=true" alt="公司图片" class="center-image">
+    <style>
         body {
+
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://github.com/IvanLee1105/my.photo/blob/main/tsg.jpg?raw=true') no-repeat center center;
-            background-size: cover;
-            color: white;
-            text-align: center;
+            background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+            url('https://github.com/IvanLee1105/my.photo/blob/main/tsg.jpg?raw=true') no-repeat center center;
+            color: #333;
             padding: 20px;
+            text-align: center;
         }
-
-        .center-image {
-            display: block;
-            margin: 20px auto;
-            max-width: 80%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
         .contact-card {
             background: white;
-            color: black;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: inline-block;
@@ -35,40 +37,20 @@
             text-align: left;
             max-width: 300px;
         }
-
         .contact-card h2 {
             color: #2A5C82;
             font-size: 1.5em;
             margin-bottom: 10px;
         }
-
+        .contact-card p {
+            margin: 5px 0;
+        }
         .contact-card a {
             color: #2A5C82;
             text-decoration: none;
         }
-
         .contact-card a:hover {
             text-decoration: underline;
-        }
-
-        .button-container {
-            margin-top: 30px;
-        }
-
-        .custom-button {
-            background-color: #2A5C82;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 10px;
-            transition: 0.3s;
-        }
-
-        .custom-button:hover {
-            background-color: #1e4b66;
         }
     </style>
 </head>
