@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f5f5f5;
+            background: #f0f0f0;
             color: #333;
             text-align: center;
             padding: 20px;
@@ -15,6 +15,7 @@
 
         h1 {
             color: #2A5C82;
+            margin-bottom: 20px;
         }
 
         .product-container {
@@ -28,8 +29,8 @@
         .product-card {
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            padding: 20px;
             width: 250px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -37,24 +38,30 @@
 
         .product-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         .product-card img {
             width: 100%;
             border-radius: 10px;
+            margin-bottom: 10px;
         }
 
         .product-card h2 {
             font-size: 1.2em;
-            margin: 10px 0;
             color: #2A5C82;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            font-size: 0.9em;
+            color: #666;
         }
 
         .back-button {
             display: inline-block;
             margin-top: 30px;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 16px;
             background-color: #2A5C82;
             color: white;
@@ -71,10 +78,7 @@
     </style>
 </head>
 <body>
-
     <h1>天神屋商品</h1>
-
-    <!-- 商品展示区域 -->
     <div class="product-container">
         <div class="product-card">
             <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%A4%A9%E5%AE%98%E5%B1%8BA%E6%AC%BE.png?raw=true" alt="特大天神">
@@ -93,19 +97,16 @@
             <h2>小天神</h2>
         </div>
         <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E6%8B%BF%E7%9D%A3%E5%B1%8B(A%E6%AC%BE).png?raw=true" alt="拿督地主公 A款">
+            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E6%8B%BF%E7%9D%A3%E5%B1%8B(A%E6%AC%BE).png?raw=true" alt="拿督地主公A款">
             <h2>拿督地主公</h2>
             <p>(A款)</p>
         </div>
         <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E6%8B%BF%E7%9D%A3%E5%B1%8B(B%E6%AC%BE).png?raw=true" alt="拿督地主公 B款">
+            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E6%8B%BF%E7%9D%A3%E5%B1%8B(B%E6%AC%BE).png?raw=true" alt="拿督地主公B款">
             <h2>拿督地主公</h2>
             <p>(B款)</p>
         </div>
     </div>
-
-    <!-- 返回按钮 -->
     <a href="index.html" class="back-button">返回首页</a>
-
 </body>
 </html>
