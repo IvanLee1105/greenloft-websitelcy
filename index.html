@@ -4,31 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELCOME TO GREEN LOFT legacy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-            url('https://github.com/IvanLee1105/my.photo/blob/main/tsg.jpg?raw=true') no-repeat center center;
+            background: url('https://github.com/IvanLee1105/my.photo/blob/main/tsg.jpg?raw=true') no-repeat center center;
             background-size: cover;
-            color: #333;
+            color: #fff;
             padding: 20px;
             text-align: center;
         }
 
-        /* 让 WELCOME 变白色 */
         .welcome-text {
-            color: white;
-            text-align: center;
-            font-size: 3rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-            margin-top: 20px;
-        }
-
-        /* 让 联系我们 变白色 */
-        .contact-title {
-            color: white;
-            text-align: center;
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
             margin-top: 20px;
         }
@@ -40,17 +29,37 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.5s ease;
+        }
+        .center-image:hover {
+            filter: brightness(1.2);
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+            margin-top: 20px;
+        }
+
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .contact-card {
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            margin: 20px;
             padding: 20px;
             text-align: left;
             max-width: 300px;
+            color: #333;
+            transition: transform 0.3s;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
         }
 
         .contact-card h2 {
@@ -81,47 +90,52 @@
             background-color: #2A5C82;
             color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 8px;
             cursor: pointer;
             margin: 10px;
-            transition: 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .custom-button:hover {
             background-color: #1e4b66;
+            transform: scale(1.1);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 让 WELCOME 变白色 -->
     <h1 class="welcome-text">WELCOME TO GREEN LOFT legacy</h1>
 
-    <!-- 图片 -->
     <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-02-25%20121222.png?raw=true" 
          alt="公司图片" class="center-image">
 
-    <!-- 让 联系我们 变白色 -->
     <h1 class="contact-title">联系我们</h1>
 
-    <!-- 联系人信息 -->
-    <div class="contact-card">
-        <h2>STANLEY WONG</h2>
-        <p>职位：老板</p>
-        <p>电话：<a href="tel:+60 197256827">+60 19-725 6827</a></p>
-        <p>邮箱：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+    <div class="contact-section">
+        <div class="contact-card">
+            <h2>STANLEY WONG</h2>
+            <p>职位：老板</p>
+            <p>电话：<a href="tel:+60 197256827">+60 19-725 6827</a></p>
+            <p>邮箱：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+        </div>
+
+        <div class="contact-card">
+            <h2>WAN SAU FONG</h2>
+            <p>职位：理财</p>
+            <p>电话：<a href="tel:+60 123610303">+60 12-3610303</a></p>
+            <p>邮箱：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+        </div>
     </div>
 
-    <div class="contact-card">
-        <h2>WAN SAU FONG</h2>
-        <p>职位：理财</p>
-        <p>电话：<a href="tel:+60 123610303">+60 12-3610303</a></p>
-        <p>邮箱：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
-    </div>
-
-    <!-- 按钮 -->
     <div class="button-container">
         <a href="prayer_table.html"><button class="custom-button">天神屋</button></a>
         <a href="/ZW"><button class="custom-button">植物</button></a>
