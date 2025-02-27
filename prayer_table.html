@@ -30,8 +30,9 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            padding: 20px;
-            width: 250px;
+            padding: 15px;
+            width: 100%; /* 默认100%，让媒体查询控制 */
+            max-width: 250px; /* 最大宽度250px */
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -43,6 +44,7 @@
 
         .product-card img {
             width: 100%;
+            height: auto;
             border-radius: 10px;
             margin-bottom: 10px;
         }
@@ -74,6 +76,14 @@
 
         .back-button:hover {
             background-color: #1e4b66;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column; /* 小屏幕单列 */
+                align-items: center;
+            }
         }
     </style>
 </head>
