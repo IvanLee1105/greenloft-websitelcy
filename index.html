@@ -9,50 +9,70 @@
         /* 全局样式 */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: url('https://raw.githubusercontent.com/IvanLee1105/my.photo/refs/heads/main/DALL%C2%B7E%202025-02-26%2014.19.25%20-%20A%20beautiful%20garden%20with%20vibrant%20flowers%2C%20lush%20greenery%2C%20and%20a%20charming%20stone%20pathway%20leading%20to%20a%20cozy%20wooden%20bench.%20The%20scene%20is%20illuminated%20by%20soft%20.webp') no-repeat center center;
-            background-size: cover;
-            color: #fff;
+            background: #f5f5f5;
+            color: #333;
             text-align: center;
             margin: 0;
             padding: 20px;
         }
 
-        /* 名片容器 */
+        /* 标题样式 */
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #2A5C82;
+        }
+
+        /* 照片容器 */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* 照片大小控制 */
+        .company-image {
+            max-width: 90%; /* 确保照片不会过大 */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 联系人卡片容器 */
         .contact-section {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin-bottom: 20px;
         }
 
-        /* 联系卡片 */
+        /* 联系人卡片 */
         .contact-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: white;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            padding: 20px;
+            padding: 15px;
             text-align: center;
-            max-width: 280px; /* 控制最大宽度 */
-            width: 100%;
+            width: 260px; /* 让卡片大小统一 */
             color: #333;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .contact-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
         }
 
         .contact-card h2 {
             color: #2A5C82;
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-bottom: 10px;
         }
 
         .contact-card p {
             margin: 5px 0;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .contact-card a {
@@ -71,9 +91,10 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            flex-wrap: nowrap; /* 始终保持一排 */
-            overflow-x: auto; /* 超出屏幕时允许横向滚动 */
+            flex-wrap: nowrap; /* 保持一排 */
+            overflow-x: auto; /* 超出时允许横向滚动 */
             padding: 10px;
+            white-space: nowrap; /* 避免文字换行 */
         }
 
         /* 现代风格按钮 */
@@ -81,17 +102,16 @@
             background: linear-gradient(135deg, #2A5C82, #47A8E5);
             color: white;
             border: none;
-            padding: 14px 20px;
+            padding: 12px 18px;
             font-size: 1rem;
             font-weight: bold;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            white-space: nowrap; /* 避免文字换行 */
+            flex-shrink: 0; /* 防止按钮被挤压变形 */
         }
 
-        /* 按钮悬浮效果 */
         .custom-button:hover {
             transform: scale(1.08);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
@@ -106,7 +126,8 @@
             }
 
             .contact-card {
-                max-width: 90%; /* 自适应宽度，确保不占满整个屏幕 */
+                width: 90%; /* 让名片在小屏幕上更大 */
+                max-width: 300px;
             }
 
             .button-container {
@@ -118,32 +139,33 @@
             .custom-button {
                 font-size: 0.9rem;
                 padding: 10px 16px;
-                flex-shrink: 0;
             }
         }
     </style>
 </head>
 <body>
-    <h1 class="welcome-text">欢迎光临绿萌阁</h1>
-    <h1 class="welcome-text">WELCOME TO GREEN LOFT legacy</h1>
+    <h1>欢迎光临绿萌阁</h1>
+    <h1>WELCOME TO GREEN LOFT legacy</h1>
 
-    <img src="https://github.com/IvanLee1105/my.photo/blob/main/GREENLOFT%E6%8B%9B%E7%89%8C2.png?raw=true" 
-         alt="公司图片" class="center-image">
+    <div class="image-container">
+        <img src="https://github.com/IvanLee1105/my.photo/blob/main/GREENLOFT%E6%8B%9B%E7%89%8C2.png?raw=true" 
+             alt="公司图片" class="company-image">
+    </div>
 
-    <h1 class="contact-title">欢迎联系我们</h1>
-    <h1 class="contact-title">WELCOME TO CONTACT US</h1>
+    <h1>欢迎联系我们</h1>
+    <h1>WELCOME TO CONTACT US</h1>
 
     <div class="contact-section">
         <div class="contact-card">
             <h2>STANLEY WONG 偉繽</h2>
-            <p>电话Tel：<a href="tel:+60 197256827">+60 19-725 6827</a></p>
-            <p>邮箱Gm@il：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+            <p>电话 Tel：<a href="tel:+60 197256827">+60 19-725 6827</a></p>
+            <p>邮箱 Email：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
         </div>
 
         <div class="contact-card">
             <h2>MRS WAN 秀鳳</h2>
-            <p>电话Tel：<a href="tel:+60 123610303">+60 12-3610303</a></p>
-            <p>邮箱Gm@il：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+            <p>电话 Tel：<a href="tel:+60 123610303">+60 12-3610303</a></p>
+            <p>邮箱 Email：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
         </div>
     </div>
 
