@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -21,7 +20,7 @@
         /* 欢迎文本 */
         .welcome-text {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem; /* 调整为更小的默认字体 */
+            font-size: 2.5rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
             margin-top: 20px;
         }
@@ -30,7 +29,7 @@
         .center-image {
             display: block;
             margin: 20px auto;
-            max-width: 100%; /* 图片宽度适应屏幕 */
+            max-width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -42,7 +41,7 @@
 
         /* 联系标题 */
         .contact-title {
-            font-size: 2rem; /* 调整为更小的默认字体 */
+            font-size: 2rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
             margin-top: 20px;
         }
@@ -58,15 +57,19 @@
 
         /* 联系卡片 */
         .contact-card {
-            background: rgba(255, 255, 255, 0.9); /* 半透明背景 */
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: left;
             max-width: 300px;
-            width: 100%; /* 卡片宽度适应屏幕 */
+            width: 100%;
             color: #333;
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* 保证所有卡片等高 */
+            min-height: 150px; /* 统一卡片高度 */
         }
         .contact-card:hover {
             transform: translateY(-5px);
@@ -80,6 +83,7 @@
 
         .contact-card p {
             margin: 5px 0;
+            text-align: left; /* 让文本左对齐 */
         }
 
         .contact-card a {
@@ -103,13 +107,13 @@
             color: white;
             border: none;
             padding: 12px 24px;
-            font-size: 1rem; /* 调整为更小的默认字体 */
+            font-size: 1rem;
             border-radius: 8px;
             cursor: pointer;
             margin: 10px;
             transition: transform 0.3s, box-shadow 0.3s;
-            width: 100%; /* 按钮宽度适应屏幕 */
-            max-width: 200px; /* 限制最大宽度 */
+            width: 100%;
+            max-width: 200px;
         }
         .custom-button:hover {
             background-color: #1e4b66;
@@ -117,14 +121,14 @@
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* 媒体查询 - 移动设备优化 */
+        /* 移动端优化 */
         @media (max-width: 768px) {
             .welcome-text {
-                font-size: 2rem; /* 更小的字体 */
+                font-size: 2rem;
             }
 
             .contact-title {
-                font-size: 1.5rem; /* 更小的字体 */
+                font-size: 1.5rem;
             }
 
             .contact-section {
@@ -132,8 +136,17 @@
                 align-items: center;
             }
 
+            .contact-card {
+                width: 90%;
+                text-align: center;
+            }
+
+            .contact-card p {
+                text-align: center;
+            }
+
             .custom-button {
-                font-size: 0.9rem; /* 更小的字体 */
+                font-size: 0.9rem;
                 padding: 10px 20px;
             }
         }
@@ -166,9 +179,7 @@
     <div class="button-container">
         <a href="prayer_table.html"><button class="custom-button">天神屋</button></a>
         <a href="/ZW"><button class="custom-button">植物 PLANTS</button></a>
-        <a href="cat_food.html"><button class="custom-button">猫粮~cat_food</button>
+        <a href="cat_food.html"><button class="custom-button">猫粮~cat_food</button></a>
     </div>
-       
-
 </body>
 </html>
