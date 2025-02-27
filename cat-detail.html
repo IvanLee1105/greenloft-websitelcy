@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=
+      <title>商品描述~Product description</title>
+      <style>
+      body{
+      font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2A5C82;
+            margin-bottom: 20px;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            padding: 15px;
+            width: 100%; /* 默认100%，让媒体查询控制 */
+            max-width: 250px; /* 最大宽度250px */
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h2 {
+            font-size: 1.2em;
+            color: #2A5C82;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #2A5C82;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #1e4b66;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column; /* 小屏幕单列 */
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+      <div class="product-container">
+        <div class="product-card">
+            <img src="https://github.com/IvanLee1105/my.photo/blob/main/cat_food1.png?raw=true" alt="特大天神">
+            <h2>BlackCatz Canned 400g :
+
+1) Seafood Platter
+Ingredies ( Sardines, Water, Mackerel, Gelling Agent, Vegetable Oil, White Bait, Shrimp, Vitamins & Minerals, Taurine,. Permitted Food Colour.
+(Protein 10.0% / Fat 2.0%)
+
+2) Fresh Sardine
+Ingredienrs ( Sardines, Water, Gelling Agent, Vitamins & Minerals, Guar Gum, Taurine, Permitted Food Colour,
+(Protein 10.0% / Fat 1.5%)
+
+3) Fresh Mackerel
+Ingredients ( Mackerel, Water, Gelling Agent, Vitamins & Minerals. Taurine, Permitted Food Colour.
+(Protein 10.0% / Fat 2.0%)
+
+4) Fresh Pilchard in Seafood Formula
+Ingredients ( Pilchard, Water, Gelling Agent, Vegetables Oil, Vitamins & Minerals. Taurine, Permitted Food Colour.
+(Protein 10.0% / Fat 2.0%)</h2>
+        </div>
+    <a href ="cat_food.html" class="back-button">返回页面</a>
+  </body>
+  </head>
