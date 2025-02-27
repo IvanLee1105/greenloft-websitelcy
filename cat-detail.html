@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f0f0f0;
+            background: #f8f9fa;
             color: #333;
             text-align: center;
             padding: 20px;
@@ -19,7 +19,8 @@
 
         h1 {
             color: #2A5C82;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 24px;
         }
 
         .product-container {
@@ -44,14 +45,26 @@
             border-radius: 10px;
         }
 
+        /* Swiper 控制按钮 */
+        .swiper-button-next, .swiper-button-prev {
+            color: #2A5C82 !important;
+        }
+
+        /* Swiper 分页器 */
+        .swiper-pagination {
+            position: relative;
+            margin-top: 10px;
+        }
+
         .product-info {
             text-align: left;
-            padding: 10px;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
         }
 
         .product-info p {
-            font-size: 0.9em;
-            color: #666;
             margin-bottom: 8px;
         }
 
@@ -66,11 +79,12 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .back-button:hover {
             background-color: #1e4b66;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -89,6 +103,8 @@
             <!-- 轮播图控制按钮 -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+            <!-- 轮播图分页器 -->
+            <div class="swiper-pagination"></div>
         </div>
 
         <div class="product-info">
@@ -111,9 +127,13 @@
                 prevEl: ".swiper-button-prev"
             },
             autoplay: {
-                delay: 3000, // 自动播放时间
+                delay: 2500, // 自动播放时间
                 disableOnInteraction: false // 用户操作后仍继续播放
-            }
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true, // 允许点击分页器切换
+            },
         });
     </script>
 </body>
