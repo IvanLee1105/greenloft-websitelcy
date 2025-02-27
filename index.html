@@ -17,26 +17,52 @@
             padding: 20px;
         }
 
-        /* 欢迎文本 */
-        .welcome-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-            margin-top: 20px;
+        /* 名片容器 */
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
         }
 
-        /* 图片样式 */
-        .center-image {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: 0.5s ease;
+        /* 联系卡片 */
+        .contact-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            text-align: center;
+            max-width: 280px; /* 控制最大宽度 */
+            width: 100%;
+            color: #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .center-image:hover {
-            filter: brightness(1.2);
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-card h2 {
+            color: #2A5C82;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        .contact-card a {
+            color: #2A5C82;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
         }
 
         /* 按钮容器 */
@@ -74,26 +100,31 @@
 
         /* 手机端优化 */
         @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-card {
+                max-width: 90%; /* 自适应宽度，确保不占满整个屏幕 */
+            }
+
             .button-container {
-                justify-content: flex-start; /* 在小屏幕上左对齐 */
-                overflow-x: auto; /* 允许左右滑动 */
+                justify-content: flex-start;
+                overflow-x: auto;
                 padding-bottom: 10px;
             }
 
             .custom-button {
                 font-size: 0.9rem;
                 padding: 10px 16px;
-                flex-shrink: 0; /* 防止按钮被压缩 */
+                flex-shrink: 0;
             }
         }
     </style>
 </head>
 <body>
     <h1 class="welcome-text">欢迎光临绿萌阁</h1>
-    <h1 class="welcome-text">WELCOME TO GREEN LOFT legacy</h1>
-
-    <img src="https://github.com/IvanLee1105/my.photo/blob/main/GREENLOFT%E6%8B%9B%E7%89%8C2.png?raw=true" 
-         alt="公司图片" class="center-image">
     <h1 class="welcome-text">WELCOME TO GREEN LOFT legacy</h1>
 
     <img src="https://github.com/IvanLee1105/my.photo/blob/main/GREENLOFT%E6%8B%9B%E7%89%8C2.png?raw=true" 
