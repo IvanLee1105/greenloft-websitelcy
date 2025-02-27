@@ -66,10 +66,6 @@
             width: 100%;
             color: #333;
             transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* 保证所有卡片等高 */
-            min-height: 150px; /* 统一卡片高度 */
         }
         .contact-card:hover {
             transform: translateY(-5px);
@@ -83,7 +79,6 @@
 
         .contact-card p {
             margin: 5px 0;
-            text-align: left; /* 让文本左对齐 */
         }
 
         .contact-card a {
@@ -99,55 +94,56 @@
         .button-container {
             text-align: center;
             margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        /* 自定义按钮 */
+        /* 现代风格按钮 */
         .custom-button {
-            background-color: #2A5C82;
+            background: linear-gradient(135deg, #2A5C82, #47A8E5);
             color: white;
             border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border-radius: 8px;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
             cursor: pointer;
-            margin: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 100%;
-            max-width: 200px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 220px;
+            text-transform: uppercase;
         }
+
+        /* 按钮悬浮效果 */
         .custom-button:hover {
-            background-color: #1e4b66;
-            transform: scale(1.1);
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.08);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #1E4B66, #3598DB);
         }
 
         /* 移动端优化 */
         @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .custom-button {
+                font-size: 1rem;
+                padding: 12px 24px;
+                width: 90%;
+                max-width: 250px;
+            }
+
             .welcome-text {
                 font-size: 2rem;
             }
 
             .contact-title {
                 font-size: 1.5rem;
-            }
-
-            .contact-section {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contact-card {
-                width: 90%;
-                text-align: center;
-            }
-
-            .contact-card p {
-                text-align: center;
-            }
-
-            .custom-button {
-                font-size: 0.9rem;
-                padding: 10px 20px;
             }
         }
     </style>
