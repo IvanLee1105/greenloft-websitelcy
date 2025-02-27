@@ -12,12 +12,12 @@
             background: url('https://raw.githubusercontent.com/IvanLee1105/my.photo/refs/heads/main/DALL%C2%B7E%202025-02-26%2014.19.25%20-%20A%20beautiful%20garden%20with%20vibrant%20flowers%2C%20lush%20greenery%2C%20and%20a%20charming%20stone%20pathway%20leading%20to%20a%20cozy%20wooden%20bench.%20The%20scene%20is%20illuminated%20by%20soft%20.webp') no-repeat center center;
             background-size: cover;
             color: #fff;
-            padding: 20px;
             text-align: center;
             margin: 0;
+            padding: 20px;
         }
 
-        /* 欢迎文本 */
+        /* 主要标题 */
         .welcome-text {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -25,28 +25,30 @@
             margin-top: 20px;
         }
 
-        /* 图片样式 */
-        .center-image {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: 0.5s ease;
-        }
-        .center-image:hover {
-            filter: brightness(1.2);
+        /* 图片容器 */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
-        /* 联系标题 */
+        /* 图片大小 */
+        .company-image {
+            width: 100%;
+            max-width: 700px; /* 电脑端最大 700px */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 联系方式标题 */
         .contact-title {
             font-size: 2rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
             margin-top: 20px;
         }
 
-        /* 联系卡片容器 */
+        /* 联系信息容器 */
         .contact-section {
             display: flex;
             justify-content: center;
@@ -55,7 +57,7 @@
             margin: 20px 0;
         }
 
-        /* 联系卡片 */
+        /* 联系名片 */
         .contact-card {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
@@ -92,52 +94,36 @@
 
         /* 按钮容器 */
         .button-container {
-            text-align: center;
-            margin-top: 30px;
             display: flex;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
+            margin-top: 30px;
         }
 
-        /* 现代风格按钮 */
+        /* 自定义按钮 */
         .custom-button {
-            background: linear-gradient(135deg, #2A5C82, #47A8E5);
+            background-color: #2A5C82;
             color: white;
             border: none;
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 30px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 220px;
-            text-transform: uppercase;
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 200px;
+            width: 100%;
+            text-align: center;
         }
-
-        /* 按钮悬浮效果 */
         .custom-button:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, #1E4B66, #3598DB);
+            background-color: #1e4b66;
+            transform: scale(1.1);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* 移动端优化 */
+        /* 响应式优化 */
         @media (max-width: 768px) {
-            .button-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .custom-button {
-                font-size: 1rem;
-                padding: 12px 24px;
-                width: 90%;
-                max-width: 250px;
-            }
-
+            /* 标题缩小 */
             .welcome-text {
                 font-size: 2rem;
             }
@@ -145,37 +131,20 @@
             .contact-title {
                 font-size: 1.5rem;
             }
-        }
-    </style>
-</head>
-<body>
-    <h1 class="welcome-text">欢迎光临绿萌阁</h1>
-    <h1 class="welcome-text">WELCOME TO GREEN LOFT legacy</h1>
 
-    <img src="https://github.com/IvanLee1105/my.photo/blob/main/GREENLOFT%E6%8B%9B%E7%89%8C2.png?raw=true" 
-         alt="公司图片" class="center-image">
+            /* 让名片上下排列 */
+            .contact-section {
+                flex-direction: column;
+                align-items: center;
+            }
 
-    <h1 class="contact-title">欢迎联系我们</h1>
-    <h1 class="contact-title">WELCOME TO CONTACT US</h1>
+            /* 调整图片大小 */
+            .company-image {
+                max-width: 90%;
+            }
 
-    <div class="contact-section">
-        <div class="contact-card">
-            <h2>STANLEY WONG 偉繽</h2>
-            <p>电话Tel：<a href="tel:+60 197256827">+60 19-725 6827</a></p>
-            <p>邮箱Gm@il：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
-        </div>
-
-        <div class="contact-card">
-            <h2>MRS WAN 秀鳳</h2>
-            <p>电话Tel：<a href="tel:+60 123610303">+60 12-3610303</a></p>
-            <p>邮箱Gm@il：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
-        </div>
-    </div>
-
-    <div class="button-container">
-        <a href="prayer_table.html"><button class="custom-button">天神屋</button></a>
-        <a href="/ZW"><button class="custom-button">植物 PLANTS</button></a>
-        <a href="cat_food.html"><button class="custom-button">猫粮~cat_food</button></a>
-    </div>
-</body>
-</html>
+            /* 手机端按钮一排排列 */
+            .button-container {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-st
