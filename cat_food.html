@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天神屋</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2A5C82;
+            margin-bottom: 20px;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            padding: 15px;
+            width: 100%; /* 默认100%，让媒体查询控制 */
+            max-width: 250px; /* 最大宽度250px */
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h2 {
+            font-size: 1.2em;
+            color: #2A5C82;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #2A5C82;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #1e4b66;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column; /* 小屏幕单列 */
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>cat_food sample</h1>
+    <div class="product-container">
+        <div class="product-card">
+            <img src="https://github.com/IvanLee1105/my.photo/blob/main/cat_food1.png?raw=true" alt="cat_food">
+            <h2>cat_foodsample</h2>
+        </div>
+
+      < a href =index.html" class="back-button">
+  </body>
+  </div>
