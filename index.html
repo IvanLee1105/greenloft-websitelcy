@@ -6,27 +6,29 @@
     <title>WELCOME TO GREEN LOFT legacy - 欢迎光临绿萌阁</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* 全局样式 */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: url('你的背景图片地址.jpg') no-repeat center center;
             background-size: cover;
             color: #fff;
             padding: 20px;
-            text-align: left; /* 左对齐 */
+            text-align: center;
             margin: 0;
         }
 
-        .welcome-text, .contact-title {
+        /* 欢迎文本 */
+        .welcome-text {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
             margin-top: 20px;
-            text-align: left; /* 左对齐 */
         }
 
+        /* 图片样式 */
         .center-image {
             display: block;
-            margin: 20px 0; /* 取消水平居中对齐 */
+            margin: 20px auto;
             max-width: 100%;
             height: auto;
             border-radius: 10px;
@@ -34,14 +36,27 @@
             transition: 0.5s ease;
         }
 
+        .center-image:hover {
+            filter: brightness(1.1);
+        }
+
+        /* 联系信息 */
+        .contact-title {
+            font-size: 2rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+            margin-top: 20px;
+        }
+
+        /* 联系卡片容器 */
         .contact-section {
             display: flex;
-            flex-direction: column; /* 使每个卡片垂直排列 */
-            align-items: flex-start; /* 左对齐 */
+            justify-content: center;
             gap: 20px;
+            flex-wrap: wrap;
             margin: 20px 0;
         }
 
+        /* 联系卡片 */
         .contact-card {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
@@ -54,9 +69,83 @@
             transition: transform 0.3s;
         }
 
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card h2 {
+            color: #2A5C82;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        /* 让 Gmail 在一排显示 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .contact-card a {
+            color: #2A5C82;
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* 按钮容器 */
         .button-container {
-            text-align: left; /* 左对齐 */
+            text-align: center;
             margin-top: 30px;
+        }
+
+        /* 自定义按钮 */
+        .custom-button {
+            background-color: #2A5C82;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .custom-button:hover {
+            background-color: #1e4b66;
+            transform: scale(1.1);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 媒体查询 - 移动设备优化 */
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 2rem;
+            }
+
+            .contact-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .custom-button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -73,14 +162,18 @@
     <div class="contact-section">
         <div class="contact-card">
             <h2>STANLEY WONG 偉繽</h2>
-            <p>电话Tel：<a href="tel:+60197256827">+60 19-725 6827</a></p>
-            <p>邮箱Em@il：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+            <div class="contact-info">
+                <p>电话Tel：<a href="tel:+60197256827">+60 19-725 6827</a></p>
+                <p>邮箱Em@il：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+            </div>
         </div>
 
         <div class="contact-card">
             <h2>MRS WAN 秀鳳</h2>
-            <p>电话Tel：<a href="tel:+60123610303">+60 12-3610303</a></p>
-            <p>邮箱Em@il：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+            <div class="contact-info">
+                <p>电话Tel：<a href="tel:+60123610303">+60 12-3610303</a></p>
+                <p>邮箱Em@il：<a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
+            </div>
         </div>
     </div>
 
