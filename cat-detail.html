@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=
-      <title>商品描述~Product description</title>
-      <style>
-      body{
-      font-family: 'Segoe UI', Arial, sans-serif;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品描述 ~ Product Description</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
             background: #f0f0f0;
             color: #333;
             text-align: center;
@@ -31,8 +31,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             padding: 15px;
-            width: 100%; /* 默认100%，让媒体查询控制 */
-            max-width: 250px; /* 最大宽度250px */
+            width: 100%;
+            max-width: 350px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -52,12 +52,14 @@
         .product-card h2 {
             font-size: 1.2em;
             color: #2A5C82;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         .product-card p {
             font-size: 0.9em;
             color: #666;
+            text-align: left;
+            padding: 10px;
         }
 
         .back-button {
@@ -81,34 +83,42 @@
         /* 响应式设计 */
         @media (max-width: 768px) {
             .product-container {
-                flex-direction: column; /* 小屏幕单列 */
+                flex-direction: column;
                 align-items: center;
             }
         }
     </style>
 </head>
 <body>
-      <div class="product-container">
+    <h1>商品描述 ~ Product Description</h1>
+    
+    <div class="product-container">
         <div class="product-card">
             <img src="https://github.com/IvanLee1105/my.photo/blob/main/cat_food1.png?raw=true" alt="特大天神">
-            <h2>BlackCatz Canned 400g :
-
-1) Seafood Platter
-Ingredies ( Sardines, Water, Mackerel, Gelling Agent, Vegetable Oil, White Bait, Shrimp, Vitamins & Minerals, Taurine,. Permitted Food Colour.
-(Protein 10.0% / Fat 2.0%)
-
-2) Fresh Sardine
-Ingredienrs ( Sardines, Water, Gelling Agent, Vitamins & Minerals, Guar Gum, Taurine, Permitted Food Colour,
-(Protein 10.0% / Fat 1.5%)
-
-3) Fresh Mackerel
-Ingredients ( Mackerel, Water, Gelling Agent, Vitamins & Minerals. Taurine, Permitted Food Colour.
-(Protein 10.0% / Fat 2.0%)
-
-4) Fresh Pilchard in Seafood Formula
-Ingredients ( Pilchard, Water, Gelling Agent, Vegetables Oil, Vitamins & Minerals. Taurine, Permitted Food Colour.
-(Protein 10.0% / Fat 2.0%)</h2>
+            <h2>BlackCatz Canned 400g</h2>
+            <p>
+                <strong>1) Seafood Platter</strong><br>
+                Ingredients: Sardines, Water, Mackerel, Gelling Agent, Vegetable Oil, White Bait, Shrimp, Vitamins & Minerals, Taurine, Permitted Food Colour.<br>
+                (Protein 10.0% / Fat 2.0%)
+            </p>
+            <p>
+                <strong>2) Fresh Sardine</strong><br>
+                Ingredients: Sardines, Water, Gelling Agent, Vitamins & Minerals, Guar Gum, Taurine, Permitted Food Colour.<br>
+                (Protein 10.0% / Fat 1.5%)
+            </p>
+            <p>
+                <strong>3) Fresh Mackerel</strong><br>
+                Ingredients: Mackerel, Water, Gelling Agent, Vitamins & Minerals, Taurine, Permitted Food Colour.<br>
+                (Protein 10.0% / Fat 2.0%)
+            </p>
+            <p>
+                <strong>4) Fresh Pilchard in Seafood Formula</strong><br>
+                Ingredients: Pilchard, Water, Gelling Agent, Vegetables Oil, Vitamins & Minerals, Taurine, Permitted Food Colour.<br>
+                (Protein 10.0% / Fat 2.0%)
+            </p>
         </div>
-    <a href ="cat_food.html" class="back-button">返回页面</a>
-  </body>
-  </head>
+    </div>
+
+    <a href="cat_food.html" class="back-button">返回页面</a>
+</body>
+</html>
