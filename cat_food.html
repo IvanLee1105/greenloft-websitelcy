@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Food Shop</title>
+    <title>产品详情</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -13,52 +13,25 @@
             padding: 20px;
         }
 
-        h1 {
-            color: #2A5C82;
-            margin-bottom: 20px;
-        }
-
-        .product-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .product-card {
+        .product-detail {
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            padding: 15px;
-            width: 100%;
-            max-width: 250px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            padding: 20px;
+            max-width: 300px;
+            margin: 0 auto;
         }
 
-        .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-card img {
+        .product-detail img {
             width: 100%;
             height: auto;
             border-radius: 10px;
             margin-bottom: 10px;
         }
 
-        .product-card h2 {
-            font-size: 1.2em;
-            color: #2A5C82;
-            margin-bottom: 5px;
-        }
-
         .back-button {
             display: inline-block;
-            margin-top: 30px;
+            margin-top: 20px;
             padding: 12px 25px;
             font-size: 16px;
             background-color: #2A5C82;
@@ -73,35 +46,27 @@
         .back-button:hover {
             background-color: #1e4b66;
         }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .product-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
     </style>
 </head>
 <body>
-    <h1>Cat Food Shop</h1>
-    <div class="product-container">
-        <!-- 点击卡片跳转到 product-detail.html 并传递参数 -->
-        <div class="product-card" onclick="window.location.href='product-detail.html?name=CatFoodA&img=cat_food1.png'">
-            <img src="cat_food1.png" alt="Cat Food A">
-            <h2>Cat Food A</h2>
-        </div>
-
-        <div class="product-card" onclick="window.location.href='product-detail.html?name=CatFoodB&img=cat_food2.png'">
-            <img src="cat_food2.png" alt="Cat Food B">
-            <h2>Cat Food B</h2>
-        </div>
-
-        <div class="product-card" onclick="window.location.href='product-detail.html?name=CatFoodC&img=cat_food3.png'">
-            <img src="cat_food3.png" alt="Cat Food C">
-            <h2>Cat Food C</h2>
-        </div>
+    <div class="product-detail">
+        <img id="productImage" src="" alt="Product">
+        <h2 id="productName"></h2>
+        <p>这是一款高品质的猫粮，非常适合您的猫咪！</p>
     </div>
+
     <a href="index.html" class="back-button">返回首页</a>
+
+    <script>
+        // 解析URL参数
+        function getQueryParam(param) {
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // 设置产品信息
+        document.getElementById('productImage').src = getQueryParam('img');
+        document.getElementById('productName').textContent = getQueryParam('name');
+    </script>
 </body>
 </html>
