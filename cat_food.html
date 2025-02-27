@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cat_food</title>
+    <title>Cat Food Shop</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -35,6 +35,7 @@
             max-width: 250px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
 
         .product-card:hover {
@@ -53,11 +54,6 @@
             font-size: 1.2em;
             color: #2A5C82;
             margin-bottom: 5px;
-        }
-
-        .product-card p {
-            font-size: 0.9em;
-            color: #666;
         }
 
         .back-button {
@@ -81,22 +77,31 @@
         /* 响应式设计 */
         @media (max-width: 768px) {
             .product-container {
-                flex-direction: column; /* 小屏幕单列 */
+                flex-direction: column;
                 align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <h1>cat_food sample</h1>
-    
+    <h1>Cat Food Shop</h1>
     <div class="product-container">
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/cat_food1.png?raw=true" alt="cat_food">
-            <h2>cat_food sample</h2>
+        <!-- 点击卡片跳转到 product-detail.html 并传递参数 -->
+        <div class="product-card" onclick="window.location.href='product-detail.html?name=CatFoodA&img=cat_food1.png'">
+            <img src="cat_food1.png" alt="Cat Food A">
+            <h2>Cat Food A</h2>
+        </div>
+
+        <div class="product-card" onclick="window.location.href='product-detail.html?name=CatFoodB&img=cat_food2.png'">
+            <img src="cat_food2.png" alt="Cat Food B">
+            <h2>Cat Food B</h2>
+        </div>
+
+        <div class="product-card" onclick="window.location.href='product-detail.html?name=CatFoodC&img=cat_food3.png'">
+            <img src="cat_food3.png" alt="Cat Food C">
+            <h2>Cat Food C</h2>
         </div>
     </div>
-
     <a href="index.html" class="back-button">返回首页</a>
 </body>
 </html>
