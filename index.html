@@ -17,15 +17,15 @@
             margin: 0;
         }
 
-        /* 欢迎文本 */
-        .welcome-text {
+        /* 标题样式 */
+        .welcome-text, .contact-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
             margin-top: 20px;
         }
 
-        /* 图片样式 */
+        /* 公司图片样式 */
         .center-image {
             display: block;
             margin: 20px auto;
@@ -39,14 +39,7 @@
             filter: brightness(1.2);
         }
 
-        /* 联系标题 */
-        .contact-title {
-            font-size: 2rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-            margin-top: 20px;
-        }
-
-        /* 联系卡片容器 */
+        /* 联系方式区域 */
         .contact-section {
             display: flex;
             justify-content: center;
@@ -90,7 +83,35 @@
             text-decoration: underline;
         }
 
-        /* 按钮容器 */
+        /* WhatsApp 按钮 */
+        .whatsapp-button {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .whatsapp-button:hover {
+            background: #1da851;
+        }
+
+        /* 复制按钮 */
+        .copy-icon {
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 5px;
+            color: gray;
+        }
+        .copy-icon:hover {
+            color: black;
+        }
+
+        /* 按钮样式 */
         .button-container {
             text-align: center;
             margin-top: 30px;
@@ -100,7 +121,6 @@
             flex-wrap: wrap;
         }
 
-        /* 现代风格按钮 */
         .custom-button {
             background: linear-gradient(135deg, #2A5C82, #47A8E5);
             color: white;
@@ -110,20 +130,18 @@
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 220px;
             text-transform: uppercase;
         }
 
-        /* 按钮悬浮效果 */
         .custom-button:hover {
             transform: scale(1.08);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, #1E4B66, #3598DB);
         }
 
-        /* 移动端优化 */
+        /* 移动端适配 */
         @media (max-width: 768px) {
             .button-container {
                 flex-direction: column;
@@ -137,18 +155,11 @@
                 width: 90%;
                 max-width: 250px;
             }
-
-            .welcome-text {
-                font-size: 2rem;
-            }
-
-            .contact-title {
-                font-size: 1.5rem;
-            }
         }
     </style>
 </head>
 <body>
+
     <h1 class="welcome-text">欢迎光临绿萌阁</h1>
     <h1 class="welcome-text">WELCOME TO GREEN LOFT legacy</h1>
 
@@ -156,37 +167,30 @@
          alt="公司图片" class="center-image">
 
     <h1 class="contact-title">欢迎联系我们</h1>
-    <h1 class="contact-title">WELCOME TO CONTACT US</h1>
 
     <div class="contact-section">
         <div class="contact-card">
             <h2>STANLEY WONG 偉繽</h2>
-            <p><strong>电话(Tel)：</strong>
-                <a href="tel:+60 197256827">+60 19-725 6827</a></p>
-            <p><strong>邮箱 (Email):</strong> 
-                <a href="mailto:Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a></p>
-            <p><strong>WhatsApp:</strong> 
-        <a href="https://wa.me/60197256827" aria-label="Chat on WhatsApp">点击联系</a>
-    </p>
+            <p><strong>电话:</strong> 
+                <a href="tel:+60197256827" id="phone1">+60 19-725 6827</a> 
+                <span class="copy-icon" onclick="copyText('phone1')">📋</span>
+            </p>
+            <p><strong>邮箱:</strong> 
+                <a href="mailto:Greenloftlegacy27@gmail.com" id="email1">Greenloftlegacy27@gmail.com</a>
+                <span class="copy-icon" onclick="copyText('email1')">📋</span>
+            </p>
+            <a href="https://wa.me/60197256827" class="whatsapp-button">WhatsApp 联系</a>
         </div>
-
-       <div class="contact-card">
-    <h2>MRS WAN 秀鳳</h2>
-    <p><strong>电话 (Tel):</strong> 
-        <a href="tel:+60123610303" aria-label="Call +60 12-3610303">+60 12-3610303</a>
-    </p>
-    <p><strong>邮箱 (Email):</strong> 
-        <a href="mailto:Greenloftlegacy27@gmail.com" aria-label="Send email to Greenloftlegacy27@gmail.com">Greenloftlegacy27@gmail.com</a>
-    </p>
-    
-</div>
-
     </div>
 
-    <div class="button-container">
-        <a href="prayer_table.html"><button class="custom-button">天神屋</button></a>
-        <a href="/ZW"><button class="custom-button">植物 PLANTS</button></a>
-        <a href="cat_food.html"><button class="custom-button">猫粮~cat_food</button></a>
-    </div>
+    <script>
+        function copyText(elementId) {
+            var text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("已复制: " + text);
+            });
+        }
+    </script>
+
 </body>
 </html>
