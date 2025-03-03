@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cat_food</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -25,6 +27,29 @@
             gap: 20px;
             margin-top: 20px;
         }
+        /* Swiper 轮播图 */
+        .swiper {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Swiper 控制按钮 */
+        .swiper-button-next, .swiper-button-prev {
+            color: #2A5C82 !important;
+        }
+
+        /* Swiper 分页器 */
+        .swiper-pagination {
+            position: relative;
+            margin-top: 10px;
+        }
+        
 
         .product-card {
             background: white;
@@ -90,10 +115,18 @@
 <body>
     <h1>cat_food sample</h1>
     
-    <div class="product-container">
+    <div class="product-container">    
+    <div class=="swiper-wrapper
+        <div class=="swiper-mySwiper">
         <div class="product-card">
             <a href="cat-detail.html">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/cat_food1.png?raw=true" alt="cat_food">
+            <div class=="swiper-slide"><img src="https://github.com/IvanLee1105/my.photo/blob/main/cat_chickentuna.png?raw=true" alt="喵粮1"></div>
+            <div class=="swiper-slide"><img src="https://github.com/IvanLee1105/my.photo/blob/main/cat_chickentuna2.png?raw=true" alt="喵粮2"></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+        
             <h2>cat_food sample</h2>
         </div>
         
@@ -103,5 +136,24 @@
     </div>
 
     <a href="index.html" class="back-button">返回首页</a>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            loop: true, // 无限循环
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            autoplay: {
+                delay: 2500, // 自动播放时间
+                disableOnInteraction: false // 用户操作后仍继续播放
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true, // 允许点击分页器切换
+            },
+        });
+    </script>
+
 </body>
 </html>
