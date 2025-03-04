@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
         /* 全局样式 */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: url('https://raw.githubusercontent.com/IvanLee1105/my.photo/main/DALL%C2%B7E%202025-02-26%2014.19.25%20-%20A%20beautiful%20garden%20with%20vibrant%20flowers%2C%20lush%20greenery%2C%20and%20a%20charming%20stone%20pathway%20leading%20to%20a%20cozy%20wooden%20bench.%20The%20scene%20is%20illuminated%20by%20soft%20.webp');align-items: center; no-repeat center center;
+            background: url('https://raw.githubusercontent.com/IvanLee1105/my.photo/main/DALL%C2%B7E%202025-02-26%2014.19.25%20-%20A%20beautiful%20garden%20with%20vibrant%20flowers%2C%20lush%20greenery%2C%20and%20a%20charming%20stone%20pathway%20leading%20to%20a%20cozy%20wooden%20bench.%20The%20scene%20is%20illuminated%20by%20soft%20.webp') no-repeat center center;
             background-size: cover;
             color: #fff;
             padding: 20px;
@@ -34,6 +34,13 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .center-image.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
         .center-image:hover {
             filter: brightness(1.2);
@@ -59,6 +66,8 @@
             width: 100%;
             color: #333;
             transition: transform 0.3s;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
         .contact-card:hover {
             transform: translateY(-5px);
@@ -112,17 +121,14 @@
         }
 
         /* 按钮样式 */
-        /* 联系卡片容器 */
         .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-        margin-top: 30px; /* 确保和上面的内容有间距 */
-        padding-bottom: 20px; /* 避免按钮紧贴底部 */
-    }
-
-
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-bottom: 20px;
+        }
 
         .custom-button {
             background: linear-gradient(135deg, #2A5C82, #47A8E5);
@@ -137,6 +143,25 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 220px;
             text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .custom-button:hover::after {
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .custom-button:hover {
@@ -158,6 +183,44 @@
                 width: 90%;
                 max-width: 200px;
             }
+
+            .welcome-text {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+
+            .contact-card {
+                padding: 15px;
+                margin: 10px;
+            }
+        }
+
+        /* 背景图加载过渡 */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2A5C8240 0%, #47A8E540 100%);
+            z-index: -1;
+        }
+
+        /* 复制提示样式 */
+        .copy-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -177,62 +240,100 @@
             <h2>STANLEY WONG 偉繽</h2>
             <p><strong>电话(Tel):</strong> 
                 <a href="tel:+60197256827" id="phone1">+60 19-725 6827</a> 
-                <span class="copy-icon" onclick="copyText('phone1')">📋</span>
+                <span class="copy-icon" onclick="copyText('phone1')">??</span>
             </p>
             <p><strong>Email:</strong> 
                 <a href="mailto:Greenloftlegacy27@gmail.com" id="email1">Greenloftlegacy27@gmail.com</a>
-                <span class="copy-icon" onclick="copyText('email1')">📋</span>
+                <span class="copy-icon" onclick="copyText('email1')">??</span>
             </p>
             <p><strong>地址(ADD):</strong>
             <a id ="add"  href="https://www.google.com/maps/dir/?api=1&destination=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan&travelmode=driving" target="_blank">
               Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban, Negeri Sembilan</a>
-            <span class="copy-icon" onclick="copyText('add')">📋</span>
-            
-</a>
-
-</a>
-
-      </p>
-            <a href="https://wa.me/60197256827" class="whatsapp-button">WhatsApp 联系</a>      <a href="https://www.facebook.com/profile.php?id=61572888980847" class="whatsapp-button">Facebook 联系</a>
-
-          
+            <span class="copy-icon" onclick="copyText('add')">??</span>
+            </p>
+            <a href="https://wa.me/60197256827" class="whatsapp-button">WhatsApp 联系</a>      
+            <a href="https://www.facebook.com/profile.php?id=61572888980847" class="whatsapp-button">Facebook 联系</a>
         </div>
         <div class="contact-card">
             <h2>MRS WAN 秀鳳</h2>
             <p><strong>电话(Tel):</strong> 
                 <a href="tel:+60123610303" id="phone2">+60 12-361 0303</a> 
-                <span class="copy-icon" onclick="copyText('phone2')">📋</span>
+                <span class="copy-icon" onclick="copyText('phone2')">??</span>
             </p>
             <p><strong>Email:</strong> 
                 <a href="mailto:Greenloftlegacy27@gmail.com" id="email2">Greenloftlegacy27@gmail.com</a>
-                <span class="copy-icon" onclick="copyText('email2')">📋</span>
+                <span class="copy-icon" onclick="copyText('email2')">??</span>
             </p>
-          <p><strong>地址(ADD):</strong>
+            <p><strong>地址(ADD):</strong>
             <a id="add" href="https://www.google.com/maps/dir/?api=1&destination=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan&travelmode=driving" target="_blank">
-              Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban, Negeri Sembilan</span>
-            <span class="copy-icon" onclick="copyText('add')">📋</span>
-      </p>
-
-            <a href="https://wa.me/60123610303" class="whatsapp-button">WhatsApp 联系</a>   <a href="https://www.facebook.com/profile.php?id=61572888980847" class="whatsapp-button">Facebook 联系</a>
-
-        
+              Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban, Negeri Sembilan</a>
+            <span class="copy-icon" onclick="copyText('add')">??</span>
+            </p>
+            <a href="https://wa.me/60123610303" class="whatsapp-button">WhatsApp 联系</a>   
+            <a href="https://www.facebook.com/profile.php?id=61572888980847" class="whatsapp-button">Facebook 联系</a>
+        </div>
     </div>
 
-    <script>
-        function copyText(elementId) {
-            var text = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("已复制: " + text);
-            });
-        }
-    </script>
-    </div>
-        <div class="button-container">
+    <div class="button-container">
         <a href="prayer_table.html"><button class="custom-button">天神屋</button></a>
         <a href="/ZW"><button class="custom-button">植物 PLANTS</button></a>
         <a href="cat_food.html"><button class="custom-button">猫粮~cat_food</button></a>
     </div>
 
+    <script>
+        // 图片延迟加载
+        window.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.center-image');
+            images.forEach(img => {
+                if(img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => {
+                        img.classList.add('loaded');
+                    });
+                }
+            });
+        });
 
+        // 优化复制功能
+        const copyToast = document.createElement('div');
+        copyToast.className = 'copy-toast';
+        document.body.appendChild(copyToast);
+
+        function copyText(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                copyToast.textContent = `? 已复制: ${text}`;
+                copyToast.style.opacity = '1';
+                setTimeout(() => {
+                    copyToast.style.opacity = '0';
+                }, 2000);
+            }).catch(err => {
+                copyToast.textContent = '? 复制失败，请手动选择复制';
+                copyToast.style.opacity = '1';
+                setTimeout(() => {
+                    copyToast.style.opacity = '0';
+                }, 2000);
+            });
+        }
+
+        // 按钮涟漪效果
+        document.querySelectorAll('.custom-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let rect = button.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+                
+                let ripple = document.createElement('div');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                button.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 500);
+            });
+        });
+    </script>
 </body>
 </html>
