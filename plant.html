@@ -216,5 +216,39 @@
             <P>接种 ~ 无接种/大中小</P>
         </div>
     <a href="index.html" class="back-button">返回首页</a>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        <script>
+            var swiper1 = new Swiper(".mySwiper1", {
+            loop: true, // 无限循环
+            navigation: {
+                nextEl: ".mySwiper1 .swiper-button-next",
+                prevEl: ".mySwiper1 .swiper-button-prev"
+            },
+            autoplay: {
+                delay: 2500, // 自动播放时间
+                disableOnInteraction: false // 用户操作后仍继续播放
+            },
+            pagination: {
+                el: ".mySwiper1 .swiper-pagination",
+                clickable: true, // 允许点击分页器切换
+            },
+        });
+
+        var swiper2 = new Swiper(".mySwiper2", {
+            loop: true, // 无限循环
+            navigation: {
+                nextEl: ".mySwiper2 .swiper-button-next",
+                prevEl: ".mySwiper2 .swiper-button-prev"
+            },
+            autoplay: {
+                delay: 2500, // 自动播放时间
+                disableOnInteraction: false // 用户操作后仍继续播放
+            },
+            pagination: {
+                el: ".mySwiper2 .swiper-pagination",
+                clickable: true, // 允许点击分页器切换
+            },
+        });
+        </script>
 </body>
 </html>
