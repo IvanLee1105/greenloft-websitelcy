@@ -18,6 +18,33 @@
             color: #2A5C82;
             margin-bottom: 20px;
         }
+
+        .search-container {
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #2A5C82;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        #search-input:focus {
+            border-color: #1e4b66;
+            box-shadow: 0 0 8px rgba(42, 92, 130, 0.3);
+        }
+        
+        .no-results {
+            color: #666;
+            font-size: 18px;
+            margin: 30px 0;
+            display: none;
+
         .product-container {
             display: flex;
             justify-content: center;
@@ -115,6 +142,10 @@
 </head>
 <body>
     <h1>泥土~SOIL</h1>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholde="input ...">
+    </div>
+            
     <div class="product-container">
         <!-- 产品1 - 有轮播 -->
         <div class="product-card">
@@ -253,6 +284,24 @@
     <a href="index.html" class="back-button">返回首页</a>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
+        document.getElementById('search-input').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const productCards = document.querySelectorAll('.product-card');
+    let hasResults = false;
+    
+    productCards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        if (title.includes(searchTerm)) {
+            card.style.display = 'block';
+            hasResults = true;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // 显示/隐藏"没有结果"消息
+    document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
+});
         // 初始化所有轮播图
         document.addEventListener('DOMContentLoaded', function() {
             // 配置对象
