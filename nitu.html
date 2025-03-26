@@ -44,6 +44,7 @@
             font-size: 18px;
             margin: 30px 0;
             display: none;
+        }
 
         .product-container {
             display: flex;
@@ -143,7 +144,7 @@
 <body>
     <h1>泥土~SOIL</h1>
     <div class="search-container">
-        <input type="text" id="search-input" placeholde="input ...">
+        <input type="text" id="search-input" placeholder="input ...">
     </div>
     <div id="no-results" class="no-results">没有匹配对象的泥土</div>
             
@@ -283,26 +284,27 @@
     </div>
                 
     <a href="index.html" class="back-button">返回首页</a>
-        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-        <script>
-            document.getElementById('search-input').addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        const productCards = document.querySelectorAll('.product-card');
-        let hasResults = false;
-        
-        productCards.forEach(card => {
-            const title = card.querySelector('h2').textContent.toLowerCase();
-            if (title.includes(searchTerm)) {
-                card.style.display = 'block';
-                hasResults = true;
-            } else {
-                card.style.display = 'none';
-            }
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.getElementById('search-input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            let hasResults = false;
+            
+            productCards.forEach(card => {
+                const title = card.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // 显示/隐藏"没有结果"消息
+            document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
         });
         
-        // 显示/隐藏"没有结果"消息
-        document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
-    });
         // 初始化所有轮播图
         document.addEventListener('DOMContentLoaded', function() {
             // 配置对象
@@ -322,20 +324,31 @@
                 }
             };
             
-            // 初始化所有轮播
-            document.querySelectorAll('.swiper').forEach((swiperEl, index) => {
-                // 克隆配置对象
-                const config = JSON.parse(JSON.stringify(swiperConfig));
-                
-                // 设置正确的导航和分页元素
-                const swiperClass = swiperEl.className.split(' ').find(cn => cn.startsWith('mySwiper'));
-                const prefix = swiperClass ? `.${swiperClass}` : `.swiper:nth-child(${index + 1})`;
-                
-                config.navigation.nextEl = `${prefix} .swiper-button-next`;
-                config.navigation.prevEl = `${prefix} .swiper-button-prev`;
-                config.pagination.el = `${prefix} .swiper-pagination`;
-                
-                new Swiper(swiperEl, config);
+            // 为每个轮播创建独立的实例
+            const swipers = [
+                { el: '.mySwiper', next: '.mySwiper .swiper-button-next', prev: '.mySwiper .swiper-button-prev', pagination: '.mySwiper .swiper-pagination' },
+                { el: '.mySwiper2', next: '.mySwiper2 .swiper-button-next', prev: '.mySwiper2 .swiper-button-prev', pagination: '.mySwiper2 .swiper-pagination' },
+                { el: '.mySwiper3', next: '.mySwiper3 .swiper-button-next', prev: '.mySwiper3 .swiper-button-prev', pagination: '.mySwiper3 .swiper-pagination' },
+                { el: '.mySwiper4', next: '.mySwiper4 .swiper-button-next', prev: '.mySwiper4 .swiper-button-prev', pagination: '.mySwiper4 .swiper-pagination' },
+                { el: '.mySwiper5', next: '.mySwiper5 .swiper-button-next', prev: '.mySwiper5 .swiper-button-prev', pagination: '.mySwiper5 .swiper-pagination' }
+            ];
+            
+            swipers.forEach(config => {
+                new Swiper(config.el, {
+                    loop: true,
+                    navigation: {
+                        nextEl: config.next,
+                        prevEl: config.prev
+                    },
+                    pagination: {
+                        el: config.pagination,
+                        clickable: true
+                    },
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false
+                    }
+                });
             });
         });
     </script>
