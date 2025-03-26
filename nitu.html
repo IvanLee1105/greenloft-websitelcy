@@ -145,6 +145,7 @@
     <div class="search-container">
         <input type="text" id="search-input" placeholde="input ...">
     </div>
+    <div id="no-results" class="no-results">没有匹配对象的泥土</div>
             
     <div class="product-container">
         <!-- 产品1 - 有轮播 -->
@@ -282,26 +283,26 @@
     </div>
                 
     <a href="index.html" class="back-button">返回首页</a>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script>
-        document.getElementById('search-input').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    const productCards = document.querySelectorAll('.product-card');
-    let hasResults = false;
-    
-    productCards.forEach(card => {
-        const title = card.querySelector('h2').textContent.toLowerCase();
-        if (title.includes(searchTerm)) {
-            card.style.display = 'block';
-            hasResults = true;
-        } else {
-            card.style.display = 'none';
-        }
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        <script>
+            document.getElementById('search-input').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const productCards = document.querySelectorAll('.product-card');
+        let hasResults = false;
+        
+        productCards.forEach(card => {
+            const title = card.querySelector('h2').textContent.toLowerCase();
+            if (title.includes(searchTerm)) {
+                card.style.display = 'block';
+                hasResults = true;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // 显示/隐藏"没有结果"消息
+        document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
     });
-    
-    // 显示/隐藏"没有结果"消息
-    document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
-});
         // 初始化所有轮播图
         document.addEventListener('DOMContentLoaded', function() {
             // 配置对象
