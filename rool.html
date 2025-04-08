@@ -153,17 +153,26 @@
     
     <div class="product-container" id="product-container">
         <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/S4.jpg?raw=true" alt="特大天神">
-            <h2>STEPPING_STONE</h2>
+            <div class="swiper mySwiper2">
+                <div calss="swiper-slide">
+            <img src="https://github.com/IvanLee1105/my.photo/blob/main/S4.png?raw=true" alt="特大天神">
         </div>
+            <img src="https://github.com/IvanLee1105/my.photo/blob/main/S5.png?raw=true" alt="stepping stone">
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+        <h2>STEPPING_STONE</h2>
         <div class="product-card">
           <div class="swiper mySwiper1">
               <div class ="swiper-wrapper">
                   <div class="swiper-slide">
-                      <img src="https://github.com/IvanLee1105/my.photo/blob/main/S6.jpg?raw=true" alt="1">
+                      <img src="https://github.com/IvanLee1105/my.photo/blob/main/S6.png?raw=true" alt="1">
                     </div>
                     <div class ="swiper-slide">
-                        <img src ="https://github.com/IvanLee1105/my.photo/blob/main/S1.jpg?raw=true" alt="2">
+                        <img src ="https://github.com/IvanLee1105/my.photo/blob/main/S1.png?raw=true" alt="2">
                     </div>
                     <div class = "swiper-slide">
                         <img src="https://github.com/IvanLee1105/my.photo/blob/main/S2.jpg?raw=true" alt ="3">
@@ -187,6 +196,21 @@
             navigation: {
                 nextEl: ".mySwiper1 .swiper-button-next",
                 prevEl: ".mySwiper1 .swiper-button-prev"
+            },
+            autoplay: {
+                delay: 2500, // 自动播放时间
+                disableOnInteraction: false // 用户操作后仍继续播放
+            },
+            pagination: {
+                el: ".mySwiper1 .swiper-pagination",
+                clickable: true, // 允许点击分页器切换
+            },
+        });
+                var swiper2 = new Swiper(".mySwiper2", {
+            loop: true, // 无限循环
+            navigation: {
+                nextEl: ".mySwiper2 .swiper-button-next",
+                prevEl: ".mySwiper2 .swiper-button-prev"
             },
             autoplay: {
                 delay: 2500, // 自动播放时间
