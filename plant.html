@@ -6,24 +6,37 @@
     <title>植物~PLANTS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: #f0f0f0;
             color: #333;
-            text-align: center;
+            line-height: 1.6;
             padding: 20px;
         }
-
+        
+        header {
+            background-color: #2A5C82;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
         h1 {
             color: #2A5C82;
             margin-bottom: 20px;
         }
-
+        
         .search-container {
             margin: 20px auto;
             max-width: 500px;
         }
-
+        
         #search-input {
             width: 100%;
             padding: 12px 20px;
@@ -33,12 +46,12 @@
             outline: none;
             transition: all 0.3s;
         }
-
+        
         #search-input:focus {
             border-color: #1e4b66;
             box-shadow: 0 0 8px rgba(42, 92, 130, 0.3);
         }
-
+        
         .product-container {
             display: flex;
             justify-content: center;
@@ -46,70 +59,195 @@
             gap: 20px;
             margin-top: 20px;
         }
-
+        
         .product-card {
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             padding: 15px;
-            width: 100%; /* 默认100%，让媒体查询控制 */
-            max-width: 250px; /* 最大宽度250px */
+            width: 100%;
+            max-width: 250px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
+        
         .product-card:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
-        .swiper{
-            width:100%;
-            border-radius:10px;
-            overflow:hidden;
+        
+        .swiper {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
         }
-        swiper-slide img{
-            width:100%;
-            border-radius:10px;
+        
+        .swiper-slide img {
+            width: 100%;
+            border-radius: 10px;
         }
-        .swiper-button-next,.swiper-button-prev{
-            color:#2A5C82 !important;
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: #2A5C82 !important;
         }
-        .swiper-pagination{
+        
+        .swiper-pagination {
             position: relative;
-            margin-top:10px;
+            margin-top: 10px;
         }
-        .product-info{
-            text-align:left;
-            padding:15px;
-            font-size:14px;
-            line-height:1.6;
-            color:#555;
+        
+        .product-info {
+            text-align: left;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
         }
+        
         .product-info p {
-            margin-bottom:8px;
+            margin-bottom: 8px;
         }
-
+        
         .product-card img {
             width: 100%;
             height: auto;
             border-radius: 10px;
             margin-bottom: 10px;
         }
-
+        
         .product-card h2 {
             font-size: 1.2em;
             color: #2A5C82;
             margin-bottom: 5px;
         }
-
+        
         .product-card p {
             font-size: 0.9em;
             color: #666;
         }
-
+        
+        .no-results {
+            color: #666;
+            font-size: 18px;
+            margin: 30px 0;
+            display: none;
+        }
+        
+        /* 联系方式折叠区域样式 */
+        .contact-toggle-section {
+            margin: 30px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .contact-toggle-btn {
+            background: transparent;
+            border: none;
+            color: #2A5C82;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .contact-toggle-btn:hover {
+            background: rgba(42, 92, 130, 0.1);
+        }
+        
+        .contact-toggle-btn::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-toggle-btn.active::after {
+            transform: rotate(180deg);
+        }
+        
+        .contact-cards {
+            display: none;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @media (min-width: 600px) {
+            .contact-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .contact-cards.show {
+            display: grid;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        
+        .contact-card h3 {
+            color: #2A5C82;
+            margin-top: 0;
+            font-size: 16px;
+        }
+        
+        .contact-info {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .copy-icon {
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .contact-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .facebook-btn {
+            background: #3b5998;
+            color: white;
+        }
+        
         .back-button {
             display: inline-block;
-            margin-top: 30px;
+            margin: 30px auto;
             padding: 12px 25px;
             font-size: 16px;
             background-color: #2A5C82;
@@ -120,22 +258,20 @@
             text-decoration: none;
             transition: 0.3s;
         }
-
+        
         .back-button:hover {
             background-color: #1e4b66;
         }
-
-        .no-results {
-            color: #666;
-            font-size: 18px;
-            margin: 30px 0;
-            display: none;
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
+        
         /* 响应式设计 */
         @media (max-width: 768px) {
             .product-container {
-                flex-direction: column; /* 小屏幕单列 */
+                flex-direction: column;
                 align-items: center;
             }
         }
@@ -286,6 +422,53 @@
         </div>
     </div>
     
+    <!-- 联系方式区域 -->
+    <div class="contact-toggle-section">
+        <button class="contact-toggle-btn" onclick="toggleContacts()">联系我们</button>
+        
+        <div class="contact-cards">
+            <div class="contact-card">
+                <h3>STANLEY WONG 偉繽</h3>
+                <div class="contact-info">
+                    <strong>电话:</strong> 
+                    <a href="tel:+60197256827" id="phone1">+60 19-725 6827</a>
+                    <span class="copy-icon" onclick="copyText('phone1')">📋</span>
+                </div>
+                <div class="contact-info">
+                    <strong>地址:</strong>
+                    <a href="https://maps.google.com/?q=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan" target="_blank" id="address1">
+                        Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban
+                    </a>
+                    <span class="copy-icon" onclick="copyText('address1')">📋</span>
+                </div>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/60197256827" class="contact-btn whatsapp-btn">WhatsApp</a>
+                    <a href="https://www.facebook.com/profile.php?id=61572888980847" class="contact-btn facebook-btn">Facebook</a>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <h3>MRS WAN 秀鳳</h3>
+                <div class="contact-info">
+                    <strong>电话:</strong> 
+                    <a href="tel:+60123610303" id="phone2">+60 12-361 0303</a>
+                    <span class="copy-icon" onclick="copyText('phone2')">📋</span>
+                </div>
+                <div class="contact-info">
+                    <strong>地址:</strong>
+                    <a href="https://maps.google.com/?q=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan" target="_blank" id="address2">
+                        Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban
+                    </a>
+                    <span class="copy-icon" onclick="copyText('address2')">📋</span>
+                </div>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/60123610303" class="contact-btn whatsapp-btn">WhatsApp</a>
+                    <a href="https://www.facebook.com/profile.php?id=61572888980847" class="contact-btn facebook-btn">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <a href="index.html" class="back-button">返回首页</a>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -326,6 +509,30 @@
             // 显示/隐藏"没有结果"消息
             document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
         });
+        
+        // 联系方式切换功能
+        function toggleContacts() {
+            const contactCards = document.querySelector('.contact-cards');
+            const toggleBtn = document.querySelector('.contact-toggle-btn');
+            
+            contactCards.classList.toggle('show');
+            toggleBtn.classList.toggle('active');
+        }
+        
+        // 添加复制功能
+        function copyText(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            navigator.clipboard.writeText(text.trim()).then(() => {
+                // 显示复制成功提示
+                const originalText = element.textContent;
+                element.textContent = '已复制!';
+                setTimeout(() => {
+                    element.textContent = originalText;
+                }, 1500);
+            });
+        }
     </script>
 </body>
 </html>
