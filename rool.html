@@ -52,8 +52,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             padding: 15px;
-            width: 100%; /* 默认100%，让媒体查询控制 */
-            max-width: 250px; /* 最大宽度250px */
+            width: 100%;
+            max-width: 250px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -62,31 +62,38 @@
             transform: scale(1.05);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
-        .swiper{
-            width:100%;
-            border-radius:10px;
-            overflow:hidden;
+        
+        .swiper {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
         }
-        swiper-slide img{
-            width:100%;
-            border-radius:10px;
+        
+        .swiper-slide img {
+            width: 100%;
+            border-radius: 10px;
         }
-        .swiper-button-next,.swiper-button-prev{
-            color:#2A5C82 !important;
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #2A5C82 !important;
         }
-        .swiper-pagination{
+        
+        .swiper-pagination {
             position: relative;
-            margin-top:10px;
+            margin-top: 10px;
         }
-        .product-info{
-            text-align:left;
-            padding:15px;
-            font-size:14px;
-            line-height:1.6;
-            color:#555;
+        
+        .product-info {
+            text-align: left;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
         }
+        
         .product-info p {
-            margin-bottom:8px;
+            margin-bottom: 8px;
         }
 
         .product-card img {
@@ -132,10 +139,9 @@
             display: none;
         }
 
-        /* 响应式设计 */
         @media (max-width: 768px) {
             .product-container {
-                flex-direction: column; /* 小屏幕单列 */
+                flex-direction: column;
                 align-items: center;
             }
         }
@@ -152,31 +158,15 @@
     <div id="no-results" class="no-results">没有找到匹配的垫脚石板</div>
     
     <div class="product-container" id="product-container">
+        <!-- 第一个产品卡片 -->
         <div class="product-card">
             <div class="swiper mySwiper2">
-                <div calss="swiper-slide">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/S4.png?raw=true" alt="特大天神">
-        </div>
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/S5.png?raw=true" alt="stepping stone">
-        </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination"></div>
-    </div>
-        <h2>STEPPING_STONE</h2>
-</div>
-        <div class="product-card">
-          <div class="swiper mySwiper1">
-              <div class ="swiper-wrapper">
-                  <div class="swiper-slide">
-                      <img src="https://github.com/IvanLee1105/my.photo/blob/main/S6.png?raw=true" alt="1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://github.com/IvanLee1105/my.photo/blob/main/S4.png?raw=true" alt="特大天神">
                     </div>
-                    <div class ="swiper-slide">
-                        <img src ="https://github.com/IvanLee1105/my.photo/blob/main/S1.png?raw=true" alt="2">
-                    </div>
-                    <div class = "swiper-slide">
-                        <img src="https://github.com/IvanLee1105/my.photo/blob/main/S2.jpg?raw=true" alt ="3">
+                    <div class="swiper-slide">
+                        <img src="https://github.com/IvanLee1105/my.photo/blob/main/S5.png?raw=true" alt="stepping stone">
                     </div>
                 </div>
                 <div class="swiper-button-next"></div>
@@ -184,42 +174,66 @@
                 <div class="swiper-pagination"></div>
             </div>
             <h2>STEPPING_STONE</h2>
-            <P></P>
+        </div>
+        
+        <!-- 第二个产品卡片 -->
+        <div class="product-card">
+            <div class="swiper mySwiper1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://github.com/IvanLee1105/my.photo/blob/main/S6.png?raw=true" alt="1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://github.com/IvanLee1105/my.photo/blob/main/S1.png?raw=true" alt="2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://github.com/IvanLee1105/my.photo/blob/main/S2.jpg?raw=true" alt="3">
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <h2>STEPPING_STONE</h2>
+            <p></p>
         </div>
     </div>
-        <a href="index.html" class="back-button">返回首页</a>
+    
+    <a href="index.html" class="back-button">返回首页</a>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        // 初始化轮播图
+        // 初始化第一个轮播图
         var swiper1 = new Swiper(".mySwiper1", {
-            loop: true, // 无限循环
+            loop: true,
             navigation: {
                 nextEl: ".mySwiper1 .swiper-button-next",
                 prevEl: ".mySwiper1 .swiper-button-prev"
             },
             autoplay: {
-                delay: 2500, // 自动播放时间
-                disableOnInteraction: false // 用户操作后仍继续播放
+                delay: 2500,
+                disableOnInteraction: false
             },
             pagination: {
                 el: ".mySwiper1 .swiper-pagination",
-                clickable: true, // 允许点击分页器切换
+                clickable: true,
             },
         });
-                var swiper2 = new Swiper(".mySwiper2", {
-            loop: true, // 无限循环
+        
+        // 初始化第二个轮播图
+        var swiper2 = new Swiper(".mySwiper2", {
+            loop: true,
             navigation: {
                 nextEl: ".mySwiper2 .swiper-button-next",
                 prevEl: ".mySwiper2 .swiper-button-prev"
             },
             autoplay: {
-                delay: 2500, // 自动播放时间
-                disableOnInteraction: false // 用户操作后仍继续播放
+                delay: 2500,
+                disableOnInteraction: false
             },
             pagination: {
-                el: ".mySwiper1 .swiper-pagination",
-                clickable: true, // 允许点击分页器切换
+                el: ".mySwiper2 .swiper-pagination",  // 修正了这里的选择器
+                clickable: true,
             },
         });
 
@@ -239,7 +253,6 @@
                 }
             });
             
-            // 显示/隐藏"没有结果"消息
             document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
         });
     </script>
