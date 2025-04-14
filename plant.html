@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-        --primary-color: #2A5C82;
-        --secondary-color: #4a8c5e;
-        --accent-color: #e67e22;
-        --text-color: #333;
-        --light-bg: #f8f9fa;
-        --border-radius: 8px;
-    }
+            --primary-color: #2A5C82;
+            --secondary-color: #4a8c5e;
+            --accent-color: #e67e22;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-radius: 8px;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -64,6 +65,7 @@
         
         h1 {
             text-align: center;
+            margin: 20px 0;
         }
         
         .back-button {
@@ -71,7 +73,6 @@
             margin: 30px auto;
         }
 
-        
         /* 搜索区域 */
         .search-area {
             padding: 2rem 0;
@@ -101,7 +102,8 @@
             font-size: 1rem;
             transition: all 0.3s;
         }
-                /* 植物分类 */
+        
+        /* 植物分类 */
         .plant-categories {
             display: flex;
             justify-content: center;
@@ -125,6 +127,7 @@
             color: white;
             border-color: var(--primary-color);
         }
+        
         #search-input:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(42, 92, 130, 0.1);
@@ -136,6 +139,7 @@
             flex-wrap: wrap;
             gap: 20px;
             margin-top: 20px;
+            padding: 20px 0;
         }
         
         .product-card {
@@ -202,15 +206,18 @@
         .product-card p {
             font-size: 0.9em;
             color: #666;
+            margin-bottom: 10px;
         }
         
         .no-results {
             color: #666;
             font-size: 18px;
             margin: 30px 0;
+            text-align: center;
             display: none;
         }
-                /* 植物详情展开部分 */
+        
+        /* 植物详情展开部分 */
         .plant-details {
             padding: 1rem;
             background: var(--light-bg);
@@ -232,6 +239,44 @@
         
         .detail-title i {
             margin-right: 8px;
+        }
+        
+        /* 植物益处 */
+        .plant-benefits {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        
+        .benefit-icon {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+        
+        /* 操作按钮 */
+        .action-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .action-btn:hover {
+            background-color: #3a7a4e;
         }
         
         /* 季节性推荐 */
@@ -317,17 +362,6 @@
             margin-top: 1rem;
             font-size: 0.9rem;
             opacity: 0.8;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .plants-container {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .header h1 {
-                font-size: 1.8rem;
-            }
         }
         
         /* 联系方式折叠区域样式 */
@@ -471,6 +505,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
@@ -478,22 +516,26 @@
     <header class="header">
         <div class="container">
             <h1>绿萌阁 GREEN LOFT LEGACY</h1>
-            <p>为您的家带来自然与生机  BRING NATURA AND VITALITY TO YOUR HOME</p>
+            <p>为您的家带来自然与生机 BRING NATURA AND VITALITY TO YOUR HOME</p>
         </div>
     </header>
+    
     <h1>PLANTS~植物</h1>
+    
     <div class="nature-notice">
         <div class="container">
-            <i class="fas fa-seedling"></i>网站显示的植物并不完全,有兴趣的欢迎联系我们The plants shown on the website are not complete. If you are interested, welcome to contact us.
+            <i class="fas fa-seedling"></i> 网站显示的植物并不完全,有兴趣的欢迎联系我们 The plants shown on the website are not complete. If you are interested, welcome to contact us.
         </div>
     </div>
+    
     <!-- 搜索框 -->
     <section class="search-area">
         <div class="container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="search=input" placeholder="input">
-        </div>
-         <div class="plant-categories">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" placeholder="输入植物名称搜索...">
+            </div>
+            <div class="plant-categories">
                 <button class="category-btn active" data-category="all">全部植物</button>
                 <button class="category-btn" data-category="indoor">室内植物</button>
                 <button class="category-btn" data-category="air-purifying">净化空气</button>
@@ -502,212 +544,218 @@
                 <button class="category-btn" data-category="lucky">招财植物</button>
             </div>
         </div>
-</section>
-
-        <div class="contact-toggle-section">
-        <button class="contact-toggle-btn" onclick="toggleContacts()">联系我们</button>
-        
-        <div class="contact-cards">
-            <div class="contact-card">
-                <h3>STANLEY WONG 偉繽</h3>
-                <div class="contact-info">
-                    <strong>电话:</strong> 
-                    <a href="tel:+60197256827" id="phone1">+60 19-725 6827</a>
-                    <span class="copy-icon" onclick="copyText('phone1')">📋</span>
-                </div>
-                <div class="contact-info">
-                    <strong>地址:</strong>
-                    <a href="https://maps.google.com/?q=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan" target="_blank" id="address1">
-                        Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban
-                    </a>
-                    <span class="copy-icon" onclick="copyText('address1')">📋</span>
-                </div>
-                <div class="contact-buttons">
-                    <a href="https://wa.me/60197256827" class="contact-btn whatsapp-btn">WhatsApp</a>
-                    <a href="https://www.facebook.com/profile.php?id=61572888980847" class="contact-btn facebook-btn">Facebook</a>
-                </div>
-            </div>
-            
-            <div class="contact-card">
-                <h3>MRS WAN 秀鳳</h3>
-                <div class="contact-info">
-                    <strong>电话:</strong> 
-                    <a href="tel:+60123610303" id="phone2">+60 12-361 0303</a>
-                    <span class="copy-icon" onclick="copyText('phone2')">📋</span>
-                </div>
-                <div class="contact-info">
-                    <strong>地址:</strong>
-                    <a href="https://maps.google.com/?q=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan" target="_blank" id="address2">
-                        Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban
-                    </a>
-                    <span class="copy-icon" onclick="copyText('address2')">📋</span>
-                </div>
-                <div class="contact-buttons">
-                    <a href="https://wa.me/60123610303" class="contact-btn whatsapp-btn">WhatsApp</a>
-                    <a href="https://www.facebook.com/profile.php?id=61572888980847" class="contact-btn facebook-btn">Facebook</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <div id="no-results" class="no-results">没有找到匹配的植物</div>
 
-<main class="container">
-    
-    <div class="product-container" id="product-container">
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/HIBISCUS.png?raw=true" alt="特大天神">
-            <h2>大红花 HIBISCUS</h2>
-            <div class="plant-benefits">
-                <div class="benefit-item">
-                    <i class="fas fa-leaf benefit-icon"></i>
-                    <span>净化甲醛和苯</span>
+    <main class="container">
+        <div class="product-container" id="product-container">
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/HIBISCUS.png?raw=true" alt="大红花">
+                <h2>大红花 HIBISCUS</h2>
+                <div class="plant-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-leaf benefit-icon"></i>
+                        <span>净化甲醛和苯</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-sun benefit-icon"></i>
+                        <span>喜阳光,花期长</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-tint benefit-icon"></i>
+                        <span>每周浇水2-3次</span>
+                    </div>
                 </div>
-                <div class="benefit=item">
-                    <i class="fas fa-sun benefit-icon"></i>
-                    <span>喜阳光,花旗长</span>
-                </div>
-                <div class="benefit=item">
-                    <i class="fas fa-sun benefit-icon"></i>
-                    <span>每期浇水2-3</span>
-                </div>
-        </div>
-            <button class="action-btn" onclick="toggleDetails(this)">
-                <i class=fas fa-info-circle"></i>check
-            </button>
-                <div class="detail-section">
-                    <h4 class="detail-title"><i class="fas fa-clipboard-list"></i>养护指南</h4>
+                <button class="action-btn" onclick="toggleDetails(this)">
+                    <i class="fas fa-info-circle"></i> 查看详情
+                </button>
+                <div class="plant-details">
+                    <div class="detail-section">
+                        <h4 class="detail-title"><i class="fas fa-clipboard-list"></i>养护指南</h4>
                         <ul style="padding-left:20px;">
-                            <li><strong>光照:</strong>每天至少光照6小时</li>
+                            <li><strong>光照:</strong> 每天至少光照6小时</li>
+                            <li><strong>浇水:</strong> 保持土壤湿润但不积水</li>
+                            <li><strong>温度:</strong> 适宜温度18-30°C</li>
+                            <li><strong>施肥:</strong> 生长季节每月施肥一次</li>
                         </ul>
-                </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/JAVA%20PALM.png?raw=true" alt="中天神">
-            <h2>JAVA PLAM</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/NEEM%20TREE.png?raw=true" alt="z天神">
-            <h2>印度苦棟树 NEEM TREE</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E4%B8%80%E6%A1%B6%E9%87%91.png?raw=true" alt="普通天神">
-            <h2>一桶金 TONG EMAS</h2>
-            <p>Large, small</p>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%90%B4%E5%8F%B6%E6%A6%95.png?raw=true" alt="小天神">
-            <h2>琴叶榕 FICUS LYRATA</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E4%BA%BA%E5%8F%82%E6%A6%95.png?raw=true" alt="拿督地主公A款">
-            <h2>人参榕 FICUS MICROCARPA</h2>
-            <p>Large, medium, small</p>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%9B%AD%E6%9F%8F%E6%A0%91.png?raw=true" alt="拿督地主公B款">
-            <h2>园柏树 JUNIPERUS CHINENSIS</h2>
-            <p></p>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%B9%B8%E7%A6%8F%E6%A0%91.png?raw=true" alt="拿督地主公C款">
-            <h2>幸福树 Radermachera sinica</h2>
-            <p></p>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E9%BE%9F%E8%83%8C%E5%8F%B6.png?raw=true" alt ="叶背龟">
-            <h2>龟背叶 Monsteradeliciosa Liebm</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E6%8B%9B%E8%B4%A2%E7%A5%9E%E6%A0%91.png?raw=true" alt ="招财神树">
-            <h2>美金树 PACHIRA</h2>
-        </div>
-        <div class ="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%B6%A0%E8%90%8C%E9%96%A3.png?raw=true" alt ="hong kong">
-            <h2>南洋杉 HONG KONG TREE</h2>
-        </div>
-        <div class ="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/ATI%20ATI.png?raw=true" alt="ATI ATI">
-            <h2>ATI ATI</h2>
-        </div>
-        <div class = "product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%8F%91%E8%B4%A2%E7%BA%A2.png?raw=true" alt="faciahong">
-            <h2>发财红 ALGOREMA</h2>
-        </div>
-        <div class = "product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E4%B8%83%E5%BD%A9%E5%8F%B6.png?raw=true" alt="qicaiye">
-            <h2>七彩叶 PUDING COLOR</h2>
-        </div>
-        <div class = "product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E6%96%87%E7%AB%B9.png?raw=true" alt="wenzhu">
-            <h2>文竹 Asparagus setaceus</h2>
-        </div>
-        <div class= "product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%81%AB%E9%B9%A4%E8%8A%B1.png?raw=true" alt="huohehua">
-            <h2>火鹤花 ANTHINIUM</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E8%8B%8F%E9%93%81.png?raw=true" alt="shutie">
-            <h2>苏铁 LYCUS CHINA</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E8%BD%AC%E8%BF%90%E7%AB%B9.png?raw=true" alt="zhuanyunzhu">
-            <h2>转运竹 LUCKY BAMBOO</h2>
-            <h2>龙头竹 DRAGON BAMBOO</h2>
-        </div>
-        <div class="product-card">
-            <div class="swiper mySwiper1">
-                <div class ="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%AF%8C%E8%B4%B5%E8%8A%B11.png?raw=true" alt="1">
-                    </div>
-                    <div class ="swiper-slide">
-                        <img src ="https://github.com/IvanLee1105/my.photo/blob/main/%E5%AF%8C%E8%B4%B5%E8%8A%B12.png?raw=true" alt="2">
-                    </div>
-                    <div class = "swiper-slide">
-                        <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%AF%8C%E8%B4%B5%E8%8A%B13.png?raw=true" alt ="3">
                     </div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
             </div>
-            <h2>富贵花 KEMPOJA</h2>
-            <P>接种 ~ 无接种/大中小</P>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/JAVA%20PALM.png?raw=true" alt="JAVA PLAM">
+                <h2>JAVA PLAM</h2>
+                <p>优雅的棕榈科植物，适合室内装饰</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/NEEM%20TREE.png?raw=true" alt="印度苦棟树">
+                <h2>印度苦棟树 NEEM TREE</h2>
+                <p>具有药用价值的传统植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E4%B8%80%E6%A1%B6%E9%87%91.png?raw=true" alt="一桶金">
+                <h2>一桶金 TONG EMAS</h2>
+                <p>Large, small</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%90%B4%E5%8F%B6%E6%A6%95.png?raw=true" alt="琴叶榕">
+                <h2>琴叶榕 FICUS LYRATA</h2>
+                <p>流行的室内观叶植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E4%BA%BA%E5%8F%82%E6%A6%95.png?raw=true" alt="人参榕">
+                <h2>人参榕 FICUS MICROCARPA</h2>
+                <p>Large, medium, small</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%9B%AD%E6%9F%8F%E6%A0%91.png?raw=true" alt="园柏树">
+                <h2>园柏树 JUNIPERUS CHINENSIS</h2>
+                <p>常绿灌木，适合庭院种植</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%B9%B8%E7%A6%8F%E6%A0%91.png?raw=true" alt="幸福树">
+                <h2>幸福树 Radermachera sinica</h2>
+                <p>象征幸福美满的室内植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E9%BE%9F%E8%83%8C%E5%8F%B6.png?raw=true" alt="龟背叶">
+                <h2>龟背叶 Monsteradeliciosa Liebm</h2>
+                <p>独特的叶形，热带风情</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E6%8B%9B%E8%B4%A2%E7%A5%9E%E6%A0%91.png?raw=true" alt="招财神树">
+                <h2>美金树 PACHIRA</h2>
+                <p>招财进宝，吉祥如意</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%B6%A0%E8%90%8C%E9%96%A3.png?raw=true" alt="南洋杉">
+                <h2>南洋杉 HONG KONG TREE</h2>
+                <p>高大挺拔的观赏树种</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/ATI%20ATI.png?raw=true" alt="ATI ATI">
+                <h2>ATI ATI</h2>
+                <p>热带地区特有的植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%8F%91%E8%B4%A2%E7%BA%A2.png?raw=true" alt="发财红">
+                <h2>发财红 ALGOREMA</h2>
+                <p>红红火火，财运亨通</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E4%B8%83%E5%BD%A9%E5%8F%B6.png?raw=true" alt="七彩叶">
+                <h2>七彩叶 PUDING COLOR</h2>
+                <p>色彩斑斓的观叶植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E6%96%87%E7%AB%B9.png?raw=true" alt="文竹">
+                <h2>文竹 Asparagus setaceus</h2>
+                <p>优雅纤细的室内植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%81%AB%E9%B9%A4%E8%8A%B1.png?raw=true" alt="火鹤花">
+                <h2>火鹤花 ANTHINIUM</h2>
+                <p>鲜艳夺目的观赏花卉</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E8%8B%8F%E9%93%81.png?raw=true" alt="苏铁">
+                <h2>苏铁 LYCUS CHINA</h2>
+                <p>古老的观赏植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E8%BD%AC%E8%BF%90%E7%AB%B9.png?raw=true" alt="转运竹">
+                <h2>转运竹 LUCKY BAMBOO</h2>
+                <h2>龙头竹 DRAGON BAMBOO</h2>
+                <p>象征好运的室内植物</p>
+            </div>
+            
+            <div class="product-card">
+                <div class="swiper mySwiper1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%AF%8C%E8%B4%B5%E8%8A%B11.png?raw=true" alt="富贵花1">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%AF%8C%E8%B4%B5%E8%8A%B12.png?raw=true" alt="富贵花2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%AF%8C%E8%B4%B5%E8%8A%B13.png?raw=true" alt="富贵花3">
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <h2>富贵花 KEMPOJA</h2>
+                <p>接种 ~ 无接种/大中小</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E9%93%9C%E9%92%B1%E5%8F%B6.png?raw=true" alt="铜钱叶">
+                <h2>铜钱叶 PEGAGA</h2>
+                <p>圆润可爱的观叶植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E8%8F%8A%E8%8A%B1.png?raw=true" alt="菊花">
+                <h2>菊花 KEKWA</h2>
+                <p>传统观赏花卉</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E8%8C%89%E8%8E%89%E8%8A%B1.png?raw=true" alt="茉莉花">
+                <h2>茉莉花 JASMIN SUMBAC</h2>
+                <p>芳香四溢的观赏植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%BE%8E%E9%87%91%E6%A0%91.png?raw=true" alt="招财神树">
+                <h2>招财神树 JUNGLE BUSH</h2>
+                <p>财运亨通的象征</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%99%BD%E9%B9%A4%E8%8A%8B.png?raw=true" alt="白鹤花"> 
+                <h2>白鹤花 SPATIFILUM</h2>
+                <p>纯洁优雅的观赏花卉</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%9C%A3%E8%AF%9E%E9%BA%92%E9%BA%9F%E8%8A%B1.png?raw=true" alt="圣诞麒麟花">
+                <h2>圣诞麒麟花 EUPHORBIA MILLI</h2>
+                <p>节日气氛浓厚的观赏植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%9C%A3%E7%BD%97%E5%98%9E.png?raw=true" alt="圣罗勒">
+                <h2>圣罗勒 TULASI</h2>
+                <p>具有宗教意义的香草植物</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%BA%B8%E8%8A%B1.png?raw=true" alt="纸花">
+                <h2>纸花 BUNGA KETAS</h2>
+                <p>独特的装饰性植物</p>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E9%93%9C%E9%92%B1%E5%8F%B6.png?raw=true" alt="tonqianye">
-            <h2>铜钱叶 PEGAGA</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E8%8F%8A%E8%8A%B1.png?raw=true" alt="juhua">
-            <h2>菊花 KEKWA</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E8%8C%89%E8%8E%89%E8%8A%B1.png?raw=true" alt="molihua">
-            <h2>茉莉花 JASMIN SUMBAC</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%BE%8E%E9%87%91%E6%A0%91.png?raw=true" alt="zaocaishenshu">
-            <h2>招财神树 JUNGLE BUSH</h2>
-        </div>
-        
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%99%BD%E9%B9%A4%E8%8A%8B.png?raw=true" alt="baiheyu"> 
-            <h2>白鹤花 SPATIFILUM</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%9C%A3%E8%AF%9E%E9%BA%92%E9%BA%9F%E8%8A%B1.png?raw=true" alt="圣诞麒麟花">
-            <h2>圣诞麒麟花 EUPHORBIA MILLI</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E5%9C%A3%E7%BD%97%E5%98%9E.png?raw=true" alt="sendanqilinhua">
-            <h2>圣罗勒 TULASI</h2>
-        </div>
-        <div class="product-card">
-            <img src="https://github.com/IvanLee1105/my.photo/blob/main/%E7%BA%B8%E8%8A%B1.png?raw=true" alt="zhihua">
-            <h2>纸花 BUNGA KETAS</h2>
-        </div>
-    </div>
+    </main>
     
     <!-- 联系方式区域 -->
     <div class="contact-toggle-section">
@@ -756,9 +804,10 @@
         </div>
     </div>
 
-<div style="text-align:center;">
-    <a href="index.html" class="back-button">返回首页</a>
-</div>
+    <div style="text-align:center;">
+        <a href="index.html" class="back-button">返回首页</a>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
         // 初始化轮播图
@@ -820,6 +869,46 @@
                     element.textContent = originalText;
                 }, 1500);
             });
+        }
+        
+        // 切换植物详情显示
+        function toggleDetails(button) {
+            const details = button.nextElementSibling;
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+            
+            if (details.style.display === 'block') {
+                button.innerHTML = '<i class="fas fa-times-circle"></i> 收起详情';
+            } else {
+                button.innerHTML = '<i class="fas fa-info-circle"></i> 查看详情';
+            }
+        }
+        
+        // 分类按钮功能
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 移除所有按钮的active类
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                // 为当前按钮添加active类
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                filterPlants(category);
+            });
+        });
+        
+        // 分类筛选功能
+        function filterPlants(category) {
+            if (category === 'all') {
+                document.querySelectorAll('.product-card').forEach(card => {
+                    card.style.display = 'block';
+                });
+                document.getElementById('no-results').style.display = 'none';
+                return;
+            }
+            
+            // 这里需要为每个产品卡片添加data-category属性才能实现分类筛选
+            // 例如: <div class="product-card" data-category="indoor air-purifying">
+            // 由于当前HTML中没有这些属性，这部分功能暂时无法完全实现
         }
     </script>
 </body>
