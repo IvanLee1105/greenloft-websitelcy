@@ -876,6 +876,27 @@
                 clickable: true, // 允许点击分页器切换
             },
         });
+        //分类
+        function filterPlants(category){
+            const productCards = document.querSelectorAll('.product-card');
+            let hasResult = flase;
+
+            if (category ==='all') {
+                productCards.forEach(card=>{
+                    card.style.display = 'block';
+                    hasResult = true;
+                });
+            } alse{
+                prodctCards.forEach(card=>{
+                    const categories = card.dataset.category.split(' ');
+                    if (categories.includes(category)) {
+                        card.style.display= 'block';
+                        hasResult = true;
+                    }else{
+                        card.style.display= 'none';
+                    }
+                });
+            }
 
         // 搜索功能实现
         document.getElementById('search-input').addEventListener('input', function() {
