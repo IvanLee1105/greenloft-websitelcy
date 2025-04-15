@@ -876,27 +876,31 @@
                 clickable: true, // 允许点击分页器切换
             },
         });
-        //分类
-        function filterPlants(category){
-            const productCards = document.querSelectorAll('.product-card');
-            let hasResult = flase;
-
-            if (category ==='all') {
-                productCards.forEach(card=>{
+        
+        // 分类筛选功能
+        function filterPlants(category) {
+            const productCards = document.querySelectorAll('.product-card');
+            let hasResult = false;
+        
+            if (category === 'all') {
+                productCards.forEach(card => {
                     card.style.display = 'block';
                     hasResult = true;
                 });
-            } alse{
-                prodctCards.forEach(card=>{
+            } else {
+                productCards.forEach(card => {
                     const categories = card.dataset.category.split(' ');
                     if (categories.includes(category)) {
-                        card.style.display= 'block';
+                        card.style.display = 'block';
                         hasResult = true;
-                    }else{
-                        card.style.display= 'none';
+                    } else {
+                        card.style.display = 'none';
                     }
                 });
             }
+                // 显示/隐藏"没有结果"消息
+        document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
+    }
 
         // 搜索功能实现
         document.getElementById('search-input').addEventListener('input', function() {
@@ -954,7 +958,7 @@
             }
         }
         
-        // 分类按钮功能
+// 分类按钮功能
         document.querySelectorAll('.category-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 // 移除所有按钮的active类
@@ -966,7 +970,7 @@
                 filterPlants(category);
             });
         });
-        
+                
         // 分类筛选功能
         function filterPlants(category) {
             if (category === 'all') {
