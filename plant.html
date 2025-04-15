@@ -958,6 +958,23 @@
                 }, 1500);
             });
         }
+            //回到顶部
+            window.addEventListener('scroll',function(){
+                const backToTop = document.getElementById('backToTop');
+                if (window.pageY0ffset > 300){
+                    backToTop.classList.add('visible');
+                }else{
+                    backToTop.classList.remove('visible');
+                }
+            });
+    
+            document.getElementById('backToTop').addEventListener('click',function()){
+                window.scrollTo({
+                    top: 0,
+                    behavoir:'smooth'
+                });
+            });
+
         
         // 切换植物详情显示
         function toggleDetails(button) {
