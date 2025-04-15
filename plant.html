@@ -994,22 +994,22 @@
             });
         }
             //回到顶部
-            window.addEventListener('scroll',function(){
-                const backToTop = document.getElementById('backToTop');
-                if (window.pageY0ffset > 300){
-                    backToTop.classList.add('visible');
-                }else{
-                    backToTop.classList.remove('visible');
-                }
+        // 正确的返回顶部功能代码
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {  // 正确拼写 pageYOffset
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'  // 正确拼写 behavior
             });
-    
-            document.getElementById('backToTop').addEventListener('click',function()){
-                window.scrollTo({
-                    top: 0,
-                    behavoir:'smooth'
-                });
-            });
-
+        });
         
         // 切换植物详情显示
         function toggleDetails(button) {
