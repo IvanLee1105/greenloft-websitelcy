@@ -877,31 +877,44 @@
             },
         });
         
-        // 分类筛选功能
+        // 分类筛选功能（这是唯一需要的定义）
         function filterPlants(category) {
             const productCards = document.querySelectorAll('.product-card');
             let hasResult = false;
         
-            if (category === 'all') {
-                productCards.forEach(card => {
-                    card.style.display = 'block';
-                    hasResult = true;
-                });
-            } else {
-                productCards.forEach(card => {
+            productCards.forEach(card => {
+                // 检查卡片是否有 data-category 属性
+                if (card.hasAttribute('data-category')) {
                     const categories = card.dataset.category.split(' ');
-                    if (categories.includes(category)) {
+                    if (category === 'all' || categories.includes(category)) {
                         card.style.display = 'block';
                         hasResult = true;
                     } else {
                         card.style.display = 'none';
                     }
-                });
-            }
-                // 显示/隐藏"没有结果"消息
-        document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
-    }
-
+                } else {
+                    // 如果没有 data-category 属性，根据分类决定显示/隐藏
+                    card.style.display = category === 'all' ? 'block' : 'none';
+                    if (category === 'all') hasResult = true;
+                }
+            });
+        
+            // 显示/隐藏"没有结果"消息
+            document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
+        }
+        
+        // 分类按钮功能
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 移除所有按钮的active类
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                // 为当前按钮添加active类
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                filterPlants(category);
+            });
+        });
         // 搜索功能实现
         document.getElementById('search-input').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
@@ -958,33 +971,8 @@
             }
         }
         
-// 分类按钮功能
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // 移除所有按钮的active类
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                // 为当前按钮添加active类
-                this.classList.add('active');
                 
-                const category = this.dataset.category;
-                filterPlants(category);
-            });
-        });
-                
-        // 分类筛选功能
-        function filterPlants(category) {
-            if (category === 'all') {
-                document.querySelectorAll('.product-card').forEach(card => {
-                    card.style.display = 'block';
-                });
-                document.getElementById('no-results').style.display = 'none';
-                return;
-            }
-            
-            // 这里需要为每个产品卡片添加data-category属性才能实现分类筛选
-            // 例如: <div class="product-card" data-category="indoor air-purifying">
-            // 由于当前HTML中没有这些属性，这部分功能暂时无法完全实现
-        }
+
     </script>
 </body>
 </html>
