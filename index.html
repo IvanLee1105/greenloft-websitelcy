@@ -16,25 +16,26 @@
             text-align: center;
             margin: 0;
         }
-        .why-us{
-            background:var(--light-bg);
-            padding:2rem 0;
-            margin:2rem 0;
+        /* 为什么选择我们 */
+        .why-us {
+            background: var(--light-bg);
+            padding: 2rem 0;
+            margin: 2rem 0;
         }
-
-        .features{
+        
+        .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-            gap:2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin-top: 1.5rem;
         }
-
-        .feature-item{
-            text-align:center;
-            padding:1.5rem;
-            background:white;
-            border-radius:var(--border-radius);
-            box-shadow:0 3px 10px rgba(0,0,0,0.05);
+        
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
         
         .feature-icon {
@@ -108,6 +109,17 @@
         .back-to-top:hover {
             background-color: #1e4b66;
             transform: translateY(-3px);
+        }
+            
+            
+        
+        .back-button:hover {
+            background-color: #1e4b66;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         /* 公司图片样式 */
         .center-image {
@@ -363,61 +375,7 @@
         <a href="nitu.html"><button class="custom-button">泥土~SOIL</button></a>
         <a href="rool.html"><button class="custom-button">石板~STEPPING_STONE</button></a>
     </div>
-
-    <script>
-        // 图片延迟加载
-        window.addEventListener('DOMContentLoaded', () => {
-            const images = document.querySelectorAll('.center-image');
-            images.forEach(img => {
-                if(img.complete) {
-                    img.classList.add('loaded');
-                } else {
-                    img.addEventListener('load', () => {
-                        img.classList.add('loaded');
-                    });
-                }
-            });
-        });
-        // 修复后的返回顶部功能
-        window.addEventListener('scroll', function() {
-            const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        document.getElementById('backToTop').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        // 优化复制功能
-        const copyToast = document.createElement('div');
-        copyToast.className = 'copy-toast';
-        document.body.appendChild(copyToast);
-
-        function copyText(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.textContent || element.innerText;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                copyToast.textContent = `? 已复制: ${text}`;
-                copyToast.style.opacity = '1';
-                setTimeout(() => {
-                    copyToast.style.opacity = '0';
-                }, 2000);
-            }).catch(err => {
-                copyToast.textContent = '? 复制失败，请手动选择复制';
-                copyToast.style.opacity = '1';
-                setTimeout(() => {
-                    copyToast.style.opacity = '0';
-                }, 2000);
-            });
-        }
-    <section class="why-us">
+        <section class="why-us">
         <div class="container">
             <h2 class="section-title">why choose GREEN LOFT LEGACY</h2>
             <div calss="features">
@@ -468,6 +426,62 @@
             </div>
         </div>
     </footer>
+
+
+    <script>
+        // 图片延迟加载
+        window.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.center-image');
+            images.forEach(img => {
+                if(img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => {
+                        img.classList.add('loaded');
+                    });
+                }
+            });
+        });
+        // 修复后的返回顶部功能
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        // 优化复制功能
+        const copyToast = document.createElement('div');
+        copyToast.className = 'copy-toast';
+        document.body.appendChild(copyToast);
+
+        function copyText(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                copyToast.textContent = ? 已复制: ${text};
+                copyToast.style.opacity = '1';
+                setTimeout(() => {
+                    copyToast.style.opacity = '0';
+                }, 2000);
+            }).catch(err => {
+                copyToast.textContent = '? 复制失败，请手动选择复制';
+                copyToast.style.opacity = '1';
+                setTimeout(() => {
+                    copyToast.style.opacity = '0';
+                }, 2000);
+            });
+        }
+
         // 按钮涟漪效果
         document.querySelectorAll('.custom-button').forEach(button => {
             button.addEventListener('click', function(e) {
