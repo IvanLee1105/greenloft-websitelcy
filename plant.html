@@ -36,6 +36,49 @@
             padding: 0 20px;
         }
         
+        .back-to-home {
+            position: fixed;
+            bottom: 80px; /* 放在返回顶部按钮上方 */
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: none;
+        }
+        
+        .back-to-home.visible {
+            opacity: 1;
+        }
+        
+        .back-to-home:hover {
+            background-color: #3a7a4e;
+            transform: translateY(-3px);
+        }
+        
+        /* 在JavaScript部分添加以下代码 */
+        // 返回主页按钮功能
+        window.addEventListener('scroll', function() {
+            const backToHome = document.getElementById('backToHome');
+            if (window.pageYOffset > 300) {
+                backToHome.classList.add('visible');
+            } else {
+                backToHome.classList.remove('visible');
+            }
+        });
+        
+        document.getElementById('backToHome').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
         /* 头部样式 */
         .header {
             background-color: var(--primary-color);
@@ -545,6 +588,9 @@
     </style>
 </head>
 <body>
+    <button id="backToHome" class="back-to-home" aria-label="返回主页">
+        <i class="fas fa-home"></i>
+    </button>
     <button id="backToTop" class="back-to-top" aria-label="返回顶部">
         <i class="fas fa-arrow-up"></i>
     </button>
