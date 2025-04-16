@@ -65,20 +65,7 @@
             transform: translateY(-3px);
         }
         
-        /* 在JavaScript部分添加以下代码 */
-        // 返回主页按钮功能
-        window.addEventListener('scroll', function() {
-            const backToHome = document.getElementById('backToHome');
-            if (window.pageYOffset > 300) {
-                backToHome.classList.add('visible');
-            } else {
-                backToHome.classList.remove('visible');
-            }
-        });
-        
-        document.getElementById('backToHome').addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
+       
         /* 头部样式 */
         .header {
             background-color: var(--primary-color);
@@ -1039,6 +1026,20 @@
                 }, 1500);
             });
         }
+         /* 在JavaScript部分添加以下代码 */
+        // 返回主页按钮功能
+        window.addEventListener('scroll', function() {
+            const backToHome = document.getElementById('backToHome');
+            if (window.pageYOffset > 300) {
+                backToHome.classList.add('visible');
+            } else {
+                backToHome.classList.remove('visible');
+            }
+        });
+        
+        document.getElementById('backToHome').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
             //回到顶部
         // 正确的返回顶部功能代码
         window.addEventListener('scroll', function() {
