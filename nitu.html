@@ -411,16 +411,7 @@
         .back-button:hover {
             background-color: #1e4b66;
         }
-        .language-switcher {
-            margin: 10px auto 20px;
-            text-align: center;
-        }
-        
-        #toggleLanguage {
-            background-color: var(--primary-color);
-            padding: 8px 20px;
-            font-weight: bold;
-        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -436,6 +427,46 @@
             .header h1 {
                 font-size: 1.8rem;
             }
+            /* 添加在现有CSS中 */
+            .language-switcher {
+                margin: 10px auto 20px;
+                text-align: center;
+            }
+            
+            #languageSelector {
+                background-color: var(--primary-color);
+                color: white;
+                padding: 8px 15px;
+                border-radius: 5px;
+                border: none;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            
+            #languageSelector option {
+                background: white;
+                color: #333;
+            }
+            /* 添加在现有CSS中 */
+            .language-switcher {
+                margin: 10px auto 20px;
+                text-align: center;
+            }
+            
+            #languageSelector {
+                background-color: var(--primary-color);
+                color: white;
+                padding: 8px 15px;
+                border-radius: 5px;
+                border: none;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            
+            #languageSelector option {
+                background: white;
+                color: #333;
+            }
         }
     </style>
 </head>
@@ -446,8 +477,13 @@
     <button id="backToTop" class="back-to-top" aria-label="返回顶部">
         <i class="fas fa-arrow-up"></i>
     </button>
+<!-- 在<h1>标签下方添加智能语言切换器 -->
     <div class="language-switcher">
-        <button id="toggleLanguage" class="action-btn">English</button>
+        <select id="languageSelector" class="action-btn">
+            <option value="auto">自动</option>
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+        </select>
     </div>
     <h1>泥土~SOIL</h1>
     <div class="search-container">
@@ -694,93 +730,64 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
         const translations = {
-    zh: {
-        title: "泥土~SOIL",
-        searchPlaceholder: "输入搜索内容...",
-        noResults: "没有匹配对象的泥土",
-        contactBtn: "联系我们",
-        backToHome: "返回主页",
-        backToTop: "返回顶部",
-        backToIndex: "返回首页",
-        productTitles: [
-            "有机泥~ORGANIC_SOIL(small_5kg)",
-            "有机泥土~ORGANIC_SOUL(12kg)",
-            "有机泥土~ORGANIC 6 in 1(15KG)",
-            "火烧泥土~TANAH_BAKAR",
-            "黑泥土~BLACK_SOIL(buy 4 free 1)",
-            "多肉泥土~succulent plant",
-            "多肉泥土~",
-            "彩色陶粒~",
-            "兰花专用介质(兰石)~",
-            "BABA富贵花专用泥土~BABA_SPECIAL ADENIUM(Potting Mix)",
-            "多肉泥土~succulent plant"
-        ],
-        footerLinks: ["关于我们", "联系我们", "配送信息", "养护指南", "隐私政策"]
-    },
-    en: {
-        title: "Soil Products",
-        searchPlaceholder: "Search...",
-        noResults: "No matching soil products found",
-        contactBtn: "Contact Us",
-        backToHome: "Back to Home",
-        backToTop: "Back to Top",
-        backToIndex: "Back to Index",
-        productTitles: [
-            "Organic Soil (small 5kg)",
-            "Organic Soil (12kg)",
-            "Organic Soil 6 in 1 (15KG)",
-            "Baked Soil (TANAH_BAKAR)",
-            "Black Soil (buy 4 free 1)",
-            "Succulent Plant Soil",
-            "Succulent Plant Soil",
-            "Colored Clay Pellets",
-            "Orchid Special Medium",
-            "BABA Special Adenium Potting Mix",
-            "Succulent Plant Soil"
-        ],
-        footerLinks: ["About Us", "Contact Us", "Delivery Info", "Care Guide", "Privacy Policy"]
-    }
-};
-
-let currentLang = 'zh';
-
-function toggleLanguage() {
-    currentLang = currentLang === 'zh' ? 'en' : 'zh';
-    applyLanguage();
-    document.getElementById('toggleLanguage').textContent = currentLang === 'zh' ? 'English' : '中文';
-    document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
-}
-
-function applyLanguage() {
-    const langData = translations[currentLang];
-    
-    // 更新页面元素
-    document.querySelector('h1').textContent = langData.title;
-    document.getElementById('search-input').placeholder = langData.searchPlaceholder;
-    document.getElementById('no-results').textContent = langData.noResults;
-    document.querySelector('.contact-toggle-btn').textContent = langData.contactBtn;
-    document.getElementById('backToHome').setAttribute('aria-label', langData.backToHome);
-    document.getElementById('backToTop').setAttribute('aria-label', langData.backToTop);
-    document.querySelector('.back-button').textContent = langData.backToIndex;
-    
-    // 更新产品标题
-    const productTitles = document.querySelectorAll('.product-card h2');
-    productTitles.forEach((title, index) => {
-        title.textContent = langData.productTitles[index];
-    });
-    
-    // 更新页脚链接
-    const footerLinks = document.querySelectorAll('.footer-link');
-    footerLinks.forEach((link, index) => {
-        link.textContent = langData.footerLinks[index];
-    });
-}
-
-// 初始化语言切换按钮
-document.getElementById('toggleLanguage').addEventListener('click', toggleLanguage);
-
-// 设置初始语言
-document.documentElement.lang = 'zh-CN';
+            zh: {
+                // 保持之前的翻译数据不变...
+                languageName: "中文"
+            },
+            en: {
+                // 保持之前的翻译数据不变...
+                languageName: "English"
+            }
+        };
+        
+        // 获取浏览器首选语言
+        function getBrowserLanguage() {
+            const lang = navigator.language || navigator.userLanguage;
+            return lang.startsWith('zh') ? 'zh' : 'en';
+        }
+        
+        // 初始化语言
+        function initLanguage() {
+            // 1. 检查本地存储的用户选择
+            const savedLang = localStorage.getItem('userLanguage');
+            
+            // 2. 如果没有保存的选择，使用浏览器语言
+            const browserLang = savedLang || getBrowserLanguage();
+            
+            // 3. 设置语言
+            currentLang = browserLang;
+            applyLanguage();
+            
+            // 4. 更新选择器显示
+            document.getElementById('languageSelector').value = savedLang ? savedLang : 'auto';
+        }
+        
+        // 修改后的语言切换函数
+        function changeLanguage(lang) {
+            if (lang === 'auto') {
+                // 如果选择自动，移除保存的选择并使用浏览器语言
+                localStorage.removeItem('userLanguage');
+                currentLang = getBrowserLanguage();
+            } else {
+                // 保存用户明确的选择
+                localStorage.setItem('userLanguage', lang);
+                currentLang = lang;
+            }
+            applyLanguage();
+        }
+        
+        // 初始化事件监听
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化语言
+            initLanguage();
+            
+            // 语言选择器事件
+            document.getElementById('languageSelector').addEventListener('change', function() {
+                changeLanguage(this.value);
+            });
+            
+            // 其他初始化代码...
+        });
         document.getElementById('search-input').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
             const productCards = document.querySelectorAll('.product-card');
