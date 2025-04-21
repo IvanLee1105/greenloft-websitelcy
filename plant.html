@@ -575,6 +575,8 @@
     </style>
 </head>
 <body>
+    <button id="languageToggle" style="position:fixed;bottom:80px;right:20px;z-index:1000;padding:8px 15px;background:#4CAF50;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;">EN/中文
+    </button>
     <button id="backToHome" class="back-to-home" aria-label="返回主页">
         <i class="fas fa-home"></i>
     </button>
@@ -1803,6 +1805,129 @@
                 button.innerHTML = '<i class="fas fa-info-circle"></i> 查看详情';
             }
         }
+        // ======== 翻译字典配置 ======== //
+        const translations = {
+          // 导航和标题
+          "绿萌阁 GREEN LOFT LEGACY": "Green Loft Legacy",
+          "为您的家带来自然与生机 BRING NATURA AND VITALITY TO YOUR HOME": "Bring nature and vitality to your home",
+          "PLANTS~植物": "PLANTS",
+          "网站显示的植物并不完全,有兴趣的欢迎联系我们 The plants shown on the website are not complete. If you are interested, welcome to contact us": "The plants shown are not complete. Contact us if interested",
+          
+          // 搜索区域
+          "输入植物名称搜索...": "Search plant name...",
+          "全部植物": "All Plants",
+          "室内植物": "Indoor Plants",
+          "净化空气": "Air Purifying",
+          "易养护": "Easy Care",
+          "开花植物": "Flowering",
+          "招财植物": "Lucky Plants",
+          "室外植物": "Outdoor Plants",
+          "没有找到匹配的植物": "No matching plants found",
+          
+          // 植物卡片通用文本
+          "查看详情": "View Details",
+          "收起详情": "Hide Details",
+          "光照:": "Light:",
+          "浇水:": "Watering:",
+          "温度:": "Temperature:",
+          "施肥:": "Fertilizer:",
+          
+          // 页脚和其他
+          "关于我们": "About Us",
+          "联系我们": "Contact",
+          "配送信息": "Delivery",
+          "养护指南": "Care Guide",
+          "隐私政策": "Privacy",
+          "返回首页": "Back to Home",
+          
+          // 为什么选择我们部分
+          "why choose GREEN LOFT LEGACY": "Why Choose Us",
+          "High-quality plants ~ 优质植物": "High-quality plants",
+          "Professional advice ~ 专业建议": "Professional advice",
+          "Careful delivery ~ 用心配送": "Careful delivery",
+          
+          // 植物具体信息（示例，您可以根据需要添加更多）
+          "净化甲醛和苯": "Purifies formaldehyde and benzene",
+          "喜阳光,花期长": "Loves sunlight, long flowering period",
+          "每周浇水2-3次": "Water 2-3 times weekly",
+          "养护指南": "Care Guide"
+        };
+        
+        // ======== 以下代码无需修改 ======== //
+        
+        let isEnglish = localStorage.getItem('language') === 'en';
+        
+        // 初始化语言
+        function initLanguage() {
+          updateButtonText();
+          if (isEnglish) translatePage();
+        }
+        
+        // 切换语言函数
+        function toggleLanguage() {
+          isEnglish = !isEnglish;
+          localStorage.setItem('language', isEnglish ? 'en' : 'zh');
+          updateButtonText();
+          translatePage();
+        }
+        
+        // 更新按钮文字
+        function updateButtonText() {
+          document.getElementById('languageToggle').textContent = isEnglish ? '中文/EN' : 'EN/中文';
+        }
+        
+        // 核心翻译函数
+        function translatePage() {
+          const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+          );
+        
+          let node;
+          while (node = walker.nextNode()) {
+            if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
+              const text = node.nodeValue.trim();
+              if (isEnglish) {
+                // 中文 → 英文
+                if (translations[text]) {
+                  node.nodeValue = translations[text];
+                }
+              } else {
+                // 英文 → 中文（自动反向查找）
+                for (const [chinese, english] of Object.entries(translations)) {
+                  if (text === english) {
+                    node.nodeValue = chinese;
+                    break;
+                  }
+                }
+              }
+            }
+          }
+          
+          // 特殊处理详情按钮
+          document.querySelectorAll('.action-btn').forEach(btn => {
+            if (isEnglish) {
+              if (btn.innerHTML.includes('查看详情')) {
+                btn.innerHTML = btn.innerHTML.replace('查看详情', 'View Details');
+              } else if (btn.innerHTML.includes('收起详情')) {
+                btn.innerHTML = btn.innerHTML.replace('收起详情', 'Hide Details');
+              }
+            } else {
+              if (btn.innerHTML.includes('View Details')) {
+                btn.innerHTML = btn.innerHTML.replace('View Details', '查看详情');
+              } else if (btn.innerHTML.includes('Hide Details')) {
+                btn.innerHTML = btn.innerHTML.replace('Hide Details', '收起详情');
+              }
+            }
+          });
+        }
+        
+        // 初始化
+        document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+        initLanguage();
+        </script>
         
                 
 
