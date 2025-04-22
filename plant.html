@@ -36,11 +36,11 @@
             padding: 0 20px;
         }
         
-        .back-to-home {
+        /* 修正后的按钮样式 */
+        .back-to-home, .back-to-top, #languageToggle {
             position: fixed;
-            bottom: 80px; /* 放在返回顶部按钮上方 */
             right: 20px;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: white;
             width: 50px;
             height: 50px;
@@ -52,17 +52,51 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
             border: none;
         }
         
-        .back-to-home.visible {
+        .back-to-home.visible,
+        .back-to-top.visible,
+        #languageToggle.visible {
             opacity: 1;
         }
         
-        .back-to-home:hover {
-            background-color: #3a7a4e;
+        .back-to-home:hover,
+        .back-to-top:hover,
+        #languageToggle:hover {
+            background-color: #1e4b66;
             transform: translateY(-3px);
+        }
+        
+        .back-to-home {
+            bottom: 140px;
+        }
+        
+        .back-to-top {
+            bottom: 80px;
+        }
+        
+        #languageToggle {
+            bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .back-to-home {
+                bottom: 120px;
+                right: 15px;
+            }
+            
+            .back-to-top {
+                bottom: 70px;
+                right: 15px;
+            }
+            
+            #languageToggle {
+                bottom: 20px;
+                right: 15px;
+            }
         }
         
        
@@ -518,53 +552,8 @@
             text-decoration: none;
             transition: 0.3s;
         }
-        /* 修正媒体查询嵌套问题 */
-        #backToTop {
-            bottom: 20px;
-        }
-        
-        #backToHome {
-            bottom: 80px;
-        }
-        
-        #languageToggle {
-            bottom: 140px;
-        }
-        
-        @media (max-width: 768px) {
-            #backToTop {
-                bottom: 15px;
-                right: 15px;
-            }
-            
-            #backToHome {
-                bottom: 70px;
-                right: 15px;
-            }
-            
-            #languageToggle {
-                bottom: 125px;
-                right: 15px;
-            }
-        }
-        
-        /* 移动端适配 */
-        @media (max-width: 768px) {
-            #backToTop {
-                bottom: 15px;
-                right: 15px;
-            }
-            
-            #backToHome {
-                bottom: 70px;
-                right: 15px;
-            }
-            
-            #languageToggle {
-                bottom: 125px;
-                right: 15px;
-            }
-        }
+
+
         /* 新增的返回顶部按钮样式 */
         .back-to-top {
             position: fixed;
@@ -1757,23 +1746,22 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
     window.addEventListener('scroll', function() {
-          const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-          const languageToggle = document.getElementById('languageToggle');
-          const backToTop = document.getElementById('backToTop');
-          const languageToggle = document.getElementById('languageToggle');
-          
-          if (window.pageYOffset > 300) {
-            languageToggle.classList.add('visible');
-            backToTop.classList.add('visible');
-            languageToggle.classList.add('visible');
-
-          } else {
-            languageToggle.classList.remove('visible');
-            backToTop.classList.remove('visible');
-            languageToggle.classList.remove('visible');
-
-          }
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            const backToTop = document.getElementById('backToTop');
+            const backToHome = document.getElementById('backToHome');
+            const languageToggle = document.getElementById('languageToggle');
+            
+            if (scrollPosition > 300) {
+                backToTop.classList.add('visible');
+                backToHome.classList.add('visible');
+                languageToggle.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+                backToHome.classList.remove('visible');
+                languageToggle.classList.remove('visible');
+            }
         });
+
         // 初始化轮播图
         // 修正后的Swiper初始化
         var swiper1 = new Swiper(".mySwiper1", {
@@ -1828,6 +1816,37 @@
                 
                 const category = this.dataset.category;
                 filterPlants(category);
+            });
+        });
+        function filterPlants(category) {
+            const productCards = document.querySelectorAll('.product-card');
+            let hasResult = false;
+        
+            productCards.forEach(card => {
+                if (card.hasAttribute('data-category')) {
+                    const categories = card.dataset.category.split(' ');
+                    if (category === 'all' || categories.includes(category)) {
+                        card.style.display = 'block';
+                        hasResult = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        
+            // 显示/隐藏"没有结果"消息
+            document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
+        }
+
+        // 修正后的按钮功能
+        document.getElementById('backToHome').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
         // 搜索功能实现
@@ -1989,76 +2008,104 @@
         
         let isEnglish = localStorage.getItem('language') === 'en';
         
-        // 初始化语言
         function initLanguage() {
-          updateButtonText();
-          if (isEnglish) translatePage();
+            updateButtonText();
+            if (isEnglish) translatePage();
         }
         
-        // 切换语言函数
         function toggleLanguage() {
-          isEnglish = !isEnglish;
-          localStorage.setItem('language', isEnglish ? 'en' : 'zh');
-          updateButtonText();
-          translatePage();
+            isEnglish = !isEnglish;
+            localStorage.setItem('language', isEnglish ? 'en' : 'zh');
+            updateButtonText();
+            translatePage();
         }
         
-        // 更新按钮文字
         function updateButtonText() {
-          document.getElementById('languageToggle').textContent = isEnglish ? '中文/EN' : 'EN/中文';
+            document.getElementById('languageToggle').innerHTML = isEnglish ? 
+                '<i class="fas fa-language"></i> 中文' : 
+                '<i class="fas fa-language"></i> EN';
         }
         
-        // 核心翻译函数
         function translatePage() {
-          const walker = document.createTreeWalker(
-            document.body,
-            NodeFilter.SHOW_TEXT,
-            null,
-            false
-          );
-        
-          let node;
-          while (node = walker.nextNode()) {
-            if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
-              const text = node.nodeValue.trim();
-              if (isEnglish) {
-                // 中文 → 英文
-                if (translations[text]) {
-                  node.nodeValue = translations[text];
+            const walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+            
+            let node;
+            while (node = walker.nextNode()) {
+                if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
+                    const text = node.nodeValue.trim();
+                    if (isEnglish) {
+                        if (translations[text]) {
+                            node.nodeValue = translations[text];
+                        }
+                    } else {
+                        for (const [chinese, english] of Object.entries(translations)) {
+                            if (text === english) {
+                                node.nodeValue = chinese;
+                                break;
+                            }
+                        }
+                    }
                 }
-              } else {
-                // 英文 → 中文（自动反向查找）
-                for (const [chinese, english] of Object.entries(translations)) {
-                  if (text === english) {
-                    node.nodeValue = chinese;
-                    break;
-                  }
+            }
+            
+            // 特殊处理详情按钮
+            document.querySelectorAll('.action-btn').forEach(btn => {
+                if (isEnglish) {
+                    if (btn.innerHTML.includes('查看详情')) {
+                        btn.innerHTML = btn.innerHTML.replace('查看详情', 'View Details');
+                    } else if (btn.innerHTML.includes('收起详情')) {
+                        btn.innerHTML = btn.innerHTML.replace('收起详情', 'Hide Details');
+                    }
+                } else {
+                    if (btn.innerHTML.includes('View Details')) {
+                        btn.innerHTML = btn.innerHTML.replace('View Details', '查看详情');
+                    } else if (btn.innerHTML.includes('Hide Details')) {
+                        btn.innerHTML = btn.innerHTML.replace('Hide Details', '收起详情');
+                    }
                 }
-              }
-            }
-          }
-          
-          // 特殊处理详情按钮
-          document.querySelectorAll('.action-btn').forEach(btn => {
-            if (isEnglish) {
-              if (btn.innerHTML.includes('查看详情')) {
-                btn.innerHTML = btn.innerHTML.replace('查看详情', 'View Details');
-              } else if (btn.innerHTML.includes('收起详情')) {
-                btn.innerHTML = btn.innerHTML.replace('收起详情', 'Hide Details');
-              }
-            } else {
-              if (btn.innerHTML.includes('View Details')) {
-                btn.innerHTML = btn.innerHTML.replace('View Details', '查看详情');
-              } else if (btn.innerHTML.includes('Hide Details')) {
-                btn.innerHTML = btn.innerHTML.replace('Hide Details', '收起详情');
-              }
-            }
-          });
+            });
         }
         
         // 初始化
         document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
         initLanguage();
+        // 初始化Swiper
+        var swiper1 = new Swiper(".mySwiper1", {
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
+
+        // 详情切换功能
+        function toggleDetails(button) {
+            const details = button.nextElementSibling;
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+            
+            if (details.style.display === 'block') {
+                button.innerHTML = button.innerHTML.includes('View Details') ? 
+                    '<i class="fas fa-times-circle"></i> Hide Details' : 
+                    '<i class="fas fa-times-circle"></i> 收起详情';
+            } else {
+                button.innerHTML = button.innerHTML.includes('Hide Details') ? 
+                    '<i class="fas fa-info-circle"></i> View Details' : 
+                    '<i class="fas fa-info-circle"></i> 查看详情';
+            }
+        }
         </script>
         
                 
