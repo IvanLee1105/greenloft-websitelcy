@@ -342,13 +342,12 @@
             margin: 2rem 0;
         }
         
-        .features {
+        .features { /* 修正拼写错误 */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 1.5rem;
         }
-        
         .feature-item {
             text-align: center;
             padding: 1.5rem;
@@ -519,11 +518,7 @@
             text-decoration: none;
             transition: 0.3s;
         }
-        #backToTop,#backToHome,#languageToggle{
-            transition:all 0.3s ease;
-            z-index:1000;
-
-        /* 调整按钮位置避免重叠 */
+        /* 修正媒体查询嵌套问题 */
         #backToTop {
             bottom: 20px;
         }
@@ -534,6 +529,23 @@
         
         #languageToggle {
             bottom: 140px;
+        }
+        
+        @media (max-width: 768px) {
+            #backToTop {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            #backToHome {
+                bottom: 70px;
+                right: 15px;
+            }
+            
+            #languageToggle {
+                bottom: 125px;
+                right: 15px;
+            }
         }
         
         /* 移动端适配 */
@@ -734,7 +746,6 @@
                     </div>
                 </div>
             </div>
-            <div class="product-container" id="product-container">
                 <div class="product-card"  data-category="swai yyang">
                 <img src="https://github.com/IvanLee1105/my.photo/blob/main/JAVA%20PALM.png?raw=true" alt="JAVA PLAM">
                 <h2>JAVA PLAM</h2>
@@ -1764,19 +1775,20 @@
           }
         });
         // 初始化轮播图
+        // 修正后的Swiper初始化
         var swiper1 = new Swiper(".mySwiper1", {
-            loop: true, // 无限循环
+            loop: true,
             navigation: {
-                nextEl: ".mySwiper1 .swiper-button-next",
-                prevEl: ".mySwiper1 .swiper-button-prev"
-            },
-            autoplay: {
-                delay: 2500, // 自动播放时间
-                disableOnInteraction: false // 用户操作后仍继续播放
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
             },
             pagination: {
-                el: ".mySwiper1 .swiper-pagination",
-                clickable: true, // 允许点击分页器切换
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
             },
         });
         
@@ -1928,7 +1940,7 @@
           "净化甲醛和苯": "Purifies formaldehyde and benzene",
           "喜阳光,花期长": "Loves sunlight, long flowering period",
           "每周浇水2-3次": "Water 2-3 times weekly",
-          "养护指南": "Care Guide"
+          "养护指南": "Care Guide",
           " 耐旱、耐热，养护成本低" :"Drought tolerant, heat tolerant, low maintenance costs",
           " 适应多种气候，尤其适合热带和亚热带地区" :"Adaptable to a wide range of climates, especially in tropical and subtropical regions ",
           " 它也可以吸收空气中的有害物质、释放氧气，改善小环境空气质量" :" It can also absorb harmful substances in the air, release oxygen, and improve the air quality of the small environment",
