@@ -519,7 +519,40 @@
             text-decoration: none;
             transition: 0.3s;
         }
+        #backToTop,#backToHome,#languageToggle{
+            transition:all 0.3s ease;
+            z-index:1000;
 
+        /* 调整按钮位置避免重叠 */
+        #backToTop {
+            bottom: 20px;
+        }
+        
+        #backToHome {
+            bottom: 80px;
+        }
+        
+        #languageToggle {
+            bottom: 140px;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            #backToTop {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            #backToHome {
+                bottom: 70px;
+                right: 15px;
+            }
+            
+            #languageToggle {
+                bottom: 125px;
+                right: 15px;
+            }
+        }
         /* 新增的返回顶部按钮样式 */
         .back-to-top {
             position: fixed;
@@ -1712,16 +1745,22 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function() {
+          const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
           const languageToggle = document.getElementById('languageToggle');
           const backToTop = document.getElementById('backToTop');
+          const languageToggle = document.getElementById('languageToggle');
           
           if (window.pageYOffset > 300) {
             languageToggle.classList.add('visible');
             backToTop.classList.add('visible');
+            languageToggle.classList.add('visible');
+
           } else {
             languageToggle.classList.remove('visible');
             backToTop.classList.remove('visible');
+            languageToggle.classList.remove('visible');
+
           }
         });
         // 初始化轮播图
@@ -1837,21 +1876,8 @@
             window.location.href = 'index.html';
         });
             //回到顶部
-        // 正确的返回顶部功能代码
-        window.addEventListener('scroll', function() {
-            const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {  // 正确拼写 pageYOffset
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
         document.getElementById('backToTop').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'  // 正确拼写 behavior
-            });
+                window.location.href = 'index.html';
         });
         
         // 切换植物详情显示
