@@ -656,7 +656,7 @@
 </head>
 <body>
     <!-- Language toggle button -->
-    <button id="languageToggle" aria-label="切换语言/Toggle Language">
+    <button id="languageToggle" class="visible" aria-label="切换语言/Toggle Language">
         <i class="fas fa-language"></i>
     </button>
     <button id="backToHome" class="back-to-home" aria-label="返回主页">
@@ -1747,7 +1747,7 @@
     <script>
     window.addEventListener('scroll', function() {
             const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            const backToTop = document.getElementById('backToTop');
+            const  = document.getElementById('backToTop');
             const backToHome = document.getElementById('backToHome');
             const languageToggle = document.getElementById('languageToggle');
             
@@ -1761,7 +1761,21 @@
                 languageToggle.classList.remove('visible');
             }
         });
-
+        // 修正后的按钮功能
+        document.getElementById('backToHome').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 平滑滚动
+            });
+        });
+        funtion initLanguage(){
+            document.getElementById('languageToggle').classList.add('visible');
+            updateButtonText();
+            if(isEnglish) translatePage();
         // 初始化轮播图
         // 修正后的Swiper初始化
         var swiper1 = new Swiper(".mySwiper1", {
@@ -1838,17 +1852,7 @@
             document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
         }
 
-        // 修正后的按钮功能
-        document.getElementById('backToHome').addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
-        
-        document.getElementById('backToTop').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+
         // 搜索功能实现
         document.getElementById('search-input').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
@@ -1894,6 +1898,14 @@
         }
          /* 在JavaScript部分添加以下代码 */
         // 返回主页按钮功能
+
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            const elements = [
+                document.getElementById('backToTop'),
+                document.getElementById('backToHome'),
+                document.getElementById('languageToggle')
+            ];
         window.addEventListener('scroll', function() {
             const backToHome = document.getElementById('backToHome');
             if (window.pageYOffset > 300) {
@@ -1907,9 +1919,6 @@
             window.location.href = 'index.html';
         });
             //回到顶部
-        document.getElementById('backToTop').addEventListener('click', function() {
-                window.location.href = 'index.html';
-        });
         
         // 切换植物详情显示
         function toggleDetails(button) {
