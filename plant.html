@@ -1896,25 +1896,7 @@
                 }, 1500);
             });
         }
-         /* 在JavaScript部分添加以下代码 */
-        // 返回主页按钮功能
-
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            const elements = [
-                document.getElementById('backToTop'),
-                document.getElementById('backToHome'),
-                document.getElementById('languageToggle')
-            ];
-        window.addEventListener('scroll', function() {
-            const backToHome = document.getElementById('backToHome');
-            if (window.pageYOffset > 300) {
-                backToHome.classList.add('visible');
-            } else {
-                backToHome.classList.remove('visible');
-            }
-        });
-        
+    
         document.getElementById('backToHome').addEventListener('click', function() {
             window.location.href = 'index.html';
         });
