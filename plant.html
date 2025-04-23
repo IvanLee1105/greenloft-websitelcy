@@ -1747,7 +1747,7 @@
     <script>
     window.addEventListener('scroll', function() {
             const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            const  = document.getElementById('backToTop');
+            const  = document.getElementById('backToTop'); 
             const backToHome = document.getElementById('backToHome');
             const languageToggle = document.getElementById('languageToggle');
             
@@ -1769,10 +1769,10 @@
         document.getElementById('backToTop').addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth' // 平滑滚动
+                behavior: 'smooth'
             });
         });
-        funtion initLanguage(){
+        function initLanguage(){
             document.getElementById('languageToggle').classList.add('visible');
             updateButtonText();
             if(isEnglish) translatePage();
