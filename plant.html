@@ -1745,32 +1745,34 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-    window.addEventListener('scroll', function() {
-            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            const  = document.getElementById('backToTop'); 
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            const backToTop = document.getElementById('backToTop');
             const backToHome = document.getElementById('backToHome');
             const languageToggle = document.getElementById('languageToggle');
             
-            if (scrollPosition > 300) {
-                backToTop.classList.add('visible');
-                backToHome.classList.add('visible');
-                languageToggle.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-                backToHome.classList.remove('visible');
-                languageToggle.classList.remove('visible');
-            }
+            const show = window.pageYOffset > 300;
+            document.getElementById('backToTop').classList.toggle('visible', show);
+            document.getElementById('backToHome').classList.toggle('visible', show);
+            document.getElementById('languageToggle').classList.toggle('visible', show);
         });
         // 修正后的按钮功能
         document.getElementById('backToHome').addEventListener('click', function() {
             window.location.href = 'index.html';
         });
         
-        document.getElementById('backToTop').addEventListener('click', function() {
+        document.getElementById('backToTop').addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+        
+        // 初始化时检查位置（新增）
+        window.addEventListener('load', () => {
+            if (window.pageYOffset > 300) {
+                document.getElementById('backToTop').classList.add('visible');
+            }
         });
 
         // 初始化轮播图
@@ -1844,6 +1846,24 @@
                     }
                 }
             });
+            document.addEventListener('DOMContentLoaded', function() {
+            // 语言切换
+            document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+            
+            // 返回主页
+            document.getElementById('backToHome').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            // 返回顶部
+            document.getElementById('backToTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // 初始滚动检查
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // 初始化时检查一次
+        });
         
             // 显示/隐藏"没有结果"消息
             document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
@@ -1894,9 +1914,7 @@
             });
         }
     
-        document.getElementById('backToHome').addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
+
             //回到顶部
         
         // 切换植物详情显示
@@ -1994,12 +2012,7 @@
         
         // ======== 以下代码无需修改 ======== //
         
-        let isEnglish = localStorage.getItem('language') === 'en';
-        
-        function initLanguage() {
-            updateButtonText();
-            if (isEnglish) translatePage();
-        }
+        llet isEnglish = localStorage.getItem('language') === 'en';
         
         function toggleLanguage() {
             isEnglish = !isEnglish;
@@ -2009,7 +2022,8 @@
         }
         
         function updateButtonText() {
-            document.getElementById('languageToggle').innerHTML = isEnglish ? 
+            const btn = document.getElementById('languageToggle');
+            btn.innerHTML = isEnglish ? 
                 '<i class="fas fa-language"></i> 中文' : 
                 '<i class="fas fa-language"></i> EN';
         }
@@ -2060,8 +2074,7 @@
         }
         
         // 初始化
-        document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
-        initLanguage();
+
         // 初始化Swiper
         var swiper1 = new Swiper(".mySwiper1", {
             loop: true,
