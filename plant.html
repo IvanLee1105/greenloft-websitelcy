@@ -1745,7 +1745,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        window.addEventListener('scroll', function() {
+        function handleScroll(){
             const scrollPosition = window.pageYOffset;
             const backToTop = document.getElementById('backToTop');
             const backToHome = document.getElementById('backToHome');
@@ -1756,6 +1756,7 @@
             document.getElementById('backToHome').classList.toggle('visible', show);
             document.getElementById('languageToggle').classList.toggle('visible', show);
         });
+        window.addEventListener('scroll', handleScroll);
         // 修正后的按钮功能
         document.getElementById('backToHome').addEventListener('click', function() {
             window.location.href = 'index.html';
@@ -1831,44 +1832,6 @@
                 filterPlants(category);
             });
         });
-        function filterPlants(category) {
-            const productCards = document.querySelectorAll('.product-card');
-            let hasResult = false;
-        
-            productCards.forEach(card => {
-                if (card.hasAttribute('data-category')) {
-                    const categories = card.dataset.category.split(' ');
-                    if (category === 'all' || categories.includes(category)) {
-                        card.style.display = 'block';
-                        hasResult = true;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            });
-            document.addEventListener('DOMContentLoaded', function() {
-            // 语言切换
-            document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
-            
-            // 返回主页
-            document.getElementById('backToHome').addEventListener('click', function() {
-                window.location.href = 'index.html';
-            });
-            
-            // 返回顶部
-            document.getElementById('backToTop').addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            
-            // 初始滚动检查
-            window.addEventListener('scroll', handleScroll);
-            handleScroll(); // 初始化时检查一次
-        });
-        
-            // 显示/隐藏"没有结果"消息
-            document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
-        }
-
 
         // 搜索功能实现
         document.getElementById('search-input').addEventListener('input', function() {
@@ -1966,7 +1929,7 @@
           "喜阳光,花期长": "Loves sunlight, long flowering period",
           "每周浇水2-3次": "Water 2-3 times weekly",
           "养护指南": "Care Guide",
-          " 耐旱、耐热，养护成本低" :"Drought tolerant, heat tolerant, low maintenance costs",
+          " 耐旱、耐热，养护成本低" :"Drought tolerant, heat tolerant, low maintance costs",
           " 适应多种气候，尤其适合热带和亚热带地区" :"Adaptable to a wide range of climates, especially in tropical and subtropical regions ",
           " 它也可以吸收空气中的有害物质、释放氧气，改善小环境空气质量" :" It can also absorb harmful substances in the air, release oxygen, and improve the air quality of the small environment",
           " 能吸附空气中的有害气体，是优质的环保树种" :" It can adsorb harmful gases in the air and is a high-quality environmentally friendly tree species",
@@ -2012,7 +1975,7 @@
         
         // ======== 以下代码无需修改 ======== //
         
-        llet isEnglish = localStorage.getItem('language') === 'en';
+        let isEnglish = localStorage.getItem('language') === 'en';
         
         function toggleLanguage() {
             isEnglish = !isEnglish;
@@ -2072,41 +2035,7 @@
                 }
             });
         }
-        
-        // 初始化
 
-        // 初始化Swiper
-        var swiper1 = new Swiper(".mySwiper1", {
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-        });
-
-        // 详情切换功能
-        function toggleDetails(button) {
-            const details = button.nextElementSibling;
-            details.style.display = details.style.display === 'block' ? 'none' : 'block';
-            
-            if (details.style.display === 'block') {
-                button.innerHTML = button.innerHTML.includes('View Details') ? 
-                    '<i class="fas fa-times-circle"></i> Hide Details' : 
-                    '<i class="fas fa-times-circle"></i> 收起详情';
-            } else {
-                button.innerHTML = button.innerHTML.includes('Hide Details') ? 
-                    '<i class="fas fa-info-circle"></i> View Details' : 
-                    '<i class="fas fa-info-circle"></i> 查看详情';
-            }
-        }
         </script>
         
                 
