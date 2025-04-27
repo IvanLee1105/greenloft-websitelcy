@@ -1745,152 +1745,8 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        function handleScroll(){
-            const scrollPosition = window.pageYOffset;
-            const backToTop = document.getElementById('backToTop');
-            const backToHome = document.getElementById('backToHome');
-            const languageToggle = document.getElementById('languageToggle');
-            
-            const show = window.pageYOffset > 300;
-            document.getElementById('backToTop').classList.toggle('visible', show);
-            document.getElementById('backToHome').classList.toggle('visible', show);
-            document.getElementById('languageToggle').classList.toggle('visible', show);
-        });
-        window.addEventListener('scroll', handleScroll);
-        // 修正后的按钮功能
-        document.getElementById('backToHome').addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
-        
-        document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // 初始化时检查位置（新增）
-        window.addEventListener('load', () => {
-            if (window.pageYOffset > 300) {
-                document.getElementById('backToTop').classList.add('visible');
-            }
-        });
 
-        // 初始化轮播图
-        // 修正后的Swiper初始化
-        var swiper1 = new Swiper(".mySwiper1", {
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-        });
-        
-        // 分类筛选功能（这是唯一需要的定义）
-        function filterPlants(category) {
-            const productCards = document.querySelectorAll('.product-card');
-            let hasResult = false;
-        
-            productCards.forEach(card => {
-                // 检查卡片是否有 data-category 属性
-                if (card.hasAttribute('data-category')) {
-                    const categories = card.dataset.category.split(' ');
-                    if (category === 'all' || categories.includes(category)) {
-                        card.style.display = 'block';
-                        hasResult = true;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                } else {
-                    // 如果没有 data-category 属性，根据分类决定显示/隐藏
-                    card.style.display = category === 'all' ? 'block' : 'none';
-                    if (category === 'all') hasResult = true;
-                }
-            });
-        
-            // 显示/隐藏"没有结果"消息
-            document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
-        }
-        
-        // 分类按钮功能
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // 移除所有按钮的active类
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                // 为当前按钮添加active类
-                this.classList.add('active');
-                
-                const category = this.dataset.category;
-                filterPlants(category);
-            });
-        });
-
-        // 搜索功能实现
-        document.getElementById('search-input').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const productCards = document.querySelectorAll('.product-card');
-            let hasResults = false;
-            
-            productCards.forEach(card => {
-                const title = card.querySelector('h2').textContent.toLowerCase();
-                if (title.includes(searchTerm)) {
-                    card.style.display = 'block';
-                    hasResults = true;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            // 显示/隐藏"没有结果"消息
-            document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
-        });
-        
-        // 联系方式切换功能
-        function toggleContacts() {
-            const contactCards = document.querySelector('.contact-cards');
-            const toggleBtn = document.querySelector('.contact-toggle-btn');
-            
-            contactCards.classList.toggle('show');
-            toggleBtn.classList.toggle('active');
-        }
-        
-        // 添加复制功能
-        function copyText(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.textContent || element.innerText;
-            
-            navigator.clipboard.writeText(text.trim()).then(() => {
-                // 显示复制成功提示
-                const originalText = element.textContent;
-                element.textContent = '已复制!';
-                setTimeout(() => {
-                    element.textContent = originalText;
-                }, 1500);
-            });
-        }
-    
-
-            //回到顶部
-        
-        // 切换植物详情显示
-        function toggleDetails(button) {
-            const details = button.nextElementSibling;
-            details.style.display = details.style.display === 'block' ? 'none' : 'block';
-            
-            if (details.style.display === 'block') {
-                button.innerHTML = '<i class="fas fa-times-circle"></i> 收起详情';
-            } else {
-                button.innerHTML = '<i class="fas fa-info-circle"></i> 查看详情';
-            }
-        }
+        let isEnglish = localStorage.getItem('language') === 'en';
         // ======== 翻译字典配置 ======== //
         const translations = {
           // 导航和标题          
@@ -1972,69 +1828,140 @@
           " " :" ",
         
         };
+    // ===== 核心功能 ===== //
+    function toggleLanguage() {
+        isEnglish = !isEnglish;
+        localStorage.setItem('language', isEnglish ? 'en' : 'zh');
+        updateButtonText();
+        translatePage();
+    }
+
+    function updateButtonText() {
+        const btn = document.getElementById('languageToggle');
+        btn.innerHTML = isEnglish ? 
+            '<i class="fas fa-language"></i> 中文' : 
+            '<i class="fas fa-language"></i> EN';
+    }
+
+    function translatePage() {
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[key]) {
+                el.textContent = isEnglish ? translations[key] : key;
+            }
+        });
         
-        // ======== 以下代码无需修改 ======== //
+        // 特殊处理按钮文本
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            if (btn.innerHTML.includes('查看详情')) {
+                btn.innerHTML = isEnglish ? 
+                    btn.innerHTML.replace('查看详情', 'View Details') : 
+                    btn.innerHTML.replace('View Details', '查看详情');
+            } else if (btn.innerHTML.includes('收起详情')) {
+                btn.innerHTML = isEnglish ? 
+                    btn.innerHTML.replace('收起详情', 'Hide Details') : 
+                    btn.innerHTML.replace('Hide Details', '收起详情');
+            }
+        });
+    }
+
+    function filterPlants(category) {
+        const productCards = document.querySelectorAll('.product-card');
+        let hasResult = false;
+
+        productCards.forEach(card => {
+            if (card.hasAttribute('data-category')) {
+                const categories = card.dataset.category.split(' ');
+                if (category === 'all' || categories.includes(category)) {
+                    card.style.display = 'block';
+                    hasResult = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            } else {
+                card.style.display = category === 'all' ? 'block' : 'none';
+                if (category === 'all') hasResult = true;
+            }
+        });
+
+        document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
+    }
+
+    function toggleDetails(button) {
+        const details = button.nextElementSibling;
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
         
-        let isEnglish = localStorage.getItem('language') === 'en';
-        
-        function toggleLanguage() {
-            isEnglish = !isEnglish;
-            localStorage.setItem('language', isEnglish ? 'en' : 'zh');
-            updateButtonText();
+        if (details.style.display === 'block') {
+            button.innerHTML = isEnglish ? 
+                '<i class="fas fa-times-circle"></i> Hide Details' : 
+                '<i class="fas fa-times-circle"></i> 收起详情';
+        } else {
+            button.innerHTML = isEnglish ? 
+                '<i class="fas fa-info-circle"></i> View Details' : 
+                '<i class="fas fa-info-circle"></i> 查看详情';
+        }
+    }
+
+    function handleScroll() {
+        const show = window.pageYOffset > 300;
+        document.getElementById('backToTop').classList.toggle('visible', show);
+        document.getElementById('backToHome').classList.toggle('visible', show);
+        document.getElementById('languageToggle').classList.toggle('visible', show);
+    }
+
+    // ===== 初始化 ===== //
+    document.addEventListener('DOMContentLoaded', function() {
+        // 初始化语言系统
+        if (localStorage.getItem('language') === 'en') {
             translatePage();
         }
-        
-        function updateButtonText() {
-            const btn = document.getElementById('languageToggle');
-            btn.innerHTML = isEnglish ? 
-                '<i class="fas fa-language"></i> 中文' : 
-                '<i class="fas fa-language"></i> EN';
-        }
-        
-        function translatePage() {
-            const walker = document.createTreeWalker(
-                document.body,
-                NodeFilter.SHOW_TEXT,
-                null,
-                false
-            );
+        updateButtonText();
+
+        // 分类按钮事件
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterPlants(this.dataset.category);
+            });
+        });
+
+        // 搜索功能
+        document.getElementById('search-input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            let hasResults = false;
             
-            let node;
-            while (node = walker.nextNode()) {
-                if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
-                    const text = node.nodeValue.trim();
-                    if (isEnglish) {
-                        if (translations[text]) {
-                            node.nodeValue = translations[text];
-                        }
-                    } else {
-                        for (const [chinese, english] of Object.entries(translations)) {
-                            if (text === english) {
-                                node.nodeValue = chinese;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            
-            // 特殊处理详情按钮
-            document.querySelectorAll('.action-btn').forEach(btn => {
-                if (isEnglish) {
-                    if (btn.innerHTML.includes('查看详情')) {
-                        btn.innerHTML = btn.innerHTML.replace('查看详情', 'View Details');
-                    } else if (btn.innerHTML.includes('收起详情')) {
-                        btn.innerHTML = btn.innerHTML.replace('收起详情', 'Hide Details');
-                    }
+            productCards.forEach(card => {
+                const title = card.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    hasResults = true;
                 } else {
-                    if (btn.innerHTML.includes('View Details')) {
-                        btn.innerHTML = btn.innerHTML.replace('View Details', '查看详情');
-                    } else if (btn.innerHTML.includes('Hide Details')) {
-                        btn.innerHTML = btn.innerHTML.replace('Hide Details', '收起详情');
-                    }
+                    card.style.display = 'none';
                 }
             });
-        }
+            
+            document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
+        });
+
+        // 按钮事件绑定
+        document.getElementById('backToHome').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+        
+        // 滚动监听
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+    });
+        
 
         </script>
         
