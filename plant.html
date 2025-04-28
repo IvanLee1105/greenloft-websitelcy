@@ -590,36 +590,36 @@
             background-color: #1e4b66;
         }
         
-        .languageToggle {
-          position: fixed;
-          bottom: 80px; /* 放在返回顶部按钮上方60px处 */
-          right: 20px;
-          background-color: var(--primary-color);
-          color: white;
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-          z-index: 1000;
-          opacity: 0;
-          transition: opacity 0.3s, transform 0.3s;
-          border: none;
-          font-size: 1.2rem;
+        #languageToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #2A5C82 0%, #4a8c5e 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            font-size: 1.3rem;
         }
         
         #languageToggle.visible {
-          opacity: 1;
+            opacity: 1;
         }
         
         #languageToggle:hover {
-          background-color: #1e4b66;
-          transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #1e4b66 0%, #3a7a4e 100%);
         }
-        
         /* 调整返回主页按钮位置 */
         #backToHome {
           bottom: 140px; /* 放在语言切换按钮上方 */
