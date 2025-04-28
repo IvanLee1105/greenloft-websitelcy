@@ -1829,6 +1829,28 @@
         
         };
     // ===== 核心功能 ===== //
+    function fixButtonStyles() {
+        const style = document.createElement('style');
+        style.innerHTML = `
+            #languageToggle {
+                z-index: 9999 !important;
+                pointer-events: auto !important;
+                bottom: 20px !important;
+                right: 20px !important;
+            }
+            .back-to-home {
+                z-index: 9998 !important;
+                bottom: 140px !important;
+            }
+            .back-to-top {
+                z-index: 9998 !important;
+                bottom: 80px !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // 修复2：增强翻译功能
     function toggleLanguage() {
         isEnglish = !isEnglish;
         localStorage.setItem('language', isEnglish ? 'en' : 'zh');
@@ -1838,21 +1860,41 @@
 
     function updateButtonText() {
         const btn = document.getElementById('languageToggle');
-        btn.innerHTML = isEnglish ? 
-            '<i class="fas fa-language"></i> 中文' : 
-            '<i class="fas fa-language"></i> EN';
+        if (btn) {
+            btn.innerHTML = isEnglish ? 
+                '<i class="fas fa-language"></i> 中文' : 
+                '<i class="fas fa-language"></i> EN';
+        }
     }
 
     function translatePage() {
-        const elements = document.querySelectorAll('[data-translate]');
-        elements.forEach(el => {
-            const key = el.getAttribute('data-translate');
-            if (translations[key]) {
-                el.textContent = isEnglish ? translations[key] : key;
-            }
-        });
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+        );
         
-        // 特殊处理按钮文本
+        let node;
+        while (node = walker.nextNode()) {
+            if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
+                const text = node.nodeValue.trim();
+                if (isEnglish) {
+                    if (translations[text]) {
+                        node.nodeValue = translations[text];
+                    }
+                } else {
+                    for (const [chinese, english] of Object.entries(translations)) {
+                        if (text === english) {
+                            node.nodeValue = chinese;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 更新详情按钮文本
         document.querySelectorAll('.action-btn').forEach(btn => {
             if (btn.innerHTML.includes('查看详情')) {
                 btn.innerHTML = isEnglish ? 
@@ -1866,6 +1908,32 @@
         });
     }
 
+    // 修复3：确保事件绑定可靠
+    function bindEvents() {
+        const langBtn = document.getElementById('languageToggle');
+        if (langBtn) {
+            langBtn.onclick = null; // 清除旧事件
+            langBtn.addEventListener('click', toggleLanguage);
+        }
+        
+        document.getElementById('backToHome').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+        
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // 滚动处理
+    function handleScroll() {
+        const show = window.pageYOffset > 300;
+        document.getElementById('backToTop').classList.toggle('visible', show);
+        document.getElementById('backToHome').classList.toggle('visible', show);
+        document.getElementById('languageToggle').classList.toggle('visible', show);
+    }
+
+    // 筛选功能
     function filterPlants(category) {
         const productCards = document.querySelectorAll('.product-card');
         let hasResult = false;
@@ -1888,6 +1956,7 @@
         document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
     }
 
+    // 详情切换
     function toggleDetails(button) {
         const details = button.nextElementSibling;
         details.style.display = details.style.display === 'block' ? 'none' : 'block';
@@ -1903,21 +1972,17 @@
         }
     }
 
-    function handleScroll() {
-        const show = window.pageYOffset > 300;
-        document.getElementById('backToTop').classList.toggle('visible', show);
-        document.getElementById('backToHome').classList.toggle('visible', show);
-        document.getElementById('languageToggle').classList.toggle('visible', show);
-    }
-
-    // ===== 初始化 ===== //
+    // 初始化
     document.addEventListener('DOMContentLoaded', function() {
-        // 初始化语言系统
+        fixButtonStyles(); // 应用样式修复
+        bindEvents();     // 绑定事件
+        
+        // 初始化语言状态
         if (localStorage.getItem('language') === 'en') {
             translatePage();
         }
         updateButtonText();
-
+        
         // 分类按钮事件
         document.querySelectorAll('.category-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -1946,20 +2011,9 @@
             document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
         });
 
-        // 按钮事件绑定
-        document.getElementById('backToHome').addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
-        
-        document.getElementById('backToTop').addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
-        
         // 滚动监听
         window.addEventListener('scroll', handleScroll);
-        handleScroll();
+        handleScroll(); // 初始化检查
     });
         
 
