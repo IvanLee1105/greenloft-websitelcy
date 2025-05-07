@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>植物~PLANTS</title>
+    <!-- 引入 Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -17,6 +19,7 @@
             color: #2A5C82;
             margin-bottom: 20px;
         }
+
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -45,17 +48,16 @@
             background-color: #1e4b66;
             transform: translateY(-3px);
         }
-            
-            
-        
+
         .back-button:hover {
             background-color: #1e4b66;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         /* 按钮样式 */
         .button-container {
             display: flex;
@@ -119,8 +121,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             padding: 15px;
-            width: 100%; /* 默认100%，让媒体查询控制 */
-            max-width: 250px; /* 最大宽度250px */
+            width: 100%;
+            max-width: 250px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -128,32 +130,6 @@
         .product-card:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-        .swiper{
-            width:100%;
-            border-radius:10px;
-            overflow:hidden;
-        }
-        swiper-slide img{
-            width:100%;
-            border-radius:10px;
-        }
-        .swiper-button-next,.swiper-button-prev{
-            color:#2A5C82 !important;
-        }
-        .swiper-pagination{
-            position: relative;
-            margin-top:10px;
-        }
-        .product-info{
-            text-align:left;
-            padding:15px;
-            font-size:14px;
-            line-height:1.6;
-            color:#555;
-        }
-        .product-info p {
-            margin-bottom:8px;
         }
 
         .product-card img {
@@ -195,7 +171,7 @@
         /* 响应式设计 */
         @media (max-width: 768px) {
             .product-container {
-                flex-direction: column; /* 小屏幕单列 */
+                flex-direction: column;
                 align-items: center;
             }
         }
@@ -203,7 +179,7 @@
 </head>
 <body>
     <button id="backToTop" class="back-to-top" aria-label="返回顶部">
-        <i class="fas fa-aarow-up"></i>
+        <i class="fas fa-arrow-up"></i> <!-- 修正图标拼写 -->
     </button>
     <h1>PLANTS~植物</h1>
     <div class="product-container">
@@ -233,8 +209,10 @@
             <h2>6</h2>
             <p></p>
         </div>
+    </div> <!-- 补充分类容器闭合标签 -->
 
     <a href="index.html" class="back-button">返回首页</a>
+
     <script>
         window.addEventListener('scroll', function() {
             const backToTop = document.getElementById('backToTop');
@@ -251,7 +229,8 @@
                 behavior: 'smooth'
             });
         });
-                // 按钮涟漪效果
+
+        // 按钮涟漪效果
         document.querySelectorAll('.custom-button').forEach(button => {
             button.addEventListener('click', function(e) {
                 let rect = button.getBoundingClientRect();
@@ -266,6 +245,6 @@
                 setTimeout(() => ripple.remove(), 500);
             });
         });
-        </script>
+    </script>
 </body>
 </html>
