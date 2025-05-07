@@ -20,11 +20,11 @@
             margin-bottom: 20px;
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
+        .back-to-top, .back-to-top {
+            position: fixed; 
+            bottom: 80px;
             right: 20px;
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color);
             color: white;
             width: 50px;
             height: 50px;
@@ -181,6 +181,11 @@
     <button id="backToTop" class="back-to-top" aria-label="返回顶部">
         <i class="fas fa-arrow-up"></i> <!-- 修正图标拼写 -->
     </button>
+    <!-- 返回首页按钮 -->
+    <button id="backToHome" class="back-button-circle" style="bottom: 80px;" aria-label="返回首页">
+      <i class="fas fa-home"></i>
+    </button>
+
     <h1>PLANTS~植物</h1>
     <div class="product-container">
         <div class="product-card">
@@ -222,6 +227,10 @@
                 backToTop.classList.remove('visible');
             }
         });
+        // 返回首页功能
+        document.getElementById('backToHome').addEventListener('click', () => {
+        window.location.href = 'index.html'; // 你的首页路径
+      });
 
         document.getElementById('backToTop').addEventListener('click', function() {
             window.scrollTo({
