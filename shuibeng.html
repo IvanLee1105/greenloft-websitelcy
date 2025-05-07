@@ -17,6 +17,94 @@
             color: #2A5C82;
             margin-bottom: 20px;
         }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: #1e4b66;
+            transform: translateY(-3px);
+        }
+            
+            
+        
+        .back-button:hover {
+            background-color: #1e4b66;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* 按钮样式 */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        .custom-button {
+            background: linear-gradient(135deg, #2A5C82, #47A8E5);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 220px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .custom-button:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .custom-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #1E4B66, #3598DB);
+        }
 
         .product-container {
             display: flex;
@@ -114,6 +202,9 @@
     </style>
 </head>
 <body>
+    <button id="backToTop" class="back-to-top" aria-label="返回顶部">
+        <i class="fas fa-aarow-up"></i>
+    </button>
     <h1>PLANTS~植物</h1>
     <div class="product-container">
         <div class="product-card">
@@ -144,5 +235,37 @@
         </div>
 
     <a href="index.html" class="back-button">返回首页</a>
+    <script>
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+                // 按钮涟漪效果
+        document.querySelectorAll('.custom-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let rect = button.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+                
+                let ripple = document.createElement('div');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                button.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 500);
+            });
+        });
+        </script>
 </body>
 </html>
