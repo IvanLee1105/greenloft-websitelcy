@@ -77,6 +77,69 @@
         .back-button:hover {
             background-color: #1e4b66;
         }
+        .back-to-home{
+            position: fixed; /* 修正拼写错误：fixied → fixed */
+            bottom: 80px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: none;
+        }
+        .back-to-home.visible{
+            opacity:1;
+        }
+        .back-to-home:hover{
+            background-color: #3a7a4e;
+            transform: translateY(-3px);
+        }
+        .search-container {
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        
+        /* 操作按钮 */
+        .action-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .action-btn:hover {
+            background-color: #3a7a4e;
+        }
+        .back-button {
+            display: inline-block;
+            margin: 30px auto;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #2A5C82;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #1e4b66;
+        }
 
         /* 响应式设计 */
         @media (max-width: 768px) {
@@ -88,6 +151,12 @@
     </style>
 </head>
 <body>
+    <button id="backToHome" class="back-to-home" aria-label="返回主页">
+        <i class="fas fa-home"></i>
+    </button>
+    <button id="backToTop" class="back-to-top" aria-label="返回顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     <h1>天神屋商品</h1>
     <div class="product-container">
         <div class="product-card">
@@ -129,6 +198,8 @@
             <img src="https://pub-574ce78c7638439caaad6d0b37094a35.r2.dev/%E7%BB%BF.png" alt="green">
             <h2>其他颜色(预定)</h2>
     </div>
-    <a href="index.html" class="back-button">返回首页</a>
+    <div style="text-align:center;">
+        <a href="index.html" class="back-button">返回首页</a>
+    </div>
 </body>
 </html>
