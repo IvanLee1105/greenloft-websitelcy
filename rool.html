@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>垫脚石板~STEPPING_STONE</title>
+    <!-- 引入Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* 基础样式 */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: #f0f0f0;
             color: #333;
             text-align: center;
             padding: 20px;
+            margin: 0;
         }
 
         h1 {
@@ -19,6 +24,7 @@
             margin-bottom: 20px;
         }
 
+        /* 搜索框样式 */
         .search-container {
             margin: 20px auto;
             max-width: 500px;
@@ -39,6 +45,7 @@
             box-shadow: 0 0 8px rgba(42, 92, 130, 0.3);
         }
 
+        /* 产品容器样式 */
         .product-container {
             display: flex;
             justify-content: center;
@@ -47,6 +54,7 @@
             margin-top: 20px;
         }
 
+        /* 产品卡片样式 */
         .product-card {
             background: white;
             border-radius: 10px;
@@ -63,6 +71,7 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
         
+        /* Swiper轮播图样式 */
         .swiper {
             width: 100%;
             border-radius: 10px;
@@ -84,6 +93,7 @@
             margin-top: 10px;
         }
         
+        /* 产品信息样式 */
         .product-info {
             text-align: left;
             padding: 15px;
@@ -114,6 +124,7 @@
             color: #666;
         }
 
+        /* 按钮样式 */
         .back-button {
             display: inline-block;
             margin-top: 30px;
@@ -132,12 +143,15 @@
             background-color: #1e4b66;
         }
 
+        /* 无结果提示样式 */
         .no-results {
             color: #666;
             font-size: 18px;
             margin: 30px 0;
             display: none;
         }
+        
+        /* 返回按钮样式 */
         .back-to-home, .back-to-top {
             position: fixed;
             bottom: 80px;
@@ -162,21 +176,29 @@
             transform: translateY(-3px);
         }
 
+        /* 响应式设计 */
         @media (max-width: 768px) {
             .product-container {
                 flex-direction: column;
                 align-items: center;
             }
+            
+            .swiper-slide img {
+                height: 150px; /* 移动端调整高度 */
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 返回主页按钮 -->
     <button id="backToHome" class="back-to-home" aria-label="返回主页">
         <i class="fas fa-home"></i>
     </button>
+    <!-- 返回顶部按钮 -->
     <button id="backToTop" class="back-to-top" aria-label="返回顶部" style="bottom: 20px;">
         <i class="fas fa-arrow-up"></i>
     </button>
+    
     <h1>STEPPING_STONE~垫脚石板</h1>
     
     <!-- 搜索框 -->
@@ -184,14 +206,17 @@
         <input type="text" id="search-input" placeholder="搜索植物名称...">
     </div>
     
+    <!-- 无结果提示 -->
     <div id="no-results" class="no-results">没有找到匹配的垫脚石板</div>
     
+    <!-- 产品容器 -->
     <div class="product-container" id="product-container">
         <!-- 第一个产品卡片 -->
         <div class="product-card">
-            <div class="swiper mySwiper2">
+            <div class="swiper mySwiper1">
                 <div class="swiper-wrapper">
-                    <div class="swiper-wrapper">
+                    <!-- 修正了这里的结构，使用swiper-slide而不是swiper-wrapper嵌套 -->
+                    <div class="swiper-slide">
                         <img src="https://pub-574ce78c7638439caaad6d0b37094a35.r2.dev/S4.png" alt="99">
                     </div>
                     <div class="swiper-slide">
@@ -200,20 +225,23 @@
                     <div class="swiper-slide">
                         <img src="https://pub-574ce78c7638439caaad6d0b37094a35.r2.dev/S4.jpg" alt="stepping stone">
                     </div>
-                    <div class="swiper-wrapper">
+                    <div class="swiper-slide">
                         <img src="https://pub-574ce78c7638439caaad6d0b37094a35.r2.dev/S3.jpg" alt="ss">
                     </div>
                 </div>
+                <!-- 导航按钮 -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
+                <!-- 分页器 -->
                 <div class="swiper-pagination"></div>
             </div>
-            <h2>STEPPING_STONE</h2>
+            <h2>STEPPING_STONE 系列1</h2>
+            <p>高品质垫脚石板，适用于各种场景</p>
         </div>
         
         <!-- 第二个产品卡片 -->
         <div class="product-card">
-            <div class="swiper mySwiper1">
+            <div class="swiper mySwiper2">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="https://pub-574ce78c7638439caaad6d0b37094a35.r2.dev/S6.png" alt="4">
@@ -228,79 +256,88 @@
                         <img src="https://pub-574ce78c7638439caaad6d0b37094a35.r2.dev/S2.jpg" alt="3">
                     </div>
                 </div>
+                <!-- 导航按钮 -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
+                <!-- 分页器 -->
                 <div class="swiper-pagination"></div>
             </div>
-            <h2>STEPPING_STONE</h2>
-            <p></p>
+            <h2>STEPPING_STONE 系列2</h2>
+            <p>防滑耐用，美观大方</p>
         </div>
     </div>
     
+    <!-- 返回首页按钮 -->
     <a href="index.html" class="back-button">返回首页</a>
     
+    <!-- 引入Swiper JS库 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        // 返回顶部按钮功能
-        document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 返回顶部按钮功能
+            document.getElementById('backToTop').addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
-        // 返回主页按钮功能
-        document.getElementById('backToHome').addEventListener('click', () => {
-            window.location.href = 'index.html';
-        });
-        // 初始化第一个轮播图
-        var swiper1 = new Swiper(".mySwiper1", {
-            loop: true,
-            navigation: {
-                nextEl: ".mySwiper1 .swiper-button-next",
-                prevEl: ".mySwiper1 .swiper-button-prev"
-            },
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: ".mySwiper1 .swiper-pagination",
-                clickable: true,
-            },
-        });
-        
-        // 初始化第二个轮播图
-        var swiper2 = new Swiper(".mySwiper2", {
-            loop: true,
-            navigation: {
-                nextEl: ".mySwiper2 .swiper-button-next",
-                prevEl: ".mySwiper2 .swiper-button-prev"
-            },
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: ".mySwiper2 .swiper-pagination",  // 修正了这里的选择器
-                clickable: true,
-            },
-        });
-
-        // 搜索功能实现
-        document.getElementById('search-input').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const productCards = document.querySelectorAll('.product-card');
-            let hasResults = false;
-            
-            productCards.forEach(card => {
-                const title = card.querySelector('h2').textContent.toLowerCase();
-                if (title.includes(searchTerm)) {
-                    card.style.display = 'block';
-                    hasResults = true;
-                } else {
-                    card.style.display = 'none';
-                }
+            // 返回主页按钮功能
+            document.getElementById('backToHome').addEventListener('click', () => {
+                window.location.href = 'index.html';
             });
             
-            document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
+            // 初始化第一个轮播图
+            var swiper1 = new Swiper(".mySwiper1", {
+                loop: true, // 循环模式
+                navigation: {
+                    nextEl: ".mySwiper1 .swiper-button-next",
+                    prevEl: ".mySwiper1 .swiper-button-prev"
+                },
+                autoplay: {
+                    delay: 2500, // 自动播放延迟
+                    disableOnInteraction: false // 用户操作后继续自动播放
+                },
+                pagination: {
+                    el: ".mySwiper1 .swiper-pagination",
+                    clickable: true, // 分页器可点击
+                },
+            });
+            
+            // 初始化第二个轮播图
+            var swiper2 = new Swiper(".mySwiper2", {
+                loop: true, // 循环模式
+                navigation: {
+                    nextEl: ".mySwiper2 .swiper-button-next",
+                    prevEl: ".mySwiper2 .swiper-button-prev"
+                },
+                autoplay: {
+                    delay: 2500, // 自动播放延迟
+                    disableOnInteraction: false // 用户操作后继续自动播放
+                },
+                pagination: {
+                    el: ".mySwiper2 .swiper-pagination",
+                    clickable: true, // 分页器可点击
+                },
+            });
+
+            // 搜索功能实现
+            document.getElementById('search-input').addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const productCards = document.querySelectorAll('.product-card');
+                let hasResults = false;
+                
+                productCards.forEach(card => {
+                    const title = card.querySelector('h2').textContent.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        hasResults = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // 显示或隐藏无结果提示
+                document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
+            });
         });
     </script>
 </body>
