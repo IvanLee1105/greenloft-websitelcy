@@ -19,7 +19,7 @@
         *{
             margin:0;
             padding:0;
-            box-sizing: border-box; /* 修正拼写错误：borden-box → border-box */
+            box-sizing: border-box;
         }
         
         body {
@@ -77,75 +77,18 @@
         #languageToggle {
             bottom: 20px;
             font-size: 1.2rem;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
-            border: none;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-        }
-
-        .back-to-top:hover {
-            background-color: #1e4b66;
-            transform: translateY(-3px);
-        }
-            
-            
-        
-        .back-button:hover {
-            background-color: #1e4b66;
-        }
-        
-        #languageToggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
             width: 60px;
             height: 60px;
             border-radius: 30px;
             background: linear-gradient(135deg, #2A5C82 0%, #4a8c5e 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 9999;
-            opacity: 0;
-            transition: all 0.3s ease;
             border: 2px solid white;
             font-size: 1.3rem;
-        }
-        
-        #languageToggle.visible {
-            opacity: 1;
         }
         
         #languageToggle:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
             background: linear-gradient(135deg, #1e4b66 0%, #3a7a4e 100%);
-        }
-        /* 调整返回主页按钮位置 */
-        #backToHome {
-          bottom: 140px; /* 放在语言切换按钮上方 */
         }
         
         @media (max-width: 768px) {
@@ -169,23 +112,6 @@
             max-width: 500px;
         }
         
-        /* 操作按钮 */
-        .action-btn {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-        
-        .action-btn:hover {
-            background-color: #3a7a4e;
-        }
-
         #search-input {
             width: 100%;
             padding: 12px 20px;
@@ -473,9 +399,6 @@
             color: white;
         }
 
-        /* 新增的返回顶部按钮样式 */
-        
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -496,28 +419,18 @@
 </head>
 <body>
     <button id="languageToggle" class="visible" aria-label="切换语言/Toggle Language">
-        <i class="fas fa-langage">
-        </i>
+        <i class="fas fa-language"></i>
     </button>
     <button id="backToHome" class="back-to-home" aria-label="返回主页">
-        <i class="fas fa-home"></i> <!-- 修正拼写错误：calss → class -->
+        <i class="fas fa-home"></i>
     </button>
     <button id="backToTop" class="back-to-top" aria-label="返回顶部">
         <i class="fas fa-arrow-up"></i>
     </button>
     
-    <!-- 在<h1>标签下方添加智能语言切换器 -->
-    <div class="language-switcher">
-        <select id="languageSelector" class="action-btn">
-            <option value="auto">自动</option>
-            <option value="zh">中文</option>
-            <option value="en">English</option>
-        </select>
-    </div>
-    
     <h1>泥土~SOIL</h1>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="input ...">
+        <input type="text" id="search-input" placeholder="搜索泥土...">
     </div>
     <div id="no-results" class="no-results">没有匹配对象的泥土</div>
             
@@ -657,9 +570,9 @@
     </div>
 
     <div class="contact-toggle-section">
-        <button class="contact-toggle-btn" onclick="toggleContacts()">联系我们</button>
+        <button class="contact-toggle-btn" id="contactToggleBtn">联系我们</button>
         
-        <div class="contact-cards">
+        <div class="contact-cards" id="contactCards">
             <div class="contact-card">
                 <h3>STANLEY WONG 偉繽</h3>
                 <div class="contact-info">
@@ -709,7 +622,7 @@
     <section class="why-us">
         <div class="container">
             <h2 class="section-title">why choose GREEN LOFT LEGACY</h2>
-            <div class="features"> <!-- 修正拼写错误：calss → class -->
+            <div class="features">
                 <div class="feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-tree"></i>
@@ -737,7 +650,7 @@
                     <p>每一盆植物都经过细致包装，确保安全送达</p>
                 </div>
             </div>
-        </div> <!-- 添加缺失的闭合标签 -->
+        </div>
     </section>
                 
     <footer class="footer">
@@ -760,237 +673,192 @@
         </div>
     </footer>
     
-    <!-- 只保留一个Swiper JS引用 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
         // ===== 按钮功能模块 ===== //
-const FloatingButtons = (() => {
-    // 私有变量
-    let isEnglish = false;
-    
-    // 初始化函数
-    function init() {
-        loadLanguagePreference();
-        setupEventListeners();
-        updateButtonVisibility();
-    }
-    
-    // 加载语言偏好
-    function loadLanguagePreference() {
-        isEnglish = localStorage.getItem('language') === 'en';
-        updateButtonText();
-    }
-    
-    // 更新按钮文本
-    function updateButtonText() {
-        const btn = document.getElementById('languageToggle');
-        if (btn) {
-            btn.innerHTML = isEnglish ? 
-                '<i class="fas fa-language"></i> 中文' : 
-                '<i class="fas fa-language"></i> EN';
-        }
-    }
-    
-    // 设置事件监听
-    function setupEventListeners() {
-        // 语言切换
-        document.getElementById('languageToggle')?.addEventListener('click', toggleLanguage);
-        
-        // 返回主页
-        document.getElementById('backToHome')?.addEventListener('click', () => {
-            window.location.href = 'index.html';
-        });
-        
-        // 返回顶部
-        document.getElementById('backToTop')?.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // 滚动监听
-        window.addEventListener('scroll', updateButtonVisibility);
-    }
-    
-    // 切换语言
-    function toggleLanguage() {
-        isEnglish = !isEnglish;
-        localStorage.setItem('language', isEnglish ? 'en' : 'zh');
-        updateButtonText();
-        // 这里可以触发页面翻译事件
-        document.dispatchEvent(new Event('languageChanged'));
-    }
-    
-    // 更新按钮可见性
-    function updateButtonVisibility() {
-        const show = window.pageYOffset > 300;
-        document.getElementById('backToTop')?.classList.toggle('visible', show);
-        document.getElementById('backToHome')?.classList.toggle('visible', show);
-        document.getElementById('languageToggle')?.classList.toggle('visible', true);
-    }
-    
-    // 公开接口
-    return {
-        init: init,
-        getCurrentLanguage: () => isEnglish ? 'en' : 'zh'
-    };
-})();
-
-// 初始化
-document.addEventListener('DOMContentLoaded', FloatingButtons.init);
-        // 初始化所有轮播图
-        document.addEventListener('DOMContentLoaded', function() {
-            // 为每个轮播创建独立的实例
-            const swipers = [
-                { el: '.mySwiper', next: '.mySwiper .swiper-button-next', prev: '.mySwiper .swiper-button-prev', pagination: '.mySwiper .swiper-pagination' },
-                { el: '.mySwiper2', next: '.mySwiper2 .swiper-button-next', prev: '.mySwiper2 .swiper-button-prev', pagination: '.mySwiper2 .swiper-pagination' },
-                { el: '.mySwiper3', next: '.mySwiper3 .swiper-button-next', prev: '.mySwiper3 .swiper-button-prev', pagination: '.mySwiper3 .swiper-pagination' },
-                { el: '.mySwiper4', next: '.mySwiper4 .swiper-button-next', prev: '.mySwiper4 .swiper-button-prev', pagination: '.mySwiper4 .swiper-pagination' },
-                { el: '.mySwiper5', next: '.mySwiper5 .swiper-button-next', prev: '.mySwiper5 .swiper-button-prev', pagination: '.mySwiper5 .swiper-pagination' }
-            ];
+        const FloatingButtons = (() => {
+            // 私有变量
+            let isEnglish = false;
             
-            swipers.forEach(config => {
-                new Swiper(config.el, {
-                    loop: true,
-                    navigation: {
-                        nextEl: config.next,
-                        prevEl: config.prev
+            // 初始化函数
+            function init() {
+                loadLanguagePreference();
+                setupEventListeners();
+                updateButtonVisibility();
+            }
+            
+            // 加载语言偏好
+            function loadLanguagePreference() {
+                isEnglish = localStorage.getItem('language') === 'en';
+                updateButtonText();
+            }
+            
+            // 更新按钮文本
+            function updateButtonText() {
+                const btn = document.getElementById('languageToggle');
+                if (btn) {
+                    btn.innerHTML = isEnglish ? 
+                        '<i class="fas fa-language"></i> 中文' : 
+                        '<i class="fas fa-language"></i> EN';
+                }
+            }
+            
+            // 设置事件监听
+            function setupEventListeners() {
+                // 语言切换
+                document.getElementById('languageToggle')?.addEventListener('click', toggleLanguage);
+                
+                // 返回主页
+                document.getElementById('backToHome')?.addEventListener('click', () => {
+                    window.location.href = 'index.html';
+                });
+                
+                // 返回顶部
+                document.getElementById('backToTop')?.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                
+                // 滚动监听
+                window.addEventListener('scroll', updateButtonVisibility);
+            }
+            
+            // 切换语言
+            function toggleLanguage() {
+                isEnglish = !isEnglish;
+                localStorage.setItem('language', isEnglish ? 'en' : 'zh');
+                updateButtonText();
+                applyLanguage(isEnglish ? 'en' : 'zh');
+            }
+            
+            // 更新按钮可见性
+            function updateButtonVisibility() {
+                const show = window.pageYOffset > 300;
+                document.getElementById('backToTop')?.classList.toggle('visible', show);
+                document.getElementById('backToHome')?.classList.toggle('visible', show);
+                document.getElementById('languageToggle')?.classList.toggle('visible', true);
+            }
+            
+            // 应用语言
+            function applyLanguage(lang) {
+                const translations = {
+                    zh: {
+                        searchPlaceholder: "搜索泥土...",
+                        noResults: "没有匹配的泥土",
+                        contactBtn: "联系我们"
                     },
-                    pagination: {
-                        el: config.pagination,
-                        clickable: true
-                    },
-                    autoplay: {
-                        delay: 2500,
-                        disableOnInteraction: false
+                    en: {
+                        searchPlaceholder: "Search soil...",
+                        noResults: "No matching soil found",
+                        contactBtn: "Contact Us"
                     }
-                });
-            });
-
-            // 返回顶部按钮逻辑
-            const backToTop = document.getElementById('backToTop');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
-
-            backToTop.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // 返回主页按钮逻辑
-            const backToHome = document.getElementById('backToHome');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToHome.classList.add('visible');
-                } else {
-                    backToHome.classList.remove('visible');
-                }
-            });
-
-            backToHome.addEventListener('click', function() {
-                window.location.href = 'index.html';
-            });
-
-            // 搜索功能
-            document.getElementById('search-input').addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const productCards = document.querySelectorAll('.product-card');
-                let hasResults = false;
+                };
                 
-                productCards.forEach(card => {
-                    const title = card.querySelector('h2').textContent.toLowerCase();
-                    if (title.includes(searchTerm)) {
-                        card.style.display = 'block';
-                        hasResults = true;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
-            });
-
-            // 联系方式切换
-            window.toggleContacts = function() {
-                const contactCards = document.querySelector('.contact-cards');
-                const btn = document.querySelector('.contact-toggle-btn');
-                
-                contactCards.classList.toggle('show');
-                btn.classList.toggle('active');
-            };
-
-            // 复制文本功能
-            window.copyText = function(elementId) {
-                const element = document.getElementById(elementId);
-                const text = element.textContent || element.innerText;
-                
-                navigator.clipboard.writeText(text).then(() => {
-                    alert('已复制: ' + text);
-                }).catch(err => {
-                    console.error('复制失败: ', err);
-                });
-            };
-
-            // 语言切换功能
-            const translations = {
-                zh: {
-                    languageName: "中文",
-                    searchPlaceholder: "搜索泥土...",
-                    noResults: "没有匹配的泥土"
-                },
-                en: {
-                    languageName: "English",
-                    searchPlaceholder: "Search soil...",
-                    noResults: "No matching soil found"
-                }
-            };
-            
-            let currentLang = 'zh';
-            
-            function getBrowserLanguage() {
-                const lang = navigator.language || navigator.userLanguage;
-                return lang.startsWith('zh') ? 'zh' : 'en';
-            }
-            
-            function initLanguage() {
-                const savedLang = localStorage.getItem('userLanguage');
-                const browserLang = savedLang || getBrowserLanguage();
-                currentLang = browserLang;
-                applyLanguage();
-                document.getElementById('languageSelector').value = savedLang ? savedLang : 'auto';
-            }
-            
-            function changeLanguage(lang) {
-                if (lang === 'auto') {
-                    localStorage.removeItem('userLanguage');
-                    currentLang = getBrowserLanguage();
-                } else {
-                    localStorage.setItem('userLanguage', lang);
-                    currentLang = lang;
-                }
-                applyLanguage();
-            }
-            
-            function applyLanguage() {
                 // 更新搜索框占位符
-                document.getElementById('search-input').placeholder = translations[currentLang].searchPlaceholder;
+                document.getElementById('search-input').placeholder = translations[lang].searchPlaceholder;
                 // 更新无结果文本
-                document.getElementById('no-results').textContent = translations[currentLang].noResults;
-                // 这里可以添加更多需要翻译的元素
+                document.getElementById('no-results').textContent = translations[lang].noResults;
+                // 更新联系我们按钮
+                document.getElementById('contactToggleBtn').textContent = translations[lang].contactBtn;
             }
             
-            // 初始化语言
-            initLanguage();
+            // 公开接口
+            return {
+                init: init
+            };
+        })();
+
+        // ===== 页面功能模块 ===== //
+        const PageFunctions = (() => {
+            // 初始化函数
+            function init() {
+                initSwiper();
+                initSearch();
+                initContacts();
+            }
             
-            // 语言选择器事件
-            document.getElementById('languageSelector').addEventListener('change', function() {
-                changeLanguage(this.value);
+            // 初始化轮播
+            function initSwiper() {
+                const swipers = [
+                    { el: '.mySwiper', next: '.mySwiper .swiper-button-next', prev: '.mySwiper .swiper-button-prev', pagination: '.mySwiper .swiper-pagination' },
+                    { el: '.mySwiper2', next: '.mySwiper2 .swiper-button-next', prev: '.mySwiper2 .swiper-button-prev', pagination: '.mySwiper2 .swiper-pagination' },
+                    { el: '.mySwiper3', next: '.mySwiper3 .swiper-button-next', prev: '.mySwiper3 .swiper-button-prev', pagination: '.mySwiper3 .swiper-pagination' },
+                    { el: '.mySwiper4', next: '.mySwiper4 .swiper-button-next', prev: '.mySwiper4 .swiper-button-prev', pagination: '.mySwiper4 .swiper-pagination' },
+                    { el: '.mySwiper5', next: '.mySwiper5 .swiper-button-next', prev: '.mySwiper5 .swiper-button-prev', pagination: '.mySwiper5 .swiper-pagination' }
+                ];
+                
+                swipers.forEach(config => {
+                    new Swiper(config.el, {
+                        loop: true,
+                        navigation: {
+                            nextEl: config.next,
+                            prevEl: config.prev
+                        },
+                        pagination: {
+                            el: config.pagination,
+                            clickable: true
+                        },
+                        autoplay: {
+                            delay: 2500,
+                            disableOnInteraction: false
+                        }
+                    });
+                });
+            }
+            
+            // 初始化搜索功能
+            function initSearch() {
+                document.getElementById('search-input').addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const productCards = document.querySelectorAll('.product-card');
+                    let hasResults = false;
+                    
+                    productCards.forEach(card => {
+                        const title = card.querySelector('h2').textContent.toLowerCase();
+                        if (title.includes(searchTerm)) {
+                            card.style.display = 'block';
+                            hasResults = true;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
+                });
+            }
+            
+            // 初始化联系方式
+            function initContacts() {
+                const contactToggleBtn = document.getElementById('contactToggleBtn');
+                const contactCards = document.getElementById('contactCards');
+                
+                contactToggleBtn.addEventListener('click', () => {
+                    contactCards.classList.toggle('show');
+                    contactToggleBtn.classList.toggle('active');
+                });
+            }
+            
+            // 公开接口
+            return {
+                init: init
+            };
+        })();
+
+        // 全局函数
+        window.copyText = function(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已复制: ' + text);
+            }).catch(err => {
+                console.error('复制失败: ', err);
             });
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            FloatingButtons.init();
+            PageFunctions.init();
         });
     </script>
 </body>
