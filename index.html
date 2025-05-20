@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELCOME TO GREEN LOFT legacy - 欢迎光临绿萌阁</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- 添加Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 定义CSS变量 */
         :root {
             --primary-color: #2A5C82;
             --light-bg: rgba(255, 255, 255, 0.85);
             --border-radius: 10px;
         }
-         /* 专业开发服务按钮样式 */
+        
+        /* 专业网站开发服务按钮 */
         #devServiceBtn {
             position: fixed;
             bottom: 140px;
@@ -23,6 +22,7 @@
             color: white;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             padding: 12px 20px;
             border-radius: 30px;
@@ -34,6 +34,7 @@
             cursor: pointer;
             transition: all 0.3s;
             border: 2px solid rgba(255,255,255,0.2);
+            animation: pulse 2s infinite;
         }
         
         #devServiceBtn i {
@@ -42,19 +43,17 @@
         
         #devServiceBtn:hover {
             background: linear-gradient(135deg, #1E4B66, #3598DB);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 6px 20px rgba(42, 92, 130, 0.4);
+            animation: none;
         }
         
-        /* 移动端适配 */
-        @media (max-width: 768px) {
-            #devServiceBtn {
-                bottom: 120px;
-                padding: 10px 15px;
-                font-size: 14px;
-            }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-
+        
         /* 专业开发服务弹窗 */
         .dev-service-modal {
             display: none;
@@ -215,6 +214,7 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+        
         /* 标题样式 */
         .welcome-text, .contact-title {
             font-family: 'Playfair Display', serif;
@@ -222,7 +222,8 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
             margin-top: 20px;
         }
-        /* 新增的返回顶部按钮样式 */
+        
+        /* 返回顶部按钮 */
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -251,17 +252,7 @@
             background-color: #1e4b66;
             transform: translateY(-3px);
         }
-            
-            
         
-        .back-button:hover {
-            background-color: #1e4b66;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
         /* 公司图片样式 */
         .center-image {
             display: block;
@@ -444,8 +435,25 @@
                 margin: 10px;
             }
 
+            /* 移动端调整开发服务按钮 */
+            #devServiceBtn {
+                bottom: 120px;
+                padding: 15px;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+            
+            #devServiceBtn span {
+                display: none;
+            }
+            
+            #devServiceBtn i {
+                font-size: 24px;
+            }
+            
             /* 移动端调整弹窗位置 */
-            .contact-modal {
+            .dev-service-modal {
                 bottom: 50%;
                 right: 50%;
                 transform: translate(50%, 50%);
@@ -483,13 +491,17 @@
     </style>
 </head>
 <body>
-    <!-- 在body开始处添加返回顶部按钮 -->
-    <button id="contactMe" class="contact-button-circle" aria-label="联系我">
-        <i class="fas fa-envelope"></i>
+    <!-- 专业网站开发服务按钮 -->
+    <button id="devServiceBtn">
+        <i class="fas fa-laptop-code"></i>
+        <span>网站开发服务</span>
     </button>
+
+    <!-- 返回顶部按钮 -->
     <button id="backToTop" class="back-to-top" aria-label="返回顶部">
         <i class="fas fa-arrow-up"></i>
     </button>
+
     <h1 class="welcome-text">欢迎光临綠萌閣</h1>
     <h1 class="welcome-text">WELCOME TO GREEN LOFT legacy</h1>
 
@@ -508,7 +520,7 @@
             </p>
             
             <p><strong>地址(ADD):</strong>
-            <a id ="add"  href="https://www.google.com/maps/dir//Lot+1628+BATU+2+1+GREEN+LOFT+LEGACY+%E7%BB%BF%E8%90%8C%E9%96%A3,+4,+Jalan+Rasah,+SEREMBAN70300+Seremban,+Negeri+Sembilan/@3.0963,101.6732,10z/data=!4m8!4m7!1m0!1m5!1m1!1s0x31cde7dd00c0bb2d:0x6c4078a613f4f9e4!2m2!1d101.9349724!2d2.6926577?entry=ttu&g_ep=EgoyMDI1MDMxOS4yIKXMDSoASAFQAw%3D%3D" target="_blank">
+            <a id ="add"  href="https://www.google.com/maps/dir//Lot+1628+BATU+2+1+GREEN+LOFT+LEGACY+%E7%BB%BF%E8%90%8C%E9%96%A3,+4,+Jalan+Rasah,+SEREMBAN70300+Seremban,+Negeri+Sembilan/@3.0963,101.6732,10z/data=!4m8!4m7!1m0!1m5!1m1!1s0x31cde7dd00c0bb2d:0x6c4078a613f4f9e4!2m2!1d101.9349724!2d2.6926577?entry=ttu&g_ep=EgoyMDI1MDMxOS.2IKXMDSoASAFQAw%3D%3D" target="_blank">
               Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban, Negeri Sembilan</a>
             <span class="copy-icon" onclick="copyText('add')">copy</span>
             </p>
@@ -531,6 +543,7 @@
             <a href="https://www.facebook.com/profile.php?id=61572888980847" class="whatsapp-button">Facebook 联系</a>
         </div>
     </div>
+    
     <!-- 专业开发服务弹窗 -->
     <div id="devServiceModal" class="dev-service-modal">
         <h3>专业网站开发服务</h3>
@@ -629,25 +642,24 @@
         </div>
     </footer>
 
-
     <script>
-       // 联系按钮点击事件
-        document.getElementById('contactMe').addEventListener('click', () => {
-            const modal = document.getElementById('contactModal');
+        // 网站开发服务按钮功能
+        document.getElementById('devServiceBtn').addEventListener('click', () => {
+            const modal = document.getElementById('devServiceModal');
             modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-          });
-          
-          // 关闭按钮点击事件
-        document.getElementById('closeModal').addEventListener('click', () => {
-            document.getElementById('contactModal').style.display = 'none';
-          });
-
-          // 点击弹窗外部关闭
-          window.addEventListener('click', (e) => {
-              if (e.target === document.getElementById('contactModal')) {
-                  document.getElementById('contactModal').style.display = 'none';
-              }
-          });
+        });
+        
+        // 关闭按钮功能
+        document.getElementById('closeServiceModal').addEventListener('click', () => {
+            document.getElementById('devServiceModal').style.display = 'none';
+        });
+        
+        // 点击弹窗外部关闭
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('devServiceModal')) {
+                document.getElementById('devServiceModal').style.display = 'none';
+            }
+        });
 
         // 图片延迟加载
         window.addEventListener('DOMContentLoaded', () => {
@@ -668,7 +680,7 @@
             });
         });
         
-        // 修复后的返回顶部功能
+        // 返回顶部功能
         window.addEventListener('scroll', function() {
             const backToTop = document.getElementById('backToTop');
             if (window.pageYOffset > 300) {
