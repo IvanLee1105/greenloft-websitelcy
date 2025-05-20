@@ -14,7 +14,62 @@
             --light-bg: rgba(255, 255, 255, 0.85);
             --border-radius: 10px;
         }
+        .contact-button-circle {
+            position: fixed;
+            bottom: 140px;  /* 调整位置避免与其他按钮重叠 */
+            right: 20px;
+            background-color: #4CAF50;  /* 绿色表示联系 */
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            border: none;
+            transition: all 0.3s;
+          }
         
+          .contact-button-circle:hover {
+            background-color: #3e8e41;
+            transform: translateY(-3px);
+          }
+          
+          /* 联系信息弹窗样式 */
+          .contact-modal {
+            display: none;
+            position: fixed;
+            bottom: 200px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+            max-width: 250px;
+          }
+          
+          .contact-modal h3 {
+            margin-top: 0;
+            color: #2A5C82;
+          }
+          
+          .contact-modal p {
+            margin-bottom: 10px;
+          }
+          
+          .contact-modal a {
+            color: #2A5C82;
+            text-decoration: none;
+            font-weight: bold;
+          }
+          
+          .contact-modal a:hover {
+            text-decoration: underline;
+          }
         /* 全局样式 */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -357,6 +412,9 @@
 </head>
 <body>
     <!-- 在body开始处添加返回顶部按钮 -->
+    <button id="contactMe" class="contact-button-circle" aria-label="联系我">
+        <i class="fas fa-envelope"></i>
+    </button>
     <button id="backToTop" class="back-to-top" aria-label="返回顶部">
         <i class="fas fa-arrow-up"></i>
     </button>
@@ -400,6 +458,19 @@
             <a href="https://wa.me/60123610303" class="whatsapp-button">WhatsApp 联系</a>   
             <a href="https://www.facebook.com/profile.php?id=61572888980847" class="whatsapp-button">Facebook 联系</a>
         </div>
+    </div>
+    <div id="contactModal" class="contact-modal">
+        <h3>你好,我是这个网站的开发者!</h3>
+        <p>我是一名<strong>网站设计师 & 前段开发者</strong>,打造高性能,美观的网站.</p>
+        <p>如果你需要:</p>
+        <ul>
+            <li>✅ 响应式网站设计</li>
+            <li>✅ 前端开发（HTML/CSS/JS）</li>
+            <li>✅ 网站优化 & SEO</li>
+            <li>期待与你合照,免费询问</li>
+        </ul>
+        <p><i class="fas fa-envelope"></i>EMAIL:<a href="mailto:ivanleechenyong@gmail.com">ivanleechenyong@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i>PHONE:<a href="tel:+60182745201">+60 18-274 5201</a></p>
     </div>
 
     <div class="button-container">
@@ -465,6 +536,16 @@
 
 
     <script>
+       // 联系按钮点击事件
+        document.getElementById('contactMe').addEventListener('click', () => {
+            const modal = document.getElementById('contactModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+          });
+          
+          // 关闭按钮点击事件
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('contactModal').style.display = 'none';
+          });
         // 图片延迟加载
         window.addEventListener('DOMContentLoaded', () => {
             const images = document.querySelectorAll('.center-image');
