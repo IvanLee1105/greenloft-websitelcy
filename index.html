@@ -50,6 +50,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             z-index: 1001;
             max-width: 250px;
+            color: #333; /* 确保文字可见 */
           }
           
           .contact-modal h3 {
@@ -59,6 +60,7 @@
           
           .contact-modal p {
             margin-bottom: 10px;
+            color: #333; /* 确保文字可见 */
           }
           
           .contact-modal a {
@@ -70,6 +72,24 @@
           .contact-modal a:hover {
             text-decoration: underline;
           }
+
+          /* 新增关闭按钮样式 */
+          .contact-modal button {
+            background: #2A5C82;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+          }
+
+          .contact-modal button:hover {
+            background: #1e4b66;
+          }
+
         /* 全局样式 */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -379,6 +399,14 @@
                 padding: 15px;
                 margin: 10px;
             }
+
+            /* 移动端调整弹窗位置 */
+            .contact-modal {
+                bottom: 50%;
+                right: 50%;
+                transform: translate(50%, 50%);
+                max-width: 90%;
+            }
         }
 
         /* 背景图加载过渡 */
@@ -471,6 +499,7 @@
         </ul>
         <p><i class="fas fa-envelope"></i>EMAIL:<a href="mailto:ivanleechenyong@gmail.com">ivanleechenyong@gmail.com</a></p>
         <p><i class="fas fa-phone"></i>PHONE:<a href="tel:+60182745201">+60 18-274 5201</a></p>
+        <button id="closeModal">关闭</button>
     </div>
 
     <div class="button-container">
@@ -546,6 +575,14 @@
         document.getElementById('closeModal').addEventListener('click', () => {
             document.getElementById('contactModal').style.display = 'none';
           });
+
+          // 点击弹窗外部关闭
+          window.addEventListener('click', (e) => {
+              if (e.target === document.getElementById('contactModal')) {
+                  document.getElementById('contactModal').style.display = 'none';
+              }
+          });
+
         // 图片延迟加载
         window.addEventListener('DOMContentLoaded', () => {
             const images = document.querySelectorAll('.center-image');
