@@ -14,102 +14,125 @@
             --light-bg: rgba(255, 255, 255, 0.85);
             --border-radius: 10px;
         }
-        .contact-info-item {
-              display: flex;
-              align-items: center;
-              gap: 8px;
-              margin-bottom: 10px;
-              color: #333;
-            }
-            
-            .contact-info-item i {
-              width: 20px;
-              text-align: center;
-            }
-            
-            .contact-info-item a {
-              color: #2A5C82;
-              text-decoration: none;
-            }
-            
-            .contact-info-item a:hover {
-              text-decoration: underline;
-            }
-        .contact-button-circle {
+         /* 专业开发服务按钮样式 */
+        #devServiceBtn {
             position: fixed;
-            bottom: 140px;  /* 调整位置避免与其他按钮重叠 */
+            bottom: 140px;
             right: 20px;
-            background-color: #4CAF50;  /* 绿色表示联系 */
+            background: linear-gradient(135deg, #2A5C82, #47A8E5);
             color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(42, 92, 130, 0.3);
             z-index: 1000;
             border: none;
+            cursor: pointer;
             transition: all 0.3s;
-          }
+            border: 2px solid rgba(255,255,255,0.2);
+        }
         
-          .contact-button-circle:hover {
-            background-color: #3e8e41;
+        #devServiceBtn i {
+            font-size: 18px;
+        }
+        
+        #devServiceBtn:hover {
+            background: linear-gradient(135deg, #1E4B66, #3598DB);
             transform: translateY(-3px);
-          }
-          
-          /* 联系信息弹窗样式 */
-          .contact-modal {
+            box-shadow: 0 6px 20px rgba(42, 92, 130, 0.4);
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            #devServiceBtn {
+                bottom: 120px;
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* 专业开发服务弹窗 */
+        .dev-service-modal {
             display: none;
             position: fixed;
             bottom: 200px;
             right: 20px;
             background: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
             z-index: 1001;
-            max-width: 250px;
-            color: #333; /* 确保文字可见 */
-          }
-          
-          .contact-modal h3 {
+            max-width: 300px;
+            color: #333;
+            border: 1px solid #eee;
+        }
+        
+        .dev-service-modal h3 {
             margin-top: 0;
             color: #2A5C82;
-          }
-          
-          .contact-modal p {
-            margin-bottom: 10px;
-            color: #333; /* 确保文字可见 */
-          }
-          
-          .contact-modal a {
+            font-size: 1.3em;
+            border-bottom: 2px solid #f5f5f5;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .service-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .service-feature i {
+            color: #2A5C82;
+            font-size: 18px;
+            margin-top: 2px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        
+        .contact-method i {
+            color: #2A5C82;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .dev-service-modal a {
             color: #2A5C82;
             text-decoration: none;
-            font-weight: bold;
-          }
-          
-          .contact-modal a:hover {
+            font-weight: 600;
+        }
+        
+        .dev-service-modal a:hover {
             text-decoration: underline;
-          }
-
-          /* 新增关闭按钮样式 */
-          .contact-modal button {
+        }
+        
+        #closeServiceModal {
             background: #2A5C82;
             color: white;
             border: none;
-            padding: 8px 15px;
+            padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
-            display: block;
+            margin-top: 15px;
             width: 100%;
-          }
-
-          .contact-modal button:hover {
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        #closeServiceModal:hover {
             background: #1e4b66;
-          }
+        }
 
         /* 全局样式 */
         body {
@@ -508,25 +531,41 @@
             <a href="https://www.facebook.com/profile.php?id=61572888980847" class="whatsapp-button">Facebook 联系</a>
         </div>
     </div>
-    <div id="contactModal" class="contact-modal">
-        <h3>你好,我是这个网站的开发者!</h3>
-        <p>我是一名<strong>网站设计师 & 前段开发者</strong>,打造高性能,美观的网站.</p>
-        <p>如果你需要:</p>
-        <ul>
-            <li>✅ 响应式网站设计</li>
-            <li>✅ 前端开发（HTML/CSS/JS）</li>
-            <li>✅ 网站优化 & SEO</li>
-            <li>期待与你合照,免费询问</li>
-        </ul>
-        <div class="contact-info-item">
-              <i class="fas fa-envelope"></i>
-              <span>EMAIL: <a href="mailto:ivanleechenyong@gmail.com">ivanleechenyong@gmail.com</a></span>
-            </div>
-            <div class="contact-info-item">
-              <i class="fas fa-phone"></i>
-              <span>PHONE: <a href="tel:+60182745201">+60 18-274 5201</a></span>
-            </div>
-        <button id="closeModal">关闭</button>
+    <!-- 专业开发服务弹窗 -->
+    <div id="devServiceModal" class="dev-service-modal">
+        <h3>专业网站开发服务</h3>
+        
+        <div class="service-feature">
+            <i class="fas fa-check-circle"></i>
+            <div>定制化网站设计与开发</div>
+        </div>
+        
+        <div class="service-feature">
+            <i class="fas fa-check-circle"></i>
+            <div>响应式设计，适配所有设备</div>
+        </div>
+        
+        <div class="service-feature">
+            <i class="fas fa-check-circle"></i>
+            <div>SEO优化，提升搜索排名</div>
+        </div>
+        
+        <div class="contact-method">
+            <i class="fas fa-user-tie"></i>
+            <span>开发者: <strong>Ivan Lee</strong></span>
+        </div>
+        
+        <div class="contact-method">
+            <i class="fas fa-envelope"></i>
+            <span>邮箱: <a href="mailto:ivanleechenyong@gmail.com">ivanleechenyong@gmail.com</a></span>
+        </div>
+        
+        <div class="contact-method">
+            <i class="fas fa-phone-alt"></i>
+            <span>电话: <a href="tel:+60182745201">+60 18-274 5201</a></span>
+        </div>
+        
+        <button id="closeServiceModal">关闭窗口</button>
     </div>
 
     <div class="button-container">
