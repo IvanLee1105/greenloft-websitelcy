@@ -15,6 +15,7 @@
             --light-bg: #f8f9fa;
             --border-radius: 8px;
         }
+        
         /* 网站开发服务按钮样式 */
         #devServiceBtn {
             position: fixed;
@@ -221,6 +222,10 @@
         .back-to-top {
             bottom: 80px;
         }
+        #devServiceBtn { z-index: 1002; }
+        #backToHome    { z-index: 1001; }
+        #backToTop     { z-index: 1001; }
+        #languageToggle { z-index: 1001; }
         
         #languageToggle {
             bottom: 20px;
@@ -665,6 +670,18 @@
             gap: 10px;
             margin-top: 10px;
         }
+        #devServiceBtn {
+            bottom: 200px;  /* 上调开发服务按钮 */
+        }
+        #backToHome {
+            bottom: 140px;  /* 明确使用ID选择器 */
+        }
+        #backToTop {
+            bottom: 80px;
+        }
+        #languageToggle {
+            bottom: 20px;
+        }
         
         .contact-btn {
             padding: 6px 12px;
@@ -784,6 +801,12 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            #devServiceBtn { bottom: 180px; }
+            #backToHome    { bottom: 120px; }
+            #backToTop     { bottom: 60px; }
+            #languageToggle { bottom: 20px; }
         }
         
         /* 响应式设计 */
