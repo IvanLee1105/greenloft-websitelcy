@@ -16,6 +16,152 @@
             --border-radius: 8px;
         }
         
+        /* 网站开发服务按钮样式 */
+        #devServiceBtn {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            background: linear-gradient(135deg, #2A5C82, #47A8E5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(42, 92, 130, 0.3);
+            z-index: 1000;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        #devServiceBtn i {
+            font-size: 18px;
+        }
+        
+        #devServiceBtn:hover {
+            background: linear-gradient(135deg, #1E4B66, #3598DB);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(42, 92, 130, 0.4);
+            animation: none;
+        }
+        
+        /* 网站开发服务弹窗样式 */
+        .dev-service-modal {
+            display: none;
+            position: fixed;
+            bottom: 200px;
+            right: 20px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            z-index: 1001;
+            max-width: 300px;
+            color: #333;
+            border: 1px solid #eee;
+        }
+        
+        .dev-service-modal h3 {
+            margin-top: 0;
+            color: #2A5C82;
+            font-size: 1.3em;
+            border-bottom: 2px solid #f5f5f5;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .service-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .service-feature i {
+            color: #2A5C82;
+            font-size: 18px;
+            margin-top: 2px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        
+        .contact-method i {
+            color: #2A5C82;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .dev-service-modal a {
+            color: #2A5C82;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .dev-service-modal a:hover {
+            text-decoration: underline;
+        }
+        
+        #closeServiceModal {
+            background: #2A5C82;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        #closeServiceModal:hover {
+            background: #1e4b66;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            #devServiceBtn {
+                bottom: 120px;
+                padding: 15px;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+            
+            #devServiceBtn span {
+                display: none;
+            }
+            
+            #devServiceBtn i {
+                font-size: 24px;
+            }
+            
+            .dev-service-modal {
+                bottom: 50%;
+                right: 50%;
+                transform: translate(50%, 50%);
+                max-width: 90%;
+            }
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -36,11 +182,11 @@
             padding: 0 20px;
         }
         
-        /* ===== 浮动按钮组 ===== */
-        /* 基础按钮样式 */
-        .floating-btn {
+        /* 修正后的按钮样式 */
+        .back-to-home, .back-to-top, #languageToggle {
             position: fixed;
             right: 20px;
+            background-color: var(--primary-color);
             color: white;
             width: 50px;
             height: 50px;
@@ -50,118 +196,61 @@
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
             opacity: 0;
             transition: all 0.3s;
             border: none;
-            z-index: 1000;
         }
         
-        .floating-btn.visible {
+        .back-to-home.visible,
+        .back-to-top.visible,
+        #languageToggle.visible {
             opacity: 1;
         }
         
-        .floating-btn:hover {
+        .back-to-home:hover,
+        .back-to-top:hover,
+        #languageToggle:hover {
+            background-color: #1e4b66;
             transform: translateY(-3px);
         }
         
-        /* 网站开发服务按钮 */
-        #devServiceBtn {
-            bottom: 200px;
-            background: linear-gradient(135deg, #2A5C82, #47A8E5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 20px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0 4px 15px rgba(42, 92, 130, 0.3);
-            z-index: 1002;
-            border: 2px solid rgba(255,255,255,0.2);
-            animation: pulse 2s infinite;
-            width: auto;
-        }
-        
-        #devServiceBtn:hover {
-            background: linear-gradient(135deg, #1E4B66, #3598DB);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(42, 92, 130, 0.4);
-            animation: none;
-        }
-        
-        /* 返回主页按钮 */
-        #backToHome {
+        .back-to-home {
             bottom: 140px;
-            background-color: var(--primary-color);
-            z-index: 1001;
         }
         
-        /* 返回顶部按钮 */
-        #backToTop {
+        .back-to-top {
             bottom: 80px;
-            background-color: var(--primary-color);
-            z-index: 1001;
         }
+        #devServiceBtn { z-index: 1002; }
+        #backToHome    { z-index: 1001; }
+        #backToTop     { z-index: 1001; }
+        #languageToggle { z-index: 1001; }
         
-        /* 语言切换按钮 */
         #languageToggle {
             bottom: 20px;
-            background: linear-gradient(135deg, #2A5C82 0%, #4a8c5e 100%);
-            z-index: 1001;
-            width: 60px;
-            height: 60px;
-            font-size: 1.3rem;
-            border: 2px solid white;
+            font-size: 1.2rem;
         }
         
-        #languageToggle:hover {
-            background: linear-gradient(135deg, #1e4b66 0%, #3a7a4e 100%);
-        }
-        
-        /* 移动端适配 */
         @media (max-width: 768px) {
-            .floating-btn {
-                right: 15px;
-                width: 45px;
-                height: 45px;
-            }
-            
-            #devServiceBtn {
-                bottom: 180px;
-                padding: 15px;
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-            }
-            
-            #devServiceBtn span {
-                display: none;
-            }
-            
-            #backToHome {
+            .back-to-home {
                 bottom: 120px;
+                right: 15px;
             }
             
-            #backToTop {
-                bottom: 60px;
+            .back-to-top {
+                bottom: 70px;
+                right: 15px;
             }
             
             #languageToggle {
                 bottom: 20px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
+                right: 15px;
             }
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* ===== 页面内容样式 ===== */
+       
+        /* 头部样式 */
         .header {
             background-color: var(--primary-color);
             color: white;
@@ -179,6 +268,7 @@
             opacity: 0.9;
         }
         
+        /* 自然通知栏 */
         .nature-notice {
             background-color: var(--secondary-color);
             color: white;
@@ -192,6 +282,11 @@
             margin: 20px 0;
         }
         
+        .back-button {
+            display: block;
+            margin: 30px auto;
+        }
+
         /* 搜索区域 */
         .search-area {
             padding: 2rem 0;
@@ -222,11 +317,6 @@
             transition: all 0.3s;
         }
         
-        #search-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(42, 92, 130, 0.1);
-        }
-        
         /* 植物分类 */
         .plant-categories {
             display: flex;
@@ -252,7 +342,11 @@
             border-color: var(--primary-color);
         }
         
-        /* 产品卡片 */
+        #search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(42, 92, 130, 0.1);
+        }
+        
         .product-container {
             display: flex;
             justify-content: center;
@@ -278,6 +372,38 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
         
+        .swiper {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: #2A5C82 !important;
+        }
+        
+        .swiper-pagination {
+            position: relative;
+            margin-top: 10px;
+        }
+        
+        .product-info {
+            text-align: left;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .product-info p {
+            margin-bottom: 8px;
+        }
+        
         .product-card img {
             width: 100%;
             height: auto;
@@ -295,6 +421,38 @@
             font-size: 0.9em;
             color: #666;
             margin-bottom: 10px;
+        }
+        
+        .no-results {
+            color: #666;
+            font-size: 18px;
+            margin: 30px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        /* 植物详情展开部分 */
+        .plant-details {
+            padding: 1rem;
+            background: var(--light-bg);
+            border-top: 1px solid #eee;
+            display: none;
+        }
+        
+        .detail-section {
+            margin-bottom: 1rem;
+        }
+        
+        .detail-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .detail-title i {
+            margin-right: 8px;
         }
         
         /* 植物益处 */
@@ -335,40 +493,60 @@
             background-color: #3a7a4e;
         }
         
-        /* 植物详情 */
-        .plant-details {
-            padding: 1rem;
-            background: var(--light-bg);
-            border-top: 1px solid #eee;
-            display: none;
+        /* 季节性推荐 */
+        .seasonal-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
         
-        .detail-section {
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 0.5rem auto;
+        }
+        
+        /* 为什么选择我们 */
+        .why-us {
+            background: var(--light-bg);
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+        
+        .features { /* 修正拼写错误 */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
         
-        .detail-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-        }
-        
-        .detail-title i {
-            margin-right: 8px;
-        }
-        
-        /* 无结果提示 */
-        .no-results {
-            color: #666;
-            font-size: 18px;
-            margin: 30px 0;
-            text-align: center;
-            display: none;
-        }
-        
-        /* 页脚 */
+        /* 底部样式 */
         .footer {
             background: var(--primary-color);
             color: white;
@@ -399,28 +577,247 @@
             opacity: 0.8;
         }
         
-        /* 网站开发服务弹窗 */
-        .dev-service-modal {
-            display: none;
-            position: fixed;
-            bottom: 200px;
-            right: 20px;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
-            z-index: 1003;
-            max-width: 300px;
-            color: #333;
-            border: 1px solid #eee;
+        /* 联系方式折叠区域样式 */
+        .contact-toggle-section {
+            margin: 30px auto;
+            max-width: 800px;
+            text-align: center;
         }
         
+        .contact-toggle-btn {
+            background: transparent;
+            border: none;
+            color: #2A5C82;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .contact-toggle-btn:hover {
+            background: rgba(42, 92, 130, 0.1);
+        }
+        
+        .contact-toggle-btn::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-toggle-btn.active::after {
+            transform: rotate(180deg);
+        }
+        
+        .contact-cards {
+            display: none;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @media (min-width: 600px) {
+            .contact-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .contact-cards.show {
+            display: grid;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        
+        .contact-card h3 {
+            color: #2A5C82;
+            margin-top: 0;
+            font-size: 16px;
+        }
+        
+        .contact-info {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .copy-icon {
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        #devServiceBtn {
+            bottom: 200px;  /* 上调开发服务按钮 */
+        }
+        #backToHome {
+            bottom: 140px;  /* 明确使用ID选择器 */
+        }
+        #backToTop {
+            bottom: 80px;
+        }
+        #languageToggle {
+            bottom: 20px;
+        }
+        
+        .contact-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .facebook-btn {
+            background: #3b5998;
+            color: white;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin: 30px auto;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #2A5C82;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+
+        /* 新增的返回顶部按钮样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: #1e4b66;
+            transform: translateY(-3px);
+        }
+            
+            
+        
+        .back-button:hover {
+            background-color: #1e4b66;
+        }
+        
+        #languageToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #2A5C82 0%, #4a8c5e 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            font-size: 1.3rem;
+        }
+        
+        #languageToggle.visible {
+            opacity: 1;
+        }
+        
+        #languageToggle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #1e4b66 0%, #3a7a4e 100%);
+        }
+        /* 调整返回主页按钮位置 */
+        #backToHome {
+          bottom: 140px; /* 放在语言切换按钮上方 */
+        }
+        
+        /* 响应式调整 */
         @media (max-width: 768px) {
-            .dev-service-modal {
-                bottom: 50%;
-                right: 50%;
-                transform: translate(50%, 50%);
-                max-width: 90%;
+          #languageToggle {
+            bottom: 70px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+          }
+          
+
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            #devServiceBtn { bottom: 180px; }
+            #backToHome    { bottom: 120px; }
+            #backToTop     { bottom: 60px; }
+            #languageToggle { bottom: 20px; }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
