@@ -1815,406 +1815,149 @@
     </main>
     
     <!-- 联系方式区域 -->
-    <div class="contact-toggle-section">
-        <button class="contact-toggle-btn" onclick="toggleContacts()">联系我们</button>
-        
-        <div class="contact-cards">
-            <div class="contact-card">
-                <h3>STANLEY WONG 偉繽</h3>
-                <div class="contact-info">
-                    <strong>电话:</strong> 
-                    <a href="tel:+60197256827" id="phone1">+60 19-725 6827</a>
-                    <span class="copy-icon" onclick="copyText('phone1')">📋</span>
-                </div>
-                <div class="contact-info">
-                    <strong>地址:</strong>
-                    <a href="https://maps.google.com/?q=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan" target="_blank" id="address1">
-                        Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban
-                    </a>
-                    <span class="copy-icon" onclick="copyText('address1')">📋</span>
-                </div>
-                <div class="contact-buttons">
-                    <a href="https://wa.me/60197256827" class="contact-btn whatsapp-btn">WhatsApp</a>
-                    <a href="https://www.facebook.com/profile.php?id=61572888980847" class="contact-btn facebook-btn">Facebook</a>
-                </div>
-            </div>
-            
-            <div class="contact-card">
-                <h3>MRS WAN 秀鳳</h3>
-                <div class="contact-info">
-                    <strong>电话:</strong> 
-                    <a href="tel:+60123610303" id="phone2">+60 12-361 0303</a>
-                    <span class="copy-icon" onclick="copyText('phone2')">📋</span>
-                </div>
-                <div class="contact-info">
-                    <strong>地址:</strong>
-                    <a href="https://maps.google.com/?q=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan" target="_blank" id="address2">
-                        Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban
-                    </a>
-                    <span class="copy-icon" onclick="copyText('address2')">📋</span>
-                </div>
-                <div class="contact-buttons">
-                    <a href="https://wa.me/60123610303" class="contact-btn whatsapp-btn">WhatsApp</a>
-                    <a href="https://www.facebook.com/profile.php?id=61572888980847" class="contact-btn facebook-btn">Facebook</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div style="text-align:center;">
-        <a href="index.html" class="back-button">返回首页</a>
-    </div>
-    <section class="why-us">
-        <div class="container">
-            <h2 class="section-title">why choose GREEN LOFT LEGACY</h2>
-            <div calss="features">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <h3>High-quality plants ~ 优质植物</h3>
-                    <p>We focus on every detail, because true quality comes from both what you see and what you don’t.</p>
-                    <p>我们专注于每一个细节，因为我们知道，真正的品质来自每一处看得见、也看不见的用心.</p>
-                </div>
+<div class="contact-toggle-section">
+    <button class="contact-toggle-btn" id="contactToggleBtn">联系我们</button>
     
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Professional advice ~ 专业建议</h3>
-                    <p>Based on your environment, we’ll offer the most suitable professional advice</p>
-                    <p>根据您的环境，我们会给出最合适的专业建议</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Careful delivery ~ 用心配送</h3>
-                    <p>Every plant is carefully packed and delivered safely</p>
-                    <p>每一盆植物都经过细致包装，确保安全送达</p>
-                </div>
+    <div class="contact-cards" id="contactCards">
+        <div class="contact-card">
+            <h3>STANLEY WONG 偉繽</h3>
+            <div class="contact-info">
+                <strong>电话:</strong> 
+                <a href="tel:+60197256827" id="phone1">+60 19-725 6827</a>
+                <span class="copy-icon" onclick="copyText('phone1')">📋</span>
             </div>
-        </section>
-    </main>                
-    <footer class="footer">
-        <div class="container">
-            <h2 style="margin-bottom:1rem;">綠萌閣</h2>
-            <p>Bringing you closer to nature — and a life full of beauty and calm.</p>
-            <p>为您带来自然与美好的生活体验</p>
-            
-            <div class="footer-links">
-                <a href="#" class="footer-link">关于我们</a>
-                <a href="#" class="footer-link">联系我们</a>
-                <a href="#" class="footer-link">配送信息</a>
-                <a href="#" class="footer-link">养护指南</a>
-                <a href="#" class="footer-link">隐私政策</a>
+            <div class="contact-info">
+                <strong>地址:</strong>
+                <a href="https://maps.google.com/?q=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan" target="_blank" id="address1">
+                    Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban
+                </a>
+                <span class="copy-icon" onclick="copyText('address1')">📋</span>
             </div>
-
-            <div class="copyright">
-                &copy; 2025 綠萌閣. 版权所有.
+            <div class="contact-buttons">
+                <a href="https://wa.me/60197256827" class="contact-btn whatsapp-btn">WhatsApp</a>
+                <a href="https://www.facebook.com/profile.php?id=61572888980847" class="contact-btn facebook-btn">Facebook</a>
             </div>
         </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script>
-
-        let isEnglish = localStorage.getItem('language') === 'en';
-        // ======== 翻译字典配置 ======== //
-        const translations = {
-          // 导航和标题          
-          // 搜索区域
-          "输入植物名称搜索...": "Search plant name...",
-          "全部植物": "All Plants",
-          "室内植物": "Indoor Plants",
-          "净化空气": "Air Purifying",
-          "易养护": "Easy Care",
-          "开花植物": "Flowering",
-          "招财植物": "Lucky Plants",
-          "室外植物": "Outdoor Plants",
-          "没有找到匹配的植物": "No matching plants found",
-          
-          // 植物卡片通用文本
-          "查看详情": "View Details",
-          "收起详情": "Hide Details",
-          "光照:": "Light:",
-          "浇水:": "Watering:",
-          "温度:": "Temperature:",
-          "施肥:": "Fertilizer:",
-          
-          // 页脚和其他
-          "关于我们": "About Us",
-          "联系我们": "Contact",
-          "配送信息": "Delivery",
-          "养护指南": "Care Guide",
-          "隐私政策": "Privacy",
-          "返回首页": "Back to Home",
-          
-          // 为什么选择我们部分
-
-          
-          // 植物具体信息（示例，您可以根据需要添加更多）
-          "净化甲醛和苯": "Purifies formaldehyde and benzene",
-          "喜阳光,花期长": "Loves sunlight, long flowering period",
-          "每周浇水2-3次": "Water 2-3 times weekly",
-          "养护指南": "Care Guide",
-          "耐旱、耐热，养护成本低" :"Drought tolerant, heat tolerant, low maintance costs",
-          "适应多种气候，尤其适合热带和亚热带地区" :"Adaptable to a wide range of climates, especially in tropical and subtropical regions ",
-          "它也可以吸收空气中的有害物质、释放氧气，改善小环境空气质量" :"It can also absorb harmful substances in the air, release oxygen, and improve the air quality of the small environment",
-          "能吸附空气中的有害气体，是优质的环保树种" :"It can adsorb harmful gases in the air and is a high-quality environmentally friendly tree species",
-          "地栽后基本不需要额外浇水，靠天吃饭也行" :"After planting, there is basically no need for additional watering, and it is okay to rely on the weather for food",
-          "每天至少光照6小时" :"At least 6 hours of sunlight every day ",
-          "保持土壤湿润但不积水" :"Keep the soil moist but not waterlogged",
-          "适宜温度18-30°C" :"The suitable temperature is 18-30°C",
-          "生长季节每月施肥一次" :"Fertilization is applied once a month during the growing season",
-          "喜光植物，需要 充足阳光" :"Light-loving plants that need plenty of sunlight",
-          "最适温度：20℃～30℃" :"Optimum temperature: 20°C~30°C",
-          "生长季节每月施肥一次" :"Fertilization is applied once a month during the growing season",
-          "保持土壤微湿，但忌积水" :"Keep the soil slightly moist, but avoid standing water",
-          "叶子和种子富含苦楝素（Azadirachtin），天然驱蚊、驱虫" :"The leaves and seeds are rich in azadirachtin, which naturally repellent mosquitoes and insects",
-          "超喜欢阳光!" :"it love the sun!",
-          "土壤干透再浇，忌频繁浇水" :"Water the soil thoroughly and avoid frequent watering",
-          "最适温度：20°C ~ 35°C" :"Optimum temperature: 20°C ~ 35°C",
-          "土壤肥沃就几乎不用施肥" :"If the soil is fertile, there is little need to fertilize",
-          "喜半阴、散射光，不耐强烈直晒" :"Likes semi-shade, scattered light, and is not tolerant of strong direct sunlight",
-          "一般 3-5 天浇一次（看环境湿度" :"Generally poured once every 3-5 days (depending on ambient humidity)",
-          "最适温度：18°C ~ 30°C" :"Optimum temperature: 18°C ~ 30°C",
-          "用缓释颗粒肥（半年一次" :"Use slow-release granular fertilizer (once every six months)",
-          "超适合新手" :"Super beginner-friendly",
-          "办公桌：提升事业运 门口、柜台、收银台：招财" :"Desk: Enhance career luck Door, counter, cash register: Fortune",
-          "剪下的枝条可插水生根再栽种（超容易繁殖！" :"The cut shoots can be planted in water to root and replant (super easy to propagate!). ）",
-          "流行的室内观叶植物" :"Popular indoor foliage plants",
-          "光线不太强烈的地方依然能生长得不错" :"It still grows well in places where the light is not too strong",
-          "喜欢明亮的散射光，需要充足的光照才能健康生长" :"Likes bright scattered light and needs plenty of light to grow healthily",
-          "保持土壤微湿，但避免过度浇水" :"Keep the soil slightly moist but avoid overwatering",
-          "最适温度：20°C ~ 25°C" :"Optimum temperature: 20°C ~ 25°C",
-          "用缓释颗粒肥（半年一次）" :"Use slow-release granular fertilizer (once every six months)",
-          "通过光合作用，它还能释放氧气，提升室内空气质量" :"Through photosynthesis, it also releases oxygen and improves indoor air quality",
-          "它的叶片宽大、深绿且有光泽，树形优美，尤其适合现代家居和办公室装饰" :"Its broad, dark green and shiny leaves and graceful tree shape make it ideal for modern home and office décor",
-          "人参榕通过蒸发作用，能够调节空气湿度，尤其适合干燥环境或空调房间" :"Through evaporation, Ficus ginseng regulates air humidity, making it ideal for dry environments or air-conditioned rooms",
-          "喜明亮的光照，但也能适应室内光线较暗的环境" :"Prefers bright light, but can also adapt to low-light indoor environments",
-          "每次浇水时确保土壤表面稍干，避免积水，防止根部腐烂" :"Make sure the surface of the soil is slightly dry with each watering to avoid standing water and prevent root rot",
-          "最适温度：20°C ~ 30°C，温暖环境下生长最好" :"Optimum temperature: 20°C ~ 30°C, the best growth in a warm environment",
-          "适量施肥有助于促使叶片保持绿色和健康" :"Proper fertilization can help keep the leaves green and healthy",
-          "常绿灌木，适合庭院种植" :"Evergreen shrub suitable for garden planting",
-          "适应性强" :"Adaptable",
-          "观赏价值高" :"High ornamental value",
-          "":"",
-          "":"",
-          "":"",
-          "":"",
-          "":"",
         
-        };
-        // 网站开发服务按钮功能
-        document.getElementById('devServiceBtn').addEventListener('click', () => {
-            const modal = document.getElementById('devServiceModal');
-            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-        });
+        <div class="contact-card">
+            <h3>MRS WAN 秀鳳</h3>
+            <div class="contact-info">
+                <strong>电话:</strong> 
+                <a href="tel:+60123610303" id="phone2">+60 12-361 0303</a>
+                <span class="copy-icon" onclick="copyText('phone2')">📋</span>
+            </div>
+            <div class="contact-info">
+                <strong>地址:</strong>
+                <a href="https://maps.google.com/?q=Lot+1628+BATU+2+1,4,+Jalan+Rasah,+SEREMBAN,+70300+Seremban,+Negeri+Sembilan" target="_blank" id="address2">
+                    Lot 1628 BATU 2 1, 4, Jalan Rasah, SEREMBAN, 70300 Seremban
+                </a>
+                <span class="copy-icon" onclick="copyText('address2')">📋</span>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://wa.me/60123610303" class="contact-btn whatsapp-btn">WhatsApp</a>
+                <a href="https://www.facebook.com/profile.php?id=61572888980847" class="contact-btn facebook-btn">Facebook</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="text-align:center;">
+    <a href="index.html" class="back-button">返回首页</a>
+</div>
+
+<section class="why-us">
+    <div class="container">
+        <h2 class="section-title">why choose GREEN LOFT LEGACY</h2>
+        <div class="features">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3>High-quality plants ~ 优质植物</h3>
+                <p>We focus on every detail, because true quality comes from both what you see and what you don't.</p>
+                <p>我们专注于每一个细节，因为我们知道，真正的品质来自每一处看得见、也看不见的用心.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Professional advice ~ 专业建议</h3>
+                <p>Based on your environment, we'll offer the most suitable professional advice</p>
+                <p>根据您的环境，我们会给出最合适的专业建议</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Careful delivery ~ 用心配送</h3>
+                <p>Every plant is carefully packed and delivered safely</p>
+                <p>每一盆植物都经过细致包装，确保安全送达</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <h2 style="margin-bottom:1rem;">綠萌閣</h2>
+        <p>Bringing you closer to nature — and a life full of beauty and calm.</p>
+        <p>为您带来自然与美好的生活体验</p>
         
-        // 关闭按钮功能
-        document.getElementById('closeServiceModal').addEventListener('click', () => {
-            document.getElementById('devServiceModal').style.display = 'none';
-        });
-        
-        // 点击弹窗外部关闭
-        window.addEventListener('click', (e) => {
-            if (e.target === document.getElementById('devServiceModal')) {
-                document.getElementById('devServiceModal').style.display = 'none';
-            }
-        });
-    // ===== 核心功能 ===== //
-    function fixButtonStyles() {
-        const style = document.createElement('style');
-        style.innerHTML = `
-            #languageToggle {
-                z-index: 9999 !important;
-                pointer-events: auto !important;
-                bottom: 20px !important;
-                right: 20px !important;
-            }
-            .back-to-home {
-                z-index: 9998 !important;
-                bottom: 140px !important;
-            }
-            .back-to-top {
-                z-index: 9998 !important;
-                bottom: 80px !important;
-            }
-        `;
-        document.head.appendChild(style);
-    }
+        <div class="footer-links">
+            <a href="#" class="footer-link">关于我们</a>
+            <a href="#" class="footer-link">联系我们</a>
+            <a href="#" class="footer-link">配送信息</a>
+            <a href="#" class="footer-link">养护指南</a>
+            <a href="#" class="footer-link">隐私政策</a>
+        </div>
 
-    // 修复2：增强翻译功能
-    function toggleLanguage() {
-        isEnglish = !isEnglish;
-        localStorage.setItem('language', isEnglish ? 'en' : 'zh');
-        updateButtonText();
-        translatePage();
-    }
+        <div class="copyright">
+            &copy; 2025 綠萌閣. 版权所有.
+        </div>
+    </div>
+</footer>
 
-    function updateButtonText() {
-        const btn = document.getElementById('languageToggle');
-        if (btn) {
-            btn.innerHTML = isEnglish ? 
-                '<i class="fas fa-language"></i> 中文' : 
-                '<i class="fas fa-language"></i> EN';
-        }
-    }
-
-    function translatePage() {
-        const walker = document.createTreeWalker(
-            document.body,
-            NodeFilter.SHOW_TEXT,
-            null,
-            false
-        );
-        
-        let node;
-        while (node = walker.nextNode()) {
-            if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
-                const text = node.nodeValue.trim();
-                if (isEnglish) {
-                    if (translations[text]) {
-                        node.nodeValue = translations[text];
-                    }
-                } else {
-                    for (const [chinese, english] of Object.entries(translations)) {
-                        if (text === english) {
-                            node.nodeValue = chinese;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        
-        // 更新详情按钮文本
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            if (btn.innerHTML.includes('查看详情')) {
-                btn.innerHTML = isEnglish ? 
-                    btn.innerHTML.replace('查看详情', 'View Details') : 
-                    btn.innerHTML.replace('View Details', '查看详情');
-            } else if (btn.innerHTML.includes('收起详情')) {
-                btn.innerHTML = isEnglish ? 
-                    btn.innerHTML.replace('收起详情', 'Hide Details') : 
-                    btn.innerHTML.replace('Hide Details', '收起详情');
-            }
-        });
-    }
-
-    // 修复3：确保事件绑定可靠
-    function bindEvents() {
-        const langBtn = document.getElementById('languageToggle');
-        if (langBtn) {
-            langBtn.onclick = null; // 清除旧事件
-            langBtn.addEventListener('click', toggleLanguage);
-        }
-        
-        document.getElementById('backToHome').addEventListener('click', () => {
-            window.location.href = 'index.html';
-        });
-        
-        document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // 滚动处理
-    function handleScroll() {
-        const show = window.pageYOffset > 300;
-        document.getElementById('backToTop').classList.toggle('visible', show);
-        document.getElementById('backToHome').classList.toggle('visible', show);
-        document.getElementById('languageToggle').classList.toggle('visible', show);
-    }
-
-    // 筛选功能
-    function filterPlants(category) {
-        const productCards = document.querySelectorAll('.product-card');
-        let hasResult = false;
-
-        productCards.forEach(card => {
-            if (card.hasAttribute('data-category')) {
-                const categories = card.dataset.category.split(' ');
-                if (category === 'all' || categories.includes(category)) {
-                    card.style.display = 'block';
-                    hasResult = true;
-                } else {
-                    card.style.display = 'none';
-                }
-            } else {
-                card.style.display = category === 'all' ? 'block' : 'none';
-                if (category === 'all') hasResult = true;
-            }
-        });
-
-        document.getElementById('no-results').style.display = hasResult ? 'none' : 'block';
-    }
-
-    // 详情切换
-    function toggleDetails(button) {
-        const details = button.nextElementSibling;
-        details.style.display = details.style.display === 'block' ? 'none' : 'block';
-        
-        if (details.style.display === 'block') {
-            button.innerHTML = isEnglish ? 
-                '<i class="fas fa-times-circle"></i> Hide Details' : 
-                '<i class="fas fa-times-circle"></i> 收起详情';
-        } else {
-            button.innerHTML = isEnglish ? 
-                '<i class="fas fa-info-circle"></i> View Details' : 
-                '<i class="fas fa-info-circle"></i> 查看详情';
-        }
-    }
-
-    // 初始化
-    document.addEventListener('DOMContentLoaded', function() {
-        fixButtonStyles(); // 应用样式修复
-        bindEvents();     // 绑定事件
-        
-        // 初始化语言状态
-        if (localStorage.getItem('language') === 'en') {
-            translatePage();
-        }
-        updateButtonText();
-        
-        // 分类按钮事件
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                filterPlants(this.dataset.category);
-            });
-        });
-
-        // 搜索功能
-        document.getElementById('search-input').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const productCards = document.querySelectorAll('.product-card');
-            let hasResults = false;
-            
-            productCards.forEach(card => {
-                const title = card.querySelector('h2').textContent.toLowerCase();
-                if (title.includes(searchTerm)) {
-                    card.style.display = 'block';
-                    hasResults = true;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            document.getElementById('no-results').style.display = hasResults ? 'none' : 'block';
-        });
-
-        // 滚动监听
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); // 初始化检查
+<script>
+    // 联系卡片切换功能
+    document.getElementById('contactToggleBtn').addEventListener('click', function() {
+        const contactCards = document.getElementById('contactCards');
+        const isShowing = contactCards.style.display === 'grid';
+        contactCards.style.display = isShowing ? 'none' : 'grid';
+        this.classList.toggle('active');
     });
-        
 
-        </script>
+    // 复制文本功能
+    function copyText(elementId) {
+        const element = document.getElementById(elementId);
+        const textToCopy = element.textContent || element.innerText;
         
-                
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            // 显示复制成功的反馈
+            const originalText = element.innerHTML;
+            element.innerHTML = '已复制! ' + originalText;
+            setTimeout(() => {
+                element.innerHTML = originalText;
+            }, 2000);
+        }).catch(err => {
+            console.error('复制失败: ', err);
+        });
+    }
 
-    </script>
-</body>
-</html>
+    // 返回顶部按钮显示/隐藏
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        const backToHome = document.getElementById('backToHome');
+        const languageToggle = document.getElementById('languageToggle');
+        
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+            backToHome.classList.add('visible');
+            languageToggle.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+            backToHome.classList.remove('visible');
+            languageToggle.classList.remove('visible');
+        }
+    });
+</script>
