@@ -2229,6 +2229,37 @@
         window.addEventListener('scroll', handleScroll);
         handleScroll(); // 初始化检查
     });
+        --------------------------------------
+              document.addEventListener('DOMContentLoaded', function() {
+        // 网站开发服务按钮
+        document.getElementById('devServiceBtn').addEventListener('click', function() {
+            const modal = document.getElementById('devServiceModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // 语言切换按钮
+        document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+        
+        // 返回主页按钮
+        document.getElementById('backToHome').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        
+        // 返回顶部按钮
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // 其他初始化代码...
+    });
+
+    // 语言切换函数
+    function toggleLanguage() {
+        isEnglish = !isEnglish;
+        localStorage.setItem('language', isEnglish ? 'en' : 'zh');
+        updateButtonText();
+        translatePage();
+    }
         
 
         </script>
