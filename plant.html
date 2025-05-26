@@ -2005,6 +2005,26 @@
           "":"",
         
         };
+            // 添加这个函数来解决按钮点击问题
+    function toggleContacts() {
+        const contactCards = document.querySelector('.contact-cards');
+        const button = document.querySelector('.contact-toggle-btn');
+        
+        contactCards.classList.toggle('show');
+        
+        // 更新按钮文本
+        if (contactCards.classList.contains('show')) {
+            button.textContent = isEnglish ? 'Hide Contacts' : '隐藏联系方式';
+        } else {
+            button.textContent = isEnglish ? 'Contact Us' : '联系我们';
+        }
+    }
+
+    // 网站开发服务按钮功能
+    document.getElementById('devServiceBtn').addEventListener('click', () => {
+        const modal = document.getElementById('devServiceModal');
+        modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+    });
         // 网站开发服务按钮功能
         document.getElementById('devServiceBtn').addEventListener('click', () => {
             const modal = document.getElementById('devServiceModal');
