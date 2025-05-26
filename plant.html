@@ -1947,95 +1947,67 @@
     }
 
     // ===== 右侧按钮功能 ===== //
-            // 网站开发服务按钮功能
-    function setupDevServiceButton() {
-        const devServiceBtn = document.getElementById('devServiceBtn');
-        if (!devServiceBtn) return;
+// 网站开发服务按钮功能
+function setupDevServiceButton() {
+    const devServiceBtn = document.getElementById('devServiceBtn');
+    if (!devServiceBtn) return;
 
-        // 确保弹窗HTML存在
-        if (!document.getElementById('devServiceModal')) {
-            const modalHTML = `
-                <div id="devServiceModal" class="dev-service-modal" style="display:none;">
-                    <h3>网站开发服务</h3>
-                    <div class="service-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <div>定制化网站设计与开发</div>
-                    </div>
-                    <div class="service-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <div>响应式设计，适配所有设备</div>
-                    </div>
-                    <div class="service-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <div>欢迎来联系,免费询问</div>
-                    </div>
-                    <div class="contact-method">
-                        <i class="fas fa-user-tie"></i>
-                        <span>开发者: <strong>Ivan Lee</strong></span>
-                    </div>
-                    <div class="contact-method">
-                        <i class="fas fa-envelope"></i>
-                        <span>邮箱: <a href="mailto:ivanleechenyong@gmail.com">ivanleechenyong@gmail.com</a></span>
-                    </div>
-                    <div class="contact-method">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>电话: <a href="tel:+60182745201">+60 18-274 5201</a></span>
-                    </div>
-                    <button id="closeServiceModal">关闭窗口</button>
+    // 确保弹窗HTML存在
+    if (!document.getElementById('devServiceModal')) {
+        const modalHTML = `
+            <div id="devServiceModal" class="dev-service-modal" style="display:none;">
+                <h3>网站开发服务</h3>
+                <div class="service-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <div>定制化网站设计与开发</div>
                 </div>
-            `;
-            document.body.insertAdjacentHTML('beforeend', modalHTML);
-        }
-
-        // 绑定事件
-        devServiceBtn.addEventListener('click', toggleDevServiceModal);
-        document.getElementById('closeServiceModal')?.addEventListener('click', closeDevServiceModal);
-        window.addEventListener('click', handleOutsideClick);
+                <div class="service-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <div>响应式设计，适配所有设备</div>
+                </div>
+                <div class="service-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <div>欢迎来联系,免费询问</div>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-user-tie"></i>
+                    <span>开发者: <strong>Ivan Lee</strong></span>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span>邮箱: <a href="mailto:ivanleechenyong@gmail.com">ivanleechenyong@gmail.com</a></span>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>电话: <a href="tel:+60182745201">+60 18-274 5201</a></span>
+                </div>
+                <button id="closeServiceModal">关闭窗口</button>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
 
-    // 切换开发服务弹窗
-    function toggleDevServiceModal() {
+    // 移除重复的事件绑定代码
+    devServiceBtn.addEventListener('click', () => {
         const modal = document.getElementById('devServiceModal');
         if (modal) {
             modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
         }
-    }
-
-    // 关闭开发服务弹窗
-    function closeDevServiceModal() {
+    });
+    
+    document.getElementById('closeServiceModal')?.addEventListener('click', () => {
         const modal = document.getElementById('devServiceModal');
         if (modal) {
             modal.style.display = 'none';
         }
-    }
-
-    // 点击弹窗外部关闭
-    function handleOutsideClick(e) {
-        if (e.target === document.getElementById('devServiceModal')) {
-            closeDevServiceModal();
-        }
-    }
-
-    // 初始化时调用
-    document.addEventListener('DOMContentLoaded', function() {
-        setupDevServiceButton();
     });
-
-        devServiceBtn.addEventListener('click', () => {
-            const modal = document.getElementById('devServiceModal');
-            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-        });
-        
-        document.getElementById('closeServiceModal')?.addEventListener('click', () => {
+    
+    window.addEventListener('click', (e) => {
+        if (e.target === document.getElementById('devServiceModal')) {
             document.getElementById('devServiceModal').style.display = 'none';
-        });
-        
-        window.addEventListener('click', (e) => {
-            if (e.target === document.getElementById('devServiceModal')) {
-                document.getElementById('devServiceModal').style.display = 'none';
-            }
-        });
-    }
+        }
+    });
+}
 
     // 语言切换功能
     function setupLanguageToggle() {
