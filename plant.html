@@ -1918,10 +1918,8 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
     let isEnglish = localStorage.getItem('language') === 'en';
-    // ======== 翻译字典配置 ======== //
+
     const translations = {
-        // 导航和标题          
-        // 搜索区域
         "输入植物名称搜索...": "Search plant name...",
         "全部植物": "All Plants",
         "室内植物": "Indoor Plants",
@@ -1931,113 +1929,125 @@
         "隐藏联系方式": "Hide Contacts"
     };
 
-    // 联系我们按钮功能
     function toggleContacts() {
         const contactCards = document.querySelector('.contact-cards');
         const button = document.querySelector('.contact-toggle-btn');
-        
+
         contactCards.classList.toggle('show');
-        
-        // 更新按钮文本
-        if (contactCards.classList.contains('show')) {
-            button.textContent = isEnglish ? 'Hide Contacts' : '隐藏联系方式';
-        } else {
-            button.textContent = isEnglish ? 'Contact Us' : '联系我们';
-        }
+
+        button.textContent = contactCards.classList.contains('show')
+            ? (isEnglish ? 'Hide Contacts' : '隐藏联系方式')
+            : (isEnglish ? 'Contact Us' : '联系我们');
     }
 
-    // ===== 右侧按钮功能 ===== //
-// 网站开发服务按钮功能
-function setupDevServiceButton() {
-    const devServiceBtn = document.getElementById('devServiceBtn');
-    if (!devServiceBtn) return;
+    function setupDevServiceButton() {
+        const devServiceBtn = document.getElementById('devServiceBtn');
+        if (!devServiceBtn) return;
 
-    // 确保弹窗HTML存在
-    if (!document.getElementById('devServiceModal')) {
-        const modalHTML = `
-            <div id="devServiceModal" class="dev-service-modal" style="display:none;">
-                <h3>网站开发服务</h3>
-                <div class="service-feature">
-                    <i class="fas fa-check-circle"></i>
-                    <div>定制化网站设计与开发</div>
+        if (!document.getElementById('devServiceModal')) {
+            const modalHTML = `
+                <div id="devServiceModal" class="dev-service-modal" style="display:none;">
+                    <h3>网站开发服务</h3>
+                    <div class="service-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>定制化网站设计与开发</div>
+                    </div>
+                    <div class="service-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>响应式设计，适配所有设备</div>
+                    </div>
+                    <div class="service-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>欢迎来联系,免费询问</div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-user-tie"></i>
+                        <span>开发者: <strong>Ivan Lee</strong></span>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <span>邮箱: <a href="mailto:ivanleechenyong@gmail.com">ivanleechenyong@gmail.com</a></span>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>电话: <a href="tel:+60182745201">+60 18-274 5201</a></span>
+                    </div>
+                    <button id="closeServiceModal">关闭窗口</button>
                 </div>
-                <div class="service-feature">
-                    <i class="fas fa-check-circle"></i>
-                    <div>响应式设计，适配所有设备</div>
-                </div>
-                <div class="service-feature">
-                    <i class="fas fa-check-circle"></i>
-                    <div>欢迎来联系,免费询问</div>
-                </div>
-                <div class="contact-method">
-                    <i class="fas fa-user-tie"></i>
-                    <span>开发者: <strong>Ivan Lee</strong></span>
-                </div>
-                <div class="contact-method">
-                    <i class="fas fa-envelope"></i>
-                    <span>邮箱: <a href="mailto:ivanleechenyong@gmail.com">ivanleechenyong@gmail.com</a></span>
-                </div>
-                <div class="contact-method">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>电话: <a href="tel:+60182745201">+60 18-274 5201</a></span>
-                </div>
-                <button id="closeServiceModal">关闭窗口</button>
-            </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
-    }
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
 
-    // 移除重复的事件绑定代码
-    devServiceBtn.addEventListener('click', () => {
-        const modal = document.getElementById('devServiceModal');
-        if (modal) {
-            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-        }
-    });
-    
-    document.getElementById('closeServiceModal')?.addEventListener('click', () => {
-        const modal = document.getElementById('devServiceModal');
-        if (modal) {
-            modal.style.display = 'none';
-        }
-    });
-    
-    window.addEventListener('click', (e) => {
-        if (e.target === document.getElementById('devServiceModal')) {
+        devServiceBtn.addEventListener('click', () => {
+            const modal = document.getElementById('devServiceModal');
+            if (modal) modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('closeServiceModal')?.addEventListener('click', () => {
             document.getElementById('devServiceModal').style.display = 'none';
-        }
-    });
-}
+        });
 
-    // 语言切换功能
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('devServiceModal')) {
+                document.getElementById('devServiceModal').style.display = 'none';
+            }
+        });
+    }
+
     function setupLanguageToggle() {
         const langBtn = document.getElementById('languageToggle');
         if (!langBtn) return;
-        
         langBtn.addEventListener('click', toggleLanguage);
     }
 
-    // 返回主页功能
     function setupBackToHome() {
         const backToHome = document.getElementById('backToHome');
         if (!backToHome) return;
-        
         backToHome.addEventListener('click', () => {
             window.location.href = 'index.html';
         });
     }
 
-    // 返回顶部功能
     function setupBackToTop() {
         const backToTop = document.getElementById('backToTop');
         if (!backToTop) return;
-        
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
-    // ===== 核心功能 ===== //
+    function setupViewDetailsButtons() {
+        const detailButtons = document.querySelectorAll('.view-details');
+        detailButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const plantId = button.dataset.plantId;
+                if (plantId) {
+                    window.location.href = `details.html?id=${plantId}`;
+                } else {
+                    alert('无法加载详情，请检查植物 ID');
+                }
+            });
+        });
+    }
+
+    function setupCategoryFilters() {
+        const categories = document.querySelectorAll('.category-option');
+        categories.forEach(option => {
+            option.addEventListener('click', () => {
+                const filter = option.dataset.filter;
+                // 假设每个植物卡片有 data-category 属性
+                const plants = document.querySelectorAll('.plant-card');
+                plants.forEach(plant => {
+                    if (filter === 'all' || plant.dataset.category === filter) {
+                        plant.style.display = 'block';
+                    } else {
+                        plant.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
     function fixButtonStyles() {
         const style = document.createElement('style');
         style.innerHTML = `
@@ -2072,8 +2082,8 @@ function setupDevServiceButton() {
     function updateButtonText() {
         const btn = document.getElementById('languageToggle');
         if (btn) {
-            btn.innerHTML = isEnglish ? 
-                '<i class="fas fa-language"></i> 中文' : 
+            btn.innerHTML = isEnglish ?
+                '<i class="fas fa-language"></i> 中文' :
                 '<i class="fas fa-language"></i> EN';
         }
     }
@@ -2085,7 +2095,6 @@ function setupDevServiceButton() {
             null,
             false
         );
-        
         let node;
         while (node = walker.nextNode()) {
             if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
@@ -2106,7 +2115,6 @@ function setupDevServiceButton() {
         }
     }
 
-    // 滚动处理
     function handleScroll() {
         const show = window.scrollY > 300;
         document.getElementById('backToTop')?.classList.toggle('visible', show);
@@ -2114,27 +2122,26 @@ function setupDevServiceButton() {
         document.getElementById('languageToggle')?.classList.toggle('visible', show);
     }
 
-    // 初始化
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         fixButtonStyles();
-        
-        // 设置右侧按钮功能
+
         setupDevServiceButton();
         setupLanguageToggle();
         setupBackToHome();
         setupBackToTop();
-        
-        // 初始化语言状态
+        setupViewDetailsButtons();      // 👈 添加查看详情功能
+        setupCategoryFilters();         // 👈 添加顶部分类过滤功能
+
         if (localStorage.getItem('language') === 'en') {
             translatePage();
         }
         updateButtonText();
-        
-        // 其他初始化代码...
+
         window.addEventListener('scroll', handleScroll);
         handleScroll();
     });
 </script>
+
     </script>
 </body>
 </html>
