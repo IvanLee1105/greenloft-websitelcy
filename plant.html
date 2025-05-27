@@ -2104,6 +2104,42 @@
             });
         });
     }
+            function setupBackToHome() {
+            const backToHome = document.getElementById('backToHome');
+            if (!backToHome) {
+                console.error('返回主页按钮未找到!');
+                return;
+            }
+            backToHome.addEventListener('click', () => {
+                console.log('返回主页被点击');
+                window.location.href = 'index.html';
+            });
+        }
+        
+        function setupBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (!backToTop) {
+                console.error('返回顶部按钮未找到!');
+                return;
+            }
+            backToTop.addEventListener('click', () => {
+                console.log('返回顶部被点击');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        
+        function handleScroll() {
+            const show = window.scrollY > 300;
+            console.log('滚动处理:', show);
+            
+            const backToTop = document.getElementById('backToTop');
+            const backToHome = document.getElementById('backToHome');
+            const languageToggle = document.getElementById('languageToggle');
+            
+            if (backToTop) backToTop.classList.toggle('visible', show);
+            if (backToHome) backToHome.classList.toggle('visible', show);
+            if (languageToggle) languageToggle.classList.toggle('visible', show);
+        }
 
 // 分类按钮点击事件
         document.querySelectorAll('.category-btn').forEach(button => {
