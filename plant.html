@@ -2030,60 +2030,48 @@
         });
     }
 
-    function setupCategoryFilters() {
-        const categories = document.querySelectorAll('.category-option');
-        categories.forEach(option => {
-            option.addEventListener('click', () => {
-                const filter = option.dataset.filter;
-                // 假设每个植物卡片有 data-category 属性
-                const plants = document.querySelectorAll('.plant-card');
-                plants.forEach(plant => {
-                    if (filter === 'all' || plant.dataset.category === filter) {
-                        plant.style.display = 'block';
-                    } else {
-                        plant.style.display = 'none';
-                    }
+// 分类按钮点击事件
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // 移除所有按钮的active类
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
                 });
+                
+                // 为当前点击的按钮添加active类
+                this.classList.add('active');
+                
+                // 获取分类并筛选植物
+                const category = this.dataset.category;
+                filterPlants(category);
             });
         });
-    }
-        // 详情切换功能
-    function toggleDetails(button) {
-        const details = button.nextElementSibling;
-        if(details) {
-            const isShowing = details.style.display === 'block';
-            details.style.display = isShowing ? 'none' : 'block';
-            button.innerHTML = isShowing 
-                ? (isEnglish ? '<i class="fas fa-info-circle"></i> View Details' : '<i class="fas fa-info-circle"></i> 查看详情')
-                : (isEnglish ? '<i class="fas fa-times-circle"></i> Hide Details' : '<i class="fas fa-times-circle"></i> 收起详情');
-        }
-    }
-
-    // 筛选功能
-    function filterPlants(category) {
-        const productCards = document.querySelectorAll('.product-card');
-        let hasResult = false;
-
-        productCards.forEach(card => {
-            if (card.hasAttribute('data-category')) {
-                const categories = card.dataset.category.split(' ');
-                if (category === 'all' || categories.includes(category)) {
-                    card.style.display = 'block';
-                    hasResult = true;
+        
+        // 筛选植物函数
+        function filterPlants(category) {
+            const productCards = document.querySelectorAll('.product-card');
+            let hasResult = false;
+        
+            productCards.forEach(card => {
+                if (card.hasAttribute('data-category')) {
+                    const categories = card.dataset.category.split(' ');
+                    if (category === 'all' || categories.includes(category)) {
+                        card.style.display = 'block';
+                        hasResult = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
                 } else {
-                    card.style.display = 'none';
+                    card.style.display = category === 'all' ? 'block' : 'none';
+                    if (category === 'all') hasResult = true;
                 }
-            } else {
-                card.style.display = category === 'all' ? 'block' : 'none';
-                if (category === 'all') hasResult = true;
+            });
+        
+            const noResults = document.getElementById('no-results');
+            if(noResults) {
+                noResults.style.display = hasResult ? 'none' : 'block';
             }
-        });
-
-        const noResults = document.getElementById('no-results');
-        if(noResults) {
-            noResults.style.display = hasResult ? 'none' : 'block';
         }
-    }
 
     function fixButtonStyles() {
         const style = document.createElement('style');
