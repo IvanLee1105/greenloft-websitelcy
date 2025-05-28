@@ -2016,14 +2016,16 @@
     }
 
     function setupViewDetailsButtons() {
-        const detailButtons = document.querySelectorAll('.view-details');
+        const detailButtons = document.querySelectorAll('.action-btn');
         detailButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const plantId = button.dataset.plantId;
-                if (plantId) {
-                    window.location.href = `details.html?id=${plantId}`;
-                } else {
-                    alert('无法加载详情，请检查植物 ID');
+            button.addEventListener('click', function() {
+                const details = this.nextElementSibling;
+                if(details && details.classList.contains('plant-details')) {
+                    const isShowing = details.style.display === 'block';
+                    details.style.display = isShowing ? 'none' : 'block';
+                    this.innerHTML = isShowing 
+                        ? (isEnglish ? '<i class="fas fa-info-circle"></i> View Details' : '<i class="fas fa-info-circle"></i> 查看详情')
+                        : (isEnglish ? '<i class="fas fa-times-circle"></i> Hide Details' : '<i class="fas fa-times-circle"></i> 收起详情');
                 }
             });
         });
@@ -2070,47 +2072,6 @@
         if(noResults) {
             noResults.style.display = hasResult ? 'none' : 'block';
         }
-    }
-
-    function fixButtonStyles() {
-        const style = document.createElement('style');
-        style.innerHTML = `
-            #languageToggle {
-                z-index: 9999 !important;
-                pointer-events: auto !important;
-                bottom: 20px !important;
-                right: 20px !important;
-            }
-            .back-to-home {
-                z-index: 9998 !important;
-                bottom: 140px !important;
-            }
-            .back-to-top {
-                z-index: 9998 !important;
-                bottom: 80px !important;
-            }
-            #devServiceBtn {
-                z-index: 1000 !important;
-            }
-            .back-to-home, .back-to-top, #languageToggle {
-                display: none;
-                position: fixed;
-                right: 20px;
-                background: #4CAF50;
-                color: white;
-                border: none;
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-                cursor: pointer;
-                transition: all 0.3s;
-            }
-            .visible {
-                display: block !important;
-            }
-        `;
-        document.head.appendChild(style);
     }
 
     function toggleLanguage() {
@@ -2164,8 +2125,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        fixButtonStyles();
-
         setupDevServiceButton();
         setupLanguageToggle();
         setupBackToHome();
